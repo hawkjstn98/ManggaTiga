@@ -1,6 +1,6 @@
 # ManggaTiga
 
-> Description
-    **Intinya Mario Wibu**
+> **Intinya Mario Wibu**
+    
 
 
