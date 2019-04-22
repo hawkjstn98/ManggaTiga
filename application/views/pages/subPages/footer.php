@@ -32,6 +32,6 @@
     <br>
     <div class="tulisanfooter">
         <div class="footer-copyright text-center">manggatiga.com</div>
-        <div class="footer-copyright text-center py-3">© 2019 Copyright PT. Cerdas Sekali</div>
+        <div class="footer-copyright text-center py-3">© <?php echo date("Y")?> Copyright PT. Cerdas Sekali</div>
     </div>
 </footer

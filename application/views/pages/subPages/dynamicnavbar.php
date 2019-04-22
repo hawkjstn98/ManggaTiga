@@ -22,7 +22,7 @@
             <a class="dropdown-item" value="mouse" href="Kategori.php">Mouse</a>
         </div>
         <script>
-            var
+
         </script>
     </div>
 </nav>

@@ -17,8 +17,8 @@
       </div>
       <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">  
       <!-- List Menu -->
-        <a class="nav-link" href="#"><img src="http://localhost/manggatiga/assets/logo/cart.png" width="40" height="40"></a>
-        <a class="nav-link" href="#"><img src="http://localhost/manggatiga/assets/logo/user.png" width="40" height="40"></a>
+        <a class="nav-link" href="#"><img src="http://localhost/assets/logo/cart.png" width="40" height="40"></a>
+        <a class="nav-link" href="#"><img src="http://localhost/assets/logo/user.png" width="40" height="40"></a>
         <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log Out</button>
       </div>
     </div>
