@@ -29,8 +29,6 @@
             activestring = 'active';
         }
         carouselSelector.append("<div class='carousel-item "+activestring+"'>"+"<img class='d-block w-100' src='"+data[i].path+"' width='600' height='400'>"+"</div>");
-        //carouselSelector.append("<img class='d-block w-100' src='"+data[i].path+"' width='600' height='400'>");
-        //carouselSelector.append("</div>");
     }
     console.log(data.length)
 </script>
