@@ -14,6 +14,7 @@ class Home extends CI_Controller{
         $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $data['staticnavbarLoggedin'] = $this->load->view('pages/subPages/staticnavbarLoggedin.php',NULL,TRUE);
+        $data['staticnavbarUnloggedin'] = $this->load->view('pages/subPages/staticnavbarUnloggedin.php',NULL,TRUE);
         $res['carouseldata'] = $this->Carousel_model->getCarousel();
         $data['dynamicnavbar'] = $this->load->view('pages/subPages/dynamicnavbar.php',NULL,TRUE);
         $data['carousel'] = $this->load->view('pages/subPages/carousel.php',$res,TRUE);

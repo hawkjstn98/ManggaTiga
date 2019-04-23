@@ -1,4 +1,4 @@
-<br><br><br>
+<br><br>
 <!-- Navbar Kategori -->
 <nav id="navbarsekunder" class="navbar navbar-expand-lg navbar-light bg-success static-top">
     <!-- Button DropDown -->

@@ -15,7 +15,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
-      <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">  
+      <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
       <!-- List Menu -->
         <a class="nav-link" href="#"><img src="http://localhost/assets/logo/cart.png" width="40" height="40"></a>
         <a class="nav-link" href="#"><img src="http://localhost/assets/logo/user.png" width="40" height="40"></a>
@@ -24,3 +24,4 @@
     </div>
   </nav>
 </header>
+<br>
