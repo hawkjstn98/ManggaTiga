@@ -15,7 +15,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
-            <div id="btnLogin" class="collapse navbar-collapse col-3">
+            <div id="btnLogin" class="collapse navbar-collapse col-1">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">LogIn</button>
             </div>
 
