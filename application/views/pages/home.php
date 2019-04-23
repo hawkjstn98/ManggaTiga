@@ -42,10 +42,11 @@
           </div>
       </div>
   </div>
-  <div class="row">
-    <div class="col-1"></div> 
-    <h1 align="center">Recommendation</h1>
-  </div><br>
+  <div class="row col-sm-12">
+    <a class="col-sm-4" href="#"></a>
+    <h1 class="col-sm-4" style="text-align: center">Recommendation</h1>
+  </div>
+  <br>
   <div class="container">
     <div id="cardgridrecom" class="row">
       <?php
@@ -53,10 +54,11 @@
       ?>
     </div>
   </div><br>
-  <div class="row">
-    <div class="col-1"></div> 
-    <h1 align="center">New Arrival</h1>
-  </div><br>
+  <div class="row col-sm-12">
+    <a class="col-sm-4" href="#"></a>
+    <h1 class="col-sm-4" style="text-align: center">New Arrival</h1>
+  </div>
+  <br>
   <div class="container">
     <div id="cardgridnew" class="row">
       <?php
