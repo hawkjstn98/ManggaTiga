@@ -1,7 +1,7 @@
 <header class="header">
   <nav id="navbarutama" class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
     <!-- Logo -->
-    <div class="col-4">
+    <div class="col-3">
         <a class="navbar-brand" href="#">manggatiga.com</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

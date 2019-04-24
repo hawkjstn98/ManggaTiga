@@ -1,1 +1,1 @@
-Semua php yang huruf kapital itu page, yg kecil cuma part2 kecil dari page ( kecuali home.php ) :3
+Semua php yang huruf kapital itu page, yg kecil cuma part2 kecil dari page ( kecuali home.php dan cms.php) :3
