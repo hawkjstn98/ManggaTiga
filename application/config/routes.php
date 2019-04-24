@@ -54,5 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route["Redirect"] = 'RedirectController';
 $route['Redirect/category'] = 'RedirectController/toCategory';
+$route['Redirect/detail'] = 'RedirectController/toDetail';
+$route['Redirect/register'] = 'RedirectController/toRegister';
 $route['cms/Admin'] = 'Cms';
 $route['cms/Admin/product'] = 'Product';
