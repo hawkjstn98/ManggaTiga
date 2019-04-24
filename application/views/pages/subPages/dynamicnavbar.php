@@ -7,7 +7,7 @@
             Kategori
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" value="notebook" href="<?php echo base_url("index.php/redirect/kontol");?>">Notebook</a>
+            <a class="dropdown-item" value="notebook" href="<?php echo base_url("index.php/Redirect");?>">Notebook</a>
             <a class="dropdown-item" value="lcd" href="Kategori.php">LCD</a>
             <a class="dropdown-item" value="casing" href="Kategori.php">Casing</a>
             <a class="dropdown-item" value="motherboard" href="Kategori.php">Motherboard</a>
