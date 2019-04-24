@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route["Redirect"] = 'RedirectController';
 $route['Redirect/category'] = 'RedirectController/toCategory';
 $route['cms/Admin'] = 'Cms';
+$route['cms/Admin/product'] = 'Product';
