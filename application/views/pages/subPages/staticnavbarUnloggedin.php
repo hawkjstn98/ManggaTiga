@@ -29,5 +29,10 @@
         $("#btnLogin").click(function(){
             $("#modalLoginForm").modal();
         });
+        $("#btnRegister").click(function(){
+            let a = "<?php echo base_url('index.php/Redirect/register');?>";
+            window.location.href = a;
+        });
     });
+    
 </script>
