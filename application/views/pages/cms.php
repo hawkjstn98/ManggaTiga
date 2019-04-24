@@ -46,13 +46,13 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Management
+        Inventory Management
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
+          <i class="fas fa-fw fa-money-check"></i>
           <span>Product</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -60,21 +60,46 @@
           <h6 class="collapse-header">Select Action:</h6>
             <a class="collapse-item" href="tables.html">New Product</a>
             <a class="collapse-item" href="tables.html">Update Product</a>
+            <a class="collapse-item" href="tables.html">Update Stock</a>
           </div>
         </div>
       </li>
 
-      <!-- Nav Item - Charts -->
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Financial Report
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+          <i class="fas fa-fw fa-file-alt"></i>
+          <span>Report</span></a>
       </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Sidebar Toggler (Sidebar) -->
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Carousel Promo
+      </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?php base_url('index.php/cms/Admin/banner') ?>">
+                <i class="far fa-flag"></i>
+                <span>Banner</span></a>
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+
+        <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>

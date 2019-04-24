@@ -58,3 +58,4 @@ $route['Redirect/detail'] = 'RedirectController/toDetail';
 $route['Redirect/register'] = 'RedirectController/toRegister';
 $route['cms/Admin'] = 'Cms';
 $route['cms/Admin/product'] = 'Product';
+$route['cms/Admin/banner'] = 'Cms/BannerConfig';

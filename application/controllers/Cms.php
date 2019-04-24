@@ -13,6 +13,11 @@ class Cms extends CI_Controller{
         $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->load->view('pages/cms.php', $data);
     }
+
+    public function BannerConfig(){
+        $this->load->view('pages/bannerConf.php');
+    }
+
 }
 
 ?>
