@@ -74,7 +74,23 @@
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Sidebar Toggler (Sidebar) -->
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Carousel Promo
+      </div>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?php base_url('index.php/cms/Admin/banner') ?>">
+                <i class="far fa-flag"></i>
+                <span>Banner</span></a>
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+
+        <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>

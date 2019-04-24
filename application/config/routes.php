@@ -56,3 +56,4 @@ $route["Redirect"] = 'RedirectController';
 $route['Redirect/category'] = 'RedirectController/toCategory';
 $route['cms/Admin'] = 'Cms';
 $route['cms/Admin/product'] = 'Product';
+$route['cms/Admin/banner'] = 'Cms/BannerConfig';
