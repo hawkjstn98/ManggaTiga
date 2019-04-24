@@ -29,7 +29,7 @@ class Home extends CI_Controller{
     }
 
 
-    public function perKategori(){
-        $this->load->view("pages/Kategori.php");
+    public function toCategory(){
+        $this->load->view("../views/pages/Kategori.php");
     }
 }
