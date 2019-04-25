@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php base_url("/index.php/cms/Admin/"); ?>">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url("/index.php/cms/Admin"); ?>">
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fas fa-handshake"></i>
   </div>
@@ -35,8 +35,10 @@
   </a>
   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-    <h6 class="collapse-header">Select Action:</h6>
+      <h6 class="collapse-header">New :</h6>
       <a class="collapse-item" href="tables.html">New Product</a>
+      <a class="collapse-item" href="tables.html">New Brand</a>
+      <h6 class="collapse-header">Update :</h6>
       <a class="collapse-item" href="tables.html">Update Product</a>
       <a class="collapse-item" href="tables.html">Update Stock</a>
     </div>
