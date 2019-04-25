@@ -39,7 +39,7 @@
       <a class="collapse-item" href="#">New Product</a>
       <a class="collapse-item" href="#">New Brand</a>
       <h6 class="collapse-header">Update :</h6>
-      <a class="collapse-item" href="#">Update Product</a>
+      <a class="collapse-item" href="<?php echo base_url('index.php/cms/Admin/updateStock');?>">Update Product</a>
       <a class="collapse-item" href="#">Update Stock</a>
     </div>
   </div>
