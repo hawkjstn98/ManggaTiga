@@ -36,11 +36,11 @@
   <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">New :</h6>
-      <a class="collapse-item" href="tables.html">New Product</a>
-      <a class="collapse-item" href="tables.html">New Brand</a>
+      <a class="collapse-item" href="#">New Product</a>
+      <a class="collapse-item" href="#">New Brand</a>
       <h6 class="collapse-header">Update :</h6>
-      <a class="collapse-item" href="tables.html">Update Product</a>
-      <a class="collapse-item" href="tables.html">Update Stock</a>
+      <a class="collapse-item" href="#">Update Product</a>
+      <a class="collapse-item" href="#">Update Stock</a>
     </div>
   </div>
 </li>
@@ -55,7 +55,7 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link" href="charts.html">
+  <a class="nav-link" href="#">
     <i class="fas fa-fw fa-file-alt"></i>
     <span>Report</span></a>
 </li>
