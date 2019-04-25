@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mangga Tiga</title>
+  <title>Mangga Tiga</title>
     <?php
       echo $js;
       echo $css;
@@ -22,20 +22,19 @@
                       <span aria-hidden="true">&times;</span>
                   </button>
               </div>
-              <div class="modal-body mx-3">
-                  <div class="md-form mb-5">
-                      <i class="fas fa-envelope prefix grey-text"></i>
-                      <input type="email" id="defaultForm-email" class="form-control validate">
-                      <label data-error="wrong" data-success="right" for="defaultForm-email">email</label>
+              <form class="container">
+                <br>
+                <div class="form-group">
+                  <div class="input-group">
+                    <input style="width:150px" type="email" class="form-control" name="email" placeholder="Email" required="required">
                   </div>
-
-                  <div class="md-form mb-4">
-                      <i class="fas fa-lock prefix grey-text"></i>
-                      <input type="password" id="defaultForm-pass" class="form-control validate">
-                      <label data-error="wrong" data-success="right" for="defaultForm-pass">password</label>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <input style="width:150px" type="text" class="form-control" name="password" placeholder="Password" required="required">
                   </div>
-
-              </div>
+                </div>
+              </form>
               <div class="modal-footer d-flex justify-content-center">
                   <button class="btn btn-success">Login</button>
               </div>

@@ -8,8 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Banner Setting</title>
-    <?php echo $css;
-            echo $js; ?>
+    <?php echo $css; ?>
 </head>
 <body>
 
@@ -68,6 +67,7 @@
     </div>
     <!-- End of Content Wrapper -->
 
+    <?php echo $js; ?>
     <!--    Custom JS-->
     <?php echo $bannercustomjs; ?>
 </body>
