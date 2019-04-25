@@ -36,7 +36,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php base_url("/index.php/cms/Admin"); ?>">
+        <a class="nav-link" href="<?php base_url("/index.php/cms/Admin/product"); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -89,7 +89,7 @@
       </div>
 
         <li class="nav-item">
-            <a class="nav-link" href="<?php base_url('index.php/cms/Admin/banner') ?>">
+            <a class="nav-link" href="<?php echo base_url('index.php/cms/Admin/banner');?>">
                 <i class="far fa-flag"></i>
                 <span>Banner</span></a>
         </li>
