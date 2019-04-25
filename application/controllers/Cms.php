@@ -8,6 +8,8 @@ class Cms extends CI_Controller{
         parent::__construct();
         $this->data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
         $this->data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+        $this->data['sidenavbar'] = $this->load->view('include/sidenavbar.php', NULL, TRUE);
+        $this->data['topnavbar'] = $this->load->view('include/topnavbar.php', NULL, TRUE);
     }
 
     public function index(){
