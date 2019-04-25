@@ -1,5 +1,5 @@
 <header class="header">
-  <nav id="navbarutama" class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+  <nav id="navbarutama" class="row navbar navbar-expand-lg navbar-light bg-dark fixed-top">
     <!-- Logo -->
     <div class="col-3">
         <a class="navbar-brand" href="#">manggatiga.com</a>
@@ -17,8 +17,8 @@
       </div>
       <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
       <!-- List Menu -->
-        <a class="nav-link" href="#"><img src="http://localhost/assets/logo/cart.png" width="40" height="40"></a>
-        <a class="nav-link" href="#"><img src="http://localhost/assets/logo/user.png" width="40" height="40"></a>
+        <a class="nav-link" href="#"><img src="http://localhost/assets/logo/cart.png" width="20" height="20"></a>
+        <a class="nav-link" href="#"><img src="http://localhost/assets/logo/user.png" width="20" height="20"></a>
         <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log Out</button>
       </div>
     </div>

@@ -1,6 +1,5 @@
-<br>
 <!-- Navbar Kategori -->
-<nav id="navbarsekunder" class="navbar navbar-expand-lg navbar-light bg-success static-top">
+<nav id="navbarsekunder" style="margin-top:30.833px;" class="navbar navbar-expand-lg navbar-light bg-success static-top">
     <!-- Button DropDown -->
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle bg-success" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
