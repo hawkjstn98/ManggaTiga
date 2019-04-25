@@ -6,16 +6,25 @@ class Cms extends CI_Controller{
 
     public function __construct(){
         parent::__construct();
+        $this->data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
+        $this->data['css'] = $this->load->view('include/css.php', NULL, TRUE);
+        $this->data['sidenavbar'] = $this->load->view('include/sidenavbar.php', NULL, TRUE);
+        $this->data['topnavbar'] = $this->load->view('include/topnavbar.php', NULL, TRUE);
     }
 
     public function index(){
-        $data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
-        $data['css'] = $this->load->view('include/css.php', NULL, TRUE);
-        $this->load->view('pages/cms.php', $data);
+
+        $this->load->view('pages/cms.php', $this->data);
     }
 
     public function BannerConfig(){
-        $this->load->view('pages/bannerConf.php');
+        $this->custom['bannerJs'] = true;
+        $this->data['bannercustomjs'] = $this->load->view('include/customJS.php',$this->custom, TRUE);
+        $this->load->view('pages/bannerConf.php', $this->data);
+    }
+
+    public function ShowProduct(){
+        $this->load->view('pages/product.php', $this->data);
     }
 
 }
