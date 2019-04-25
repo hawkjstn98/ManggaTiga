@@ -23,10 +23,6 @@
                 <h3>Register</h3>
             </div>
             <br>
-            <div class="form-group">
-                <label for="lastnRegist">Username</label>
-                <input type="text" class="form-control" id="lastnRegist">
-            </div>
             <div class="row">
                 <div class="col-6 form-group">
                     <label for="firstnRegist">Nama Depan</label>
@@ -37,22 +33,29 @@
                     <input type="text" class="form-control" id="lastnRegist">
                 </div>
             </div>
-            
             <div class="form-group">
                 <label for="emailRegist">Email</label>
-                <input type="email" class="form-control" id="emailRegist">
+                <input style="width:350px;" type="email" class="form-control" id="emailRegist">
+            </div>
+            <div class="form-group">
+                <label for="lastnRegist">Username</label>
+                <input style="width:250px;" type="text" class="form-control" id="lastnRegist">
+            </div>
+            <div class="form-group">
+                <label for="lastnRegist">Password</label>
+                <input style="width:250px;" type="password" class="form-control" id="lastnRegist">
             </div>
             <div class="form-group">
                 <label for="phonenoRegist">Nomor HP</label>
-                <input type="text" class="form-control" id="phonenoRegist">
+                <input style="width:250px;" type="text" class="form-control" id="phonenoRegist">
             </div>
             <div class="form-group">
                 <label for="alamatRegist">Alamat</label>
-                <input type="text" class="form-control" id="alamatRegist">
+                <input style="width:450px;" type="text" class="form-control" id="alamatRegist">
             </div>
             <div class="form-footer row">
                 <div class="col-4"></div>
-                <button type="submit" class="col-4 btn btn-primary">Daftar</button>    
+                <button type="submit" class="col-4 btn btn-success">Register</button>    
             </div>
         </form>
     </div>
