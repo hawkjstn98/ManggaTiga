@@ -6,7 +6,7 @@
       echo $js;
       echo $css;
 	?>
-	
+	<script src="<?php echo base_url('assets/js/bootstrap-input-spinner.js'); ?>"></script>
 </head>
 <body>
 <?php 
@@ -35,24 +35,17 @@
 				</div>
 				<div class="details col-md-6">
 					<h3 class="product-title">Mario Alexander</h3>
-					<div class="rating">
-						<div class="stars">
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star"></span>
-							<span class="fa fa-star"></span>
+					<div class="container">
+						<p class="product-description">Mau Cari orang untuk dibully dan dikata katai inilah produk yang tepat.</p>
+						<h4 class="price">current price: <span> FREE</span></h4>
+						<label>Jumlah : </label>
+						<div class="row">
+							<input id='txtQty' placeholder="Enter number" value="" min="0" max="50" type="number" class="input col-3" required>
 						</div>
-						<span class="review-no">reviews</span>
-					</div>
-					<p class="product-description">Mau Cari orang untuk dibully dan dikata katai inilah produk yang tepat.</p>
-					<h4 class="price">current price: <span> FREE</span></h4>
-                       <label>Jumlah : </label>
-                       <input id='txtQty' placeholder="Enter number" value="" min="0" max="50" type="number" class="input" required>
-                       <br>
-					<div class="action row">
-						<button class="add-to-cart btn btn-primary" type="button">Add To Cart</button>
-						<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+						<br>	
+						<div class="action row">
+							<button class="btn btn-success" type="button">Add To Cart</button>
+						</div>
 					</div>
 				</div>
 			</div>
