@@ -27,12 +27,18 @@ $(document).ready(function() {
     $('#bannerbtnSubmit').click(function(){
         let description = $('#description').val();
         let input = $('#inputImageBanner').val();
+        alert(base);
         if(input && description){
             let conf = confirm("Are you sure want to add this banner ?");
             if(conf){
-                $.ajax(){
+                $.ajax({
+                    url: base+"Cms/UploadBanner",
+                    data: ,
+                    success: function(){
 
-                }
+                    }
+
+                })
             }
             else{
                 alert("Retard alert");

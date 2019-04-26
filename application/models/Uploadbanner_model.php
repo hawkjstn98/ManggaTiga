@@ -11,7 +11,9 @@ class Uploadbanner_model extends CI_Model{
         parent::__construct();
     }
 
-    public function uploadImage()
+    public function uploadImage(){
+
+    }
 
 
 }
