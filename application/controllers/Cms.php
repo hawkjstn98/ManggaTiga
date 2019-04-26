@@ -41,6 +41,14 @@ class Cms extends CI_Controller{
         $this->load->view('pages/updatestock.php', $this->data);
     }
 
+    public function UploadBanner(){
+        $this->load->model('Uploadbanner_model');
+        $config["upload_path"] = "./assets/carousel";
+        $config["allowed_types"] = "png|jpg|jpeg";
+        $config["encrypt_name"] = TRUE;
+
+
+    }
 }
 
 ?>

@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="container-belakang" style="background-image: url('images/login/upload_pic.jpg');">
+                <div class="container-belakang">
                     <div class="box">
                         <form action="upload.php" method="post" enctype="multipart/form-data" class="upload-pic">
                         <span style="margin-left: 2%" class="kata-select">
@@ -37,14 +37,11 @@
                         </span>
                             <div class="input-group">
                                 <div class="custom-file" style="width: 100%;">
-                                    <input type="file" class="custom-file-input" name="imageUpload" id="inputGroupFile04" onchange="readURL(this)" accept=".png,.jpg,.jpeg">
+                                    <input type="file" class="custom-file-input" name="imageUpload" id="inputImageBanner" onchange="readURL(this)" accept=".png,.jpg,.jpeg">
                                     <label class="custom-file-label" for="inputGroupFile04">Choose file (max. 2MB)</label>
                                 </div>
                             </div>
                         </form>
-
-
-
                         <!-- bagian picture -->
                         <div class="pic">
                             <label class="row kata-select" style="margin-left: 2%"><p>Preview : <br></p></label>
@@ -55,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button id="bannerbtnSubmit" type="button" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </div>

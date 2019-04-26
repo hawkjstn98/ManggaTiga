@@ -24,6 +24,12 @@ class Home extends CI_Controller{
         //print_r($res);
     }
 
+    public function getData(){
+        $usn = $this->input->POST('username');
+
+    }
+
+
     public function getCarouselData(){
 
     }

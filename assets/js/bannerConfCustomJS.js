@@ -22,24 +22,26 @@ $(document).ready(function() {
         $('#modalAddBanner').modal();
     })
 
-    //function for show preview uploaded picture
-    function readURL(input){
-        //alert(input.files[0].size);
-        if(input.files[0].size<2200000){
 
-            if(input.files && input.files[0]){
-                var read = new FileReader();
 
-                read.onload = function(f){
-                    $('#imagePrev').attr('src', f.target.result);
-                };
-                read.readAsDataURL(input.files[0]);
+    $('#bannerbtnSubmit').click(function(){
+        let description = $('#description').val();
+        let input = $('#inputImageBanner').val();
+        if(input && description){
+            let conf = confirm("Are you sure want to add this banner ?");
+            if(conf){
+                $.ajax(){
+
+                }
+            }
+            else{
+                alert("Retard alert");
             }
         }
         else{
-            alert("Picture size exceeding 2MB !, Please upload again.");
+            alert("Field Description And Input cannot be empty");
         }
-    }
+    });
 
     // for(let i = 0 ; i < data.length ; i++){
     //     dataSelector.append("<tr>" +
@@ -50,3 +52,22 @@ $(document).ready(function() {
     // }
     // console.log(data.length)
 } );
+
+//function for show preview uploaded picture
+function readURL(input){
+    //alert(input.files[0].size);
+    if(input.files[0].size<2200000){
+
+        if(input.files && input.files[0]){
+            var read = new FileReader();
+
+            read.onload = function(f){
+                $('#imagePrev').attr('src', f.target.result);
+            };
+            read.readAsDataURL(input.files[0]);
+        }
+    }
+    else{
+        alert("Picture size exceeding 2MB !, Please upload again.");
+    }
+}

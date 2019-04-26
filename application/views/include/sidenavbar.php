@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url("/index.php/cms/Admin"); ?>">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url("cms/Admin"); ?>">
   <div class="sidebar-brand-icon rotate-n-15">
     <i class="fas fa-handshake"></i>
   </div>
@@ -13,8 +13,8 @@
 <hr class="sidebar-divider my-0">
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item active">
-  <a class="nav-link" href="<?php base_url("/index.php/cms/Admin/product"); ?>">
+<li class="nav-item">
+  <a class="nav-link" href="<?php base_url("cms/Admin/product"); ?>">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>Dashboard</span></a>
 </li>
@@ -39,7 +39,7 @@
       <a class="collapse-item" href="#">New Product</a>
       <a class="collapse-item" href="#">New Brand</a>
       <h6 class="collapse-header">Update :</h6>
-      <a class="collapse-item" href="<?php echo base_url('index.php/cms/Admin/updateStock');?>">Update Product</a>
+      <a class="collapse-item" href="<?php echo base_url('cms/Admin/updateStock');?>">Update Product</a>
       <a class="collapse-item" href="#">Update Stock</a>
     </div>
   </div>
@@ -69,7 +69,7 @@
 </div>
 
   <li class="nav-item">
-      <a class="nav-link" href="<?php echo base_url('index.php/cms/Admin/banner');?>">
+      <a class="nav-link" href="<?php echo base_url('cms/Admin/banner');?>">
           <i class="far fa-flag"></i>
           <span>Banner</span></a>
   </li>
