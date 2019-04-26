@@ -9,7 +9,7 @@ $(document).ready(function() {
             {data: "id"},
             {data: "description"},
             {data: "path", render: convertImage },
-            {defaultContent: "<button class='btn btn-primary'>Delete</button>"}
+            {defaultContent: "<button class='btn btn-primary'>Delete</button><button class='btn btn-dark'>Edit</button>"}
         ]
     });
 
@@ -17,6 +17,30 @@ $(document).ready(function() {
         let path = data;
         return "<img src="+path+" width='200' height='150'>";
     }
+
+    $('#addCarousel').click(function(){
+        $('#modalAddBanner').modal();
+    })
+
+    //function for show preview uploaded picture
+    function readURL(input){
+        //alert(input.files[0].size);
+        if(input.files[0].size<2200000){
+
+            if(input.files && input.files[0]){
+                var read = new FileReader();
+
+                read.onload = function(f){
+                    $('#imagePrev').attr('src', f.target.result);
+                };
+                read.readAsDataURL(input.files[0]);
+            }
+        }
+        else{
+            alert("Picture size exceeding 2MB !, Please upload again.");
+        }
+    }
+
     // for(let i = 0 ; i < data.length ; i++){
     //     dataSelector.append("<tr>" +
     //         "<td>"+data[i].id+"</td>" +

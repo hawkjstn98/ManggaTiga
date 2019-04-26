@@ -12,6 +12,55 @@
 </head>
 <body>
 
+<!-- Modal -->
+<div class="modal fade" id="modalAddBanner" tabindex="-1" aria-labelledby="exampleModalCenterTitle" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="description">Description </label>
+                    <input id="description" class="form-control" placeholder="Add Description Here">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="container-belakang" style="background-image: url('images/login/upload_pic.jpg');">
+                    <div class="box">
+                        <form action="upload.php" method="post" enctype="multipart/form-data" class="upload-pic">
+                        <span style="margin-left: 2%" class="kata-select">
+                            Select image to upload:
+                        </span>
+                            <div class="input-group">
+                                <div class="custom-file" style="width: 100%;">
+                                    <input type="file" class="custom-file-input" name="imageUpload" id="inputGroupFile04" onchange="readURL(this)" accept=".png,.jpg,.jpeg">
+                                    <label class="custom-file-label" for="inputGroupFile04">Choose file (max. 2MB)</label>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+                        <!-- bagian picture -->
+                        <div class="pic">
+                            <label class="row kata-select" style="margin-left: 2%"><p>Preview : <br></p></label>
+                            <img style="margin-left: 5%;width: 50%; height: 50%;" id="imagePrev" src="https://via.placeholder.com/100" alt="imagePreview" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -27,7 +76,7 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-            <button class="btn btn-outline-primary float-right" id="addCarousel">Add Promo Banner</button><br><br>
+            <button class="btn btn-outline-primary float-right" id="addCarousel" data-toggle="modal" data-target="modalAddBanner">Add Promo Banner</button><br><br>
             <!--    Data Tables -->
             <table id="bannerData" class="display" style="width:100%">
                 <thead>
