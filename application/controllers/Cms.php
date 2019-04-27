@@ -33,12 +33,8 @@ class Cms extends CI_Controller{
         $this->load->view('pages/newbrand.php', $this->data);
     }
 
-    public function UpdateProduct(){
-        $this->load->view('pages/updateproduct.php', $this->data);
-    }
-
-    public function UpdateStock(){
-        $this->load->view('pages/updatestock.php', $this->data);
+    public function ListProduct(){
+        $this->load->view('pages/listproduct.php', $this->data);
     }
 
     public function UploadBanner(){
