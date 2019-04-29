@@ -12,9 +12,10 @@ class RedirectController extends CI_Controller {
         $this->data['staticnavbarLoggedin'] = $this->load->view('pages/subPages/staticnavbarLoggedin.php',NULL,TRUE);
         $this->data['staticnavbarUnloggedin'] = $this->load->view('pages/subPages/staticnavbarUnloggedin.php',NULL,TRUE);
         $this->data['dynamicnavbar'] = $this->load->view('pages/subPages/dynamicnavbar.php',NULL,TRUE);
+        $this->data['footer'] = $this->load->view('pages/subPages/footer.php',NULL,TRUE);
     }
     public function toCategory(){
-        $this->load->view("../views/pages/Kategori.php");
+        $this->load->view("../views/pages/Kategori.php",$this->data);
     }
     public function toDetail(){
         $this->load->view("../views/pages/Detail.php",$this->data);        

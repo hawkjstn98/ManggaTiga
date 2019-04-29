@@ -1,4 +1,13 @@
 <!-- Navbar Kategori -->
+<style>
+    .dropdown:hover>.dropdown-menu{
+        display: block;
+    }
+    .dropdown>.dropdown-toggle:active{
+        pointer-events: none;
+    }
+</style>
+
 <nav id="navbarsekunder" style="margin-top:30.833px;" class="navbar navbar-expand-lg navbar-light bg-success static-top">
     <!-- Button DropDown -->
     <div class="dropdown">
