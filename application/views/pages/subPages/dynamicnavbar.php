@@ -16,18 +16,18 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" value="notebook" href="<?php echo base_url("Redirect/category");?>">Notebook</a>
-            <a class="dropdown-item" value="lcd" href="Kategori.php">LCD</a>
-            <a class="dropdown-item" value="casing" href="Kategori.php">Casing</a>
-            <a class="dropdown-item" value="motherboard" href="Kategori.php">Motherboard</a>
-            <a class="dropdown-item" value="powersupply" href="Kategori.php">Power Supply</a>
-            <a class="dropdown-item" value="processor" href="Kategori.php">Processor</a>
-            <a class="dropdown-item" value="cooler" href="Kategori.php">Cooler</a>
-            <a class="dropdown-item" value="ram" href="Kategori.php">RAM</a>
-            <a class="dropdown-item" value="vga" href="Kategori.php">VGA Card</a>
-            <a class="dropdown-item" value="hdd" href="Kategori.php">Harddisk</a>
-            <a class="dropdown-item" value="ssd" href="Kategori.php">SSD</a>
-            <a class="dropdown-item" value="keyboard" href="Kategori.php">Keyboard</a>
-            <a class="dropdown-item" value="mouse" href="Kategori.php">Mouse</a>
+            <a class="dropdown-item" value="lcd" href="<?php echo base_url("Redirect/category");?>">LCD</a>
+            <a class="dropdown-item" value="casing" href="<?php echo base_url("Redirect/category");?>">Casing</a>
+            <a class="dropdown-item" value="motherboard" href="<?php echo base_url("Redirect/category");?>">Motherboard</a>
+            <a class="dropdown-item" value="powersupply" href="<?php echo base_url("Redirect/category");?>">Power Supply</a>
+            <a class="dropdown-item" value="processor" href="<?php echo base_url("Redirect/category");?>">Processor</a>
+            <a class="dropdown-item" value="cooler" href="<?php echo base_url("Redirect/category");?>">Cooler</a>
+            <a class="dropdown-item" value="ram" href="<?php echo base_url("Redirect/category");?>">RAM</a>
+            <a class="dropdown-item" value="vga" href="<?php echo base_url("Redirect/category");?>">VGA Card</a>
+            <a class="dropdown-item" value="hdd" href="<?php echo base_url("Redirect/category");?>">Harddisk</a>
+            <a class="dropdown-item" value="ssd" href="<?php echo base_url("Redirect/category");?>">SSD</a>
+            <a class="dropdown-item" value="keyboard" href="<?php echo base_url("Redirect/category");?>">Keyboard</a>
+            <a class="dropdown-item" value="mouse" href="<?php echo base_url("Redirect/category");?>">Mouse</a>
         </div>
         <script>
 
