@@ -5,10 +5,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Product_model extends CI_Model{
 
     public function getProducts(){
-        $query = $this->db->get('barang');
-
-//        echo_json_encode($query->result);
-        return json_encode($query->result_array());
+        $this->db->select(array('barang.barangNama', 'brand.brandNama', 'category.categoryNama', 'promo.persen', 'barang.hargaJual', 'barang.stock'));
+        $this->db->from('barang');
+        $this->db->join('brand', 'brand.brandId = barang.brandId');
+        $this->db->join('category', 'category.categoryId = barang.categoryId');
+        $this->db->join('promo', 'promo.promoId = barang.promoId');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function getCategories(){

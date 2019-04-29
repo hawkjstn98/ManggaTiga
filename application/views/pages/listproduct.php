@@ -32,14 +32,34 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-          
+
           <!-- Product Table -->
-          <table>
+          <table id="tableBarang">
             <thead>
-              
+              <tr>
+                <th>Nama Barang</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Promo</th>
+                <th>Harga</th>
+                <th>Stock</th>
+                <th>Action</th>
+              </tr>
             </thead>
             <tbody>
-            
+              <?php
+                foreach ($product as $row){
+                  echo "<tr>";
+                  echo "<td>".$row->barangNama."</td>";
+                  echo "<td>".$row->brandNama."</td>";
+                  echo "<td>".$row->categoryNama."</td>";
+                  echo "<td>".$row->persen."</td>";
+                  echo "<td>".$row->hargaJual."</td>";
+                  echo "<td>".$row->stock."</td>";
+                  echo "<td>Action</td>";
+                  echo "</tr>";
+                }
+              ?>
             </tbody>
           </table>
           
@@ -88,7 +108,11 @@
   </div>
 
   <?php echo $js ?>
-
+  <script>
+    $(document).ready(function() {
+      $('#tableBarang').DataTable();
+    });
+  </script>
 </body>
 
 </html>

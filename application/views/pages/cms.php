@@ -166,6 +166,7 @@
   </div>
 
   <?php echo $js ?>
+  <?php echo $chart ?>
 
 </body>
 

@@ -7,10 +7,12 @@ class Cms extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->data['js'] = $this->load->view('include/javascript.php', NULL, TRUE);
+        $this->data['chart'] = $this->load->view('include/chart.php', NULL, TRUE);
         $this->data['css'] = $this->load->view('include/css.php', NULL, TRUE);
         $this->data['sidenavbar'] = $this->load->view('include/sidenavbar.php', NULL, TRUE);
         $this->data['topnavbar'] = $this->load->view('include/topnavbar.php', NULL, TRUE);
         $this->load->model('Carousel_model');
+        $this->load->model('Product_model');
     }
 
     public function index(){
@@ -34,6 +36,16 @@ class Cms extends CI_Controller{
     }
 
     public function ListProduct(){
+        // $dat = json_decode($this->Product_model->getProducts());
+        // $this->data['product'] = array(
+        //     'barangNama' => $dat->barangNama,
+        //     'brandNama' => $dat->brandNama,
+        //     'categoryNama' => $dat->categoryNama,
+        //     'persen' => $dat->persen,
+        //     'hargaJual' => $dat->hargaJual,
+        //     'stock' => $dat->stock
+        // );
+        $this->data['product'] = $this->Product_model->getProducts();
         $this->load->view('pages/listproduct.php', $this->data);
     }
 
