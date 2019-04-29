@@ -12,6 +12,13 @@
         echo $staticnavbarUnloggedin;
         echo $dynamicnavbar;
     ?>
+    <script>
+        $(document).ready(function(){
+            var judul = localStorage.getItem("id");
+            //alert(judul);
+            $("#judulCategory").text(judul);
+        });
+    </script>
     <div class="row">
         <nav class="col-md-2 bg-dark d-none d-md-block bg-light sidebar fixed-left">
             <h4 align="center" style="margin-top:10px;">Range Harga</h4>
@@ -45,9 +52,11 @@
             <hr>
         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <h1></h1>
+            <h1 style="margin-top:5px;" id="judulCategory"></h1>
+            <hr>
         </main>
     </div>
+    
     <?php
         echo $footer;
     ?>
