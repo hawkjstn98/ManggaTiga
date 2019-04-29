@@ -32,13 +32,17 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Centered View -->
-          <div class="col-md-4"></div>
-          <!-- Content Row -->
-          <div class="row col-md-4">
-            <a href="#">Test</a>
-          </div>
+          
+          <!-- Product Table -->
+          <table>
+            <thead>
+              
+            </thead>
+            <tbody>
+            
+            </tbody>
+          </table>
+          
         </div>
         <!-- /.container-fluid -->
       </div>

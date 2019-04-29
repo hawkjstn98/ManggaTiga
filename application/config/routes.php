@@ -61,5 +61,4 @@ $route['cms/Admin/product'] = 'Cms/ShowProduct';
 $route['cms/Admin/banner'] = 'Cms/BannerConfig';
 $route['cms/Admin/newProduct'] = 'Cms/NewProduct';
 $route['cms/Admin/newBrand'] = 'Cms/NewBrand';
-$route['cms/Admin/updateProduct'] = 'Cms/UpdateProduct';
-$route['cms/Admin/UpdateStock'] = 'Cms/UpdateStock';
+$route['cms/Admin/listProduct'] = 'Cms/ListProduct';
