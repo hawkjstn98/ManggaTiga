@@ -16,17 +16,12 @@ class Product_model extends CI_Model{
 
     public function getCategories(){
         $query = $this->db->get('category');
-        return json_encode($query->result_array()); 
+        return $query->result(); 
     }
 
     public function getBrands(){
         $query = $this->db->get('brand');
-        return json_encode($query->result_array()); 
-    }
-
-    public function getPromos(){
-        $query = $this->db->get('promo');
-        return json_encode($query->result_array()); 
+        return $query->result(); 
     }
 
     public function newProduct($param){
@@ -42,7 +37,7 @@ class Product_model extends CI_Model{
             'promoId' => $param['promoId']
         );
         $query = $this->db->insert('barang', $data);
-        return json_encode($query->result_array());
+        return $query->result();
     }
 
     public function newBrand($param){
@@ -51,13 +46,8 @@ class Product_model extends CI_Model{
             'brandNama' => $param
         );
         $query = $this->db->insert('brand', $data);
-        return json_encode($query->result_array());
+        return $query->result();
     }
-
-    public function updateProduct(){
-
-    }
-
 }
 
 ?>

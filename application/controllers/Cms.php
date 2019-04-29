@@ -28,6 +28,8 @@ class Cms extends CI_Controller{
     }
 
     public function NewProduct(){
+        $this->data['brand'] = $this->Product_model->getBrands();
+        $this->data['category'] = $this->Product_model->getCategories();
         $this->load->view('pages/newproduct.php', $this->data);
     }
 
