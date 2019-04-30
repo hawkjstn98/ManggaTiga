@@ -30,11 +30,20 @@ class Cms extends CI_Controller{
     public function NewProduct(){
         $this->data['brand'] = $this->Product_model->getBrands();
         $this->data['category'] = $this->Product_model->getCategories();
+        $this->data['blankbegone'] = $this->load->view('include/blankoptionremover.php', NULL, TRUE);
         $this->load->view('pages/newproduct.php', $this->data);
+    }
+
+    public function InsertProduct(){
+        
     }
 
     public function NewBrand(){
         $this->load->view('pages/newbrand.php', $this->data);
+    }
+
+    public function InsertBrand(){
+
     }
 
     public function ListProduct(){

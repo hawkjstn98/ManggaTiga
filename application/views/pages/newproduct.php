@@ -37,43 +37,46 @@
           <h4 style="display: inline-block">Mangga Tiga</h4>
           <hr class="sidebar-divider">
 
-          <form method="post" action="http://localhost/Week11/index.php/insert/insert_action">
-              <div class="form-group">
-                  <label for="ProductName">Product Name</label>
-                  <input type="text" class="form-control" name="ProductName" id="ProductName" placeholder="Product Name">
-              </div>
-              <div class="form-group">
-                  <label for="Supplier">Brand</label>
-                  <select class="form-control" name="Brand" id="Brand">
-                      <?php
-                          foreach ($brand as $row){
-                              echo '<option>'.$row->brandNama.'<option>';
+          <!-- Form Start -->
+          <div>
+            <div class="form-group">
+                <label for="ProductName">Product Name</label>
+                <input type="text" class="form-control" name="ProductName" id="ProductName" placeholder="Product Name">
+            </div>
+            <div class="form-group">
+                <label for="Supplier">Brand</label>
+                <select class="form-control" name="Brand" id="Brand">
+                    <?php
+                        foreach ($brand as $row){
+                            echo '<option value="'.$row->brandId.'">'.$row->brandNama.'<option>';
+                        }
+                    ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Category">Category</label>
+                <select class="form-control" name="Category" id="Category">
+                    <?php
+                        foreach ($category as $row){
+                          if(isset($row->categoryId)){
+                            echo '<option value="'.$row->categoryId.'">'.$row->categoryNama.'<option>';
                           }
-                      ?>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <label for="Category">Category</label>
-                  <select class="form-control" name="Category" id="Category">
-                      <?php
-                          foreach ($category as $row){
-                              echo '<option>'.$row->categoryNama.'<option>';
-                          }
-                      ?>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <label for="QuantityPerUnit">Quantity Per Unit</label>
-                  <input type="number" class="form-control" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="Quantity Per Unit">
-              </div>
-              <div class="form-group">
-                  <label for="Price">Price</label>
-                  <input type="number" class="form-control" name="Price" id="Price" placeholder="Price">
-              </div>
-              <input class="btn btn-primary" type="submit" value="Submit">
-              <a class="btn btn-danger" href="<?php echo base_url('/') ?>">Cancel</a>
-          </form>
-
+                        }
+                    ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="QuantityPerUnit">Quantity Per Unit</label>
+                <input type="number" class="form-control" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="Quantity Per Unit">
+            </div>
+            <div class="form-group">
+                <label for="Price">Price</label>
+                <input type="number" class="form-control" name="Price" id="Price" placeholder="Price">
+            </div>
+            <a class="btn btn-primary" id="submitForm" href="<?php echo base_url('/Cms/NewProduct') ?>">Submit</a>
+            <a class="btn btn-danger" href="<?php echo base_url('/') ?>">Cancel</a>
+          </div>
+          <!-- Form End -->
         </div>
         <!-- /.container-fluid -->
       </div>
@@ -119,6 +122,7 @@
   </div>
 
   <?php echo $js ?>
+  <?php echo $blankbegone ?>
 </body>
 
 </html>
