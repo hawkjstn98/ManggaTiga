@@ -23,15 +23,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label for="description">Description </label>
-                    <input id="description" class="form-control" placeholder="Add Description Here">
-                </div>
-            </div>
+
+
+            <form id="formDetail" enctype="multipart/form-data" method="POST" >
             <div class="form-group">
                 <div class="container-belakang">
+                    <div class="form-group">
+                        <label for="description">Description </label>
+                        <input id="description" class="form-control" placeholder="Add Description Here" name="description">
+                    </div>
                     <div class="box">
-                        <form action="upload.php" method="post" enctype="multipart/form-data" class="upload-pic">
                         <span style="margin-left: 2%" class="kata-select">
                             Select image to upload:
                         </span>
@@ -41,7 +42,6 @@
                                     <label class="custom-file-label" for="inputGroupFile04">Choose file (max. 2MB)</label>
                                 </div>
                             </div>
-                        </form>
                         <!-- bagian picture -->
                         <div class="pic">
                             <label class="row kata-select" style="margin-left: 2%"><p>Preview : <br></p></label>
@@ -50,9 +50,13 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+                <button id="bannerbtnSubmit" type="submit" class="btn btn-primary">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="bannerbtnSubmit" type="button" class="btn btn-primary">Submit</button>
+            </form>
+            </div>
+            <div class="modal-footer">
+
+
             </div>
         </div>
     </div>

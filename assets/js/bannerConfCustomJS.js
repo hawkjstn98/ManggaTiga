@@ -9,7 +9,7 @@ $(document).ready(function() {
             {data: "id"},
             {data: "description"},
             {data: "path", render: convertImage },
-            {defaultContent: "<button class='btn btn-primary'>Delete</button><button class='btn btn-dark'>Edit</button>"}
+            {defaultContent: "<button class='btn btn-primary'>Delete</button>"}
         ]
     });
 
@@ -19,26 +19,54 @@ $(document).ready(function() {
     }
 
     $('#addCarousel').click(function(){
-        $('#modalAddBanner').modal();
+       $('#modalAddBanner').modal();
     })
 
 
 
-    $('#bannerbtnSubmit').click(function(){
+    $('#formDetail').submit(function(f){
+        f.preventDefault();
+        //alert(base+"Cms/UploadBanner");
+
+        var dataform = $(this).serialize();
+
         let description = $('#description').val();
         let input = $('#inputImageBanner').val();
-        alert(base);
         if(input && description){
             let conf = confirm("Are you sure want to add this banner ?");
             if(conf){
                 $.ajax({
                     url: base+"Cms/UploadBanner",
-                    data: ,
-                    success: function(){
-
+                    type: "POST",
+                    data: new FormData(this),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(res){
+                        if(res.success){
+                            $('#modalAddBanner').modal('hide');
+                            location.reload();
+                        }
+                        else{
+                            alert(res.data);
+                        }
+                    },
+                    error: function(res){
+                        var msg = '';
+                        if (res.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (res.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (res.status == 500) {
+                            msg = 'Internal Server Error [500].';}
+                        else {
+                            msg = 'Uncaught Error.\n' + res.responseText;
+                        }
+                        alert(msg);
                     }
 
-                })
+                });
             }
             else{
                 alert("Retard alert");
@@ -48,6 +76,7 @@ $(document).ready(function() {
             alert("Field Description And Input cannot be empty");
         }
     });
+
 
     // for(let i = 0 ; i < data.length ; i++){
     //     dataSelector.append("<tr>" +
