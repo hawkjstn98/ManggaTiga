@@ -11,8 +11,12 @@ class Uploadbanner_model extends CI_Model{
         parent::__construct();
     }
 
-    public function uploadImage(){
-
+    public function uploadImage($desc, $imgpath){
+        $data = array('description'=>$desc,
+                'path'=>$imgpath
+            );
+        $result = $this->db->insert('carousel_promo', $data);
+        return $result;
     }
 
 

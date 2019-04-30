@@ -54,8 +54,31 @@ class Cms extends CI_Controller{
         $config["upload_path"] = "./assets/carousel";
         $config["allowed_types"] = "png|jpg|jpeg";
         $config["encrypt_name"] = TRUE;
+        //echo json_encode("ShoppingChart");
+        $this->load->library('upload',$config);
+
+//        $proses = $this->upload->do_upload('imageUpload');
+//        if($proses) {
+//            print_r($this->upload->data());
+//        } else {
+//            print_r($this->upload->display_error());
+//        }
 
 
+        if($this->upload->do_upload('imageUpload')){
+            $data = array('upload_data' => $this->upload->data());
+            $desc = $this->input->post('description');
+            $img = $data['upload_data']['file_name'];
+            $imgstr = "/assets/carousel/".$img;
+            $res = $this->Uploadbanner_model->uploadImage($desc, $imgstr);
+            $rs = true;
+            $rd = $res;
+        }
+        else{
+            $rs = false;
+            $rd = "Ooops somehing went wrong with data";
+        }
+        echo json_encode(array("success"=>$rs, "data"=>$rd));
     }
 }
 
