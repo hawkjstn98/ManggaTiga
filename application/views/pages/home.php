@@ -9,7 +9,7 @@
 </head>
 <body>
   <?php 
-    echo $staticnavbarUnloggedin;
+    echo $staticnavbarLoggedin;
     echo $dynamicnavbar;
     echo $carousel;
   ?>

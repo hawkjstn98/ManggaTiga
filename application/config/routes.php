@@ -56,6 +56,7 @@ $route['Home'] = 'Home/index';
 $route["Redirect"] = 'RedirectController';
 $route['Redirect/category'] = 'RedirectController/toCategory';
 $route['Redirect/detail'] = 'RedirectController/toDetail';
+$route['Redirect/shoppingchart'] = 'RedirectController/toShoppingChart';
 $route['Redirect/register'] = 'RedirectController/toRegister';
 $route['Redirect/home'] = 'RedirectController/toHome';
 $route['cms/Admin'] = 'Cms';

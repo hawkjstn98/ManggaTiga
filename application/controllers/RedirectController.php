@@ -26,6 +26,9 @@ class RedirectController extends CI_Controller {
     public function toRegister(){
         $this->load->view("../views/pages/Register.php",$this->data);
     }
+    public function toShoppingChart(){
+        $this->load->view("../views/pages/ShoppingChart.php",$this->data);
+    }
 }
 
 
