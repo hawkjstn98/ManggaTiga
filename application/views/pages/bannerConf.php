@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-                <button id="bannerbtnSubmit" type="submit" class="btn btn-primary">Submit</button>
+                <button id="bannerbtnSubmit" type="submit" class="btn btn-info">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </form>
             </div>

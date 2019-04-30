@@ -82,6 +82,20 @@ class Cms extends CI_Controller{
         }
         echo json_encode(array("success"=>$rs, "data"=>$rd));
     }
+
+    public function DeleteBanner(){
+        $this->load->model("Uploadbanner_model");
+        $id = $this->input->post('id');
+        $res = $this->Uploadbanner_model->deleteImage($id);
+        if($res){
+            $rs = true;
+            $rt = "Delete Success";
+        }else{
+            $rs = false;
+            $rt = "Delete Failed";
+        }
+        echo json_encode(array("success"=>$rs, "data"=>$rt));
+    }
 }
 
 ?>

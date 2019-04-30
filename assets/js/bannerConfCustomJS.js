@@ -9,9 +9,35 @@ $(document).ready(function() {
             {data: "id"},
             {data: "description"},
             {data: "path", render: convertImage },
-            {defaultContent: "<button class='btn btn-primary'>Delete</button>"}
+            {data: "id", render: function(data, type, row, meta){
+                return '<button class="btn btn-primary" id='+data+'> Delete </button>'
+                }}
         ]
     });
+    var btnclick = function(click){
+        //alert(click.currentTarget.id);
+        let conf = confirm("Are you sure want to delete this banner ?");
+        if(conf){
+            let id = click.currentTarget.id;
+            $.ajax({
+                url: base+"Cms/DeleteBanner",
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    id: id
+                },
+                success: function(res){
+                    if(res.success){
+                        alert(res.data+", Delete Banner Success");
+                        location.reload();
+                    }
+                }
+            });
+        }
+    }
+
+    $('.btn-primary').on('click', btnclick);
+
 
     function convertImage(data, type, full, meta){
         let path = data;
@@ -21,7 +47,6 @@ $(document).ready(function() {
     $('#addCarousel').click(function(){
        $('#modalAddBanner').modal();
     })
-
 
 
     $('#formDetail').submit(function(f){
