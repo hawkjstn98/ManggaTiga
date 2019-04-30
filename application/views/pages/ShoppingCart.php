@@ -12,7 +12,7 @@
         echo $staticnavbarLoggedin;
     ?>
     <?php
-        echo $emptycart;
+        echo $filledcart;
     ?>
     <?php
         echo $footer;
