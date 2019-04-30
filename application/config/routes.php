@@ -65,3 +65,5 @@ $route['cms/Admin/banner'] = 'Cms/BannerConfig';
 $route['cms/Admin/newProduct'] = 'Cms/NewProduct';
 $route['cms/Admin/newBrand'] = 'Cms/NewBrand';
 $route['cms/Admin/listProduct'] = 'Cms/ListProduct';
+$route['cms/Admin/NewProduct/insert_action'] = 'Cms/InsertProduct';
+$route['cms/Admin/NewBrand/insert_action'] = 'Cms/InsertBrand';
