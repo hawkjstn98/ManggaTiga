@@ -17,8 +17,8 @@
       </div>
       <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
       <!-- List Menu -->
-        <a class="nav-link" href="<?php echo base_url("Redirect/shoppingchart");?>"><img src="http://localhost/assets/logo/cart.png" width="20" height="20"></a>
-        <a class="nav-link" href="#"><img src="http://localhost/assets/logo/user.png" width="20" height="20"></a>
+        <a class="nav-link" href="<?php echo base_url("Redirect/shoppingchart");?>"><img src="<?php echo base_url("/assets/logo/cart.png");?>" width="20" height="20"></a>
+        <a class="nav-link" href="#"><img src="<?php echo base_url("/assets/logo/user.png");?>" width="20" height="20"></a>
         <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log Out</button>
       </div>
     </div>

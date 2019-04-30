@@ -3,11 +3,14 @@
         <!-- Ini buat konten list item yang uda di card-->
         <div class="col-8" style="margin-top:20px;">
             <h3>Item in Cart</h3>
+            <hr>
+            <div id="fieldCartCard" class="container">
+                
+            </div>
         </div>
         <!-- -->
-        <div class="col-1"></div>
         <!-- ini buat field list harga & sum total -->
-        <div class="col-3">
+        <div class="col-4">
             <div class="card">
                 <h4>Shopping Summary</h4>
                 <hr>
@@ -20,3 +23,4 @@
         </div>
     </div>
 </div>
+

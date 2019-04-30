@@ -34,4 +34,4 @@
         <div class="footer-copyright text-center">manggatiga.com</div>
         <div class="footer-copyright text-center py-3">© <?php echo date("Y")?> Copyright PT. Cerdas Sekali</div>
     </div>
-</footer
+</footer>

@@ -13,7 +13,7 @@
     echo $staticnavbarUnloggedin;
 	echo $dynamicnavbar;
 ?>
-<div class="container">
+<div class="container" style="margin-bottom:25px;">
 	<div class="card">
 		<div class="container-fluid">
 			<div class="wrapper row">
@@ -52,6 +52,9 @@
 		</div>
 	</div>
 </div>
+<?php 
+    echo $footer;
+?>
 <script>
     $("#txtQty").inputSpinner();
 </script>
