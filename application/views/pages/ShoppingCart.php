@@ -10,7 +10,9 @@
 <body>
     <?php 
         echo $staticnavbarLoggedin;
-        echo $dynamicnavbar;
+    ?>
+    <?php
+        echo $emptycart;
     ?>
     <?php
         echo $footer;
