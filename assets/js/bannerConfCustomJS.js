@@ -53,8 +53,6 @@ $(document).ready(function() {
         f.preventDefault();
         //alert(base+"Cms/UploadBanner");
 
-        var dataform = $(this).serialize();
-
         let description = $('#description').val();
         let input = $('#inputImageBanner').val();
         if(input && description){

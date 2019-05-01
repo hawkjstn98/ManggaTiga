@@ -28,6 +28,7 @@ class Cms extends CI_Controller{
     }
 
     public function NewProduct(){
+        $this->custom['newproduct'] = true;
         $this->data['brand'] = $this->Product_model->getBrands();
         $this->data['category'] = $this->Product_model->getCategories();
         $this->data['blankbegone'] = $this->load->view('include/blankoptionremover.php', NULL, TRUE);
@@ -35,10 +36,18 @@ class Cms extends CI_Controller{
     }
 
     public function InsertProduct(){
-        
+        $name = $this->input->post('ProductName');
+        $brand = $this->input->post('Brand');
+        $category = $this->input->post('Category');
+        $qty = $this->input->post('QuantityPerUnit');
+        $price = $this->input->post('Price');
+
+        echo json_encode(array("success"=>true, "data"=>$name));
     }
 
     public function NewBrand(){
+        $this->custom['newproduct'] = false;
+        $this->data['blankbegone'] = $this->load->view('include/blankoptionremover.php', $this->custom, TRUE);
         $this->load->view('pages/newbrand.php', $this->data);
     }
 

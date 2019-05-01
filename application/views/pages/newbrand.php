@@ -37,7 +37,7 @@
           <h4 style="display: inline-block">Mangga Tiga</h4>
           <hr class="sidebar-divider">
 
-          <form method="post" action="<?php base_url('/') ?>">
+          <form id="formBrand" enctype="multipart/form-data" method="post">
               <div class="form-group">
                   <label for="BrandName">Brand Name</label>
                   <input type="text" class="form-control" name="BrandName" id="BrandName" placeholder="Brand Name">

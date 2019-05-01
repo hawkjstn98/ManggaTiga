@@ -38,7 +38,7 @@
           <hr class="sidebar-divider">
 
           <!-- Form Start -->
-          <div>
+          <form id="formProduct" enctype="multipart/form-data" method="POST">
             <div class="form-group">
                 <label for="ProductName">Product Name</label>
                 <input type="text" class="form-control" name="ProductName" id="ProductName" placeholder="Product Name">
@@ -73,9 +73,9 @@
                 <label for="Price">Price</label>
                 <input type="number" class="form-control" name="Price" id="Price" placeholder="Price">
             </div>
-            <a class="btn btn-primary" id="submitForm" href="<?php echo base_url('/Cms/NewProduct') ?>">Submit</a>
+            <button class="btn btn-primary" type="submit" id="submitForm" value="Submit">Submit</button>
             <a class="btn btn-danger" href="<?php echo base_url('/') ?>">Cancel</a>
-          </div>
+          </form>
           <!-- Form End -->
         </div>
         <!-- /.container-fluid -->
