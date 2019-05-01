@@ -51,6 +51,10 @@
     <div id="cardgridrecom" class="row">
       <?php
         echo $card;
+        echo $card;
+        echo $card;
+        echo $card;
+        echo $card;
       ?>
     </div>
   </div><br>

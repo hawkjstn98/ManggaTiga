@@ -54,6 +54,17 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <h1 style="margin-top:5px;" id="judulCategory"></h1>
             <hr>
+            <div class="container" style="margin-bottom:25px;">
+                <div class="row">
+                    <?php
+                        echo $card;
+                        echo $card;
+                        echo $card;
+                        echo $card;
+                        echo $card;
+                    ?>
+                </div>
+            </div>
         </main>
     </div>
     
