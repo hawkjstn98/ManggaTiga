@@ -28,10 +28,10 @@ class Cms extends CI_Controller{
     }
 
     public function NewProduct(){
-        $this->custom['newproduct'] = true;
+        $this->custom['customJs'] = 'newproduct';
         $this->data['brand'] = $this->Product_model->getBrands();
         $this->data['category'] = $this->Product_model->getCategories();
-        $this->data['blankbegone'] = $this->load->view('include/blankoptionremover.php', $this->custom, TRUE);
+        $this->data['blankbegone'] = $this->load->view('include/customJS.php', $this->custom, TRUE);
         $this->load->view('pages/newproduct.php', $this->data);
     }
 
@@ -56,8 +56,8 @@ class Cms extends CI_Controller{
     }
 
     public function NewBrand(){
-        $this->custom['newproduct'] = false;
-        $this->data['blankbegone'] = $this->load->view('include/blankoptionremover.php', $this->custom, TRUE);
+        $this->custom['customJs'] = 'newbrand';
+        $this->data['blankbegone'] = $this->load->view('include/customJS.php', $this->custom, TRUE);
         $this->load->view('pages/newbrand.php', $this->data);
     }
 
