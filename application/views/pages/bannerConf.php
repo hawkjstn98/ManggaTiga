@@ -30,7 +30,7 @@
                 <div class="container-belakang">
                     <div class="form-group">
                         <label for="description">Description </label>
-                        <input id="description" class="form-control" placeholder="Add Description Here" name="description">
+                        <input id="description" class="form-control" placeholder="Add Description Here" name="description" required>
                     </div>
                     <div class="box">
                         <span style="margin-left: 2%" class="kata-select">
@@ -38,7 +38,7 @@
                         </span>
                             <div class="input-group">
                                 <div class="custom-file" style="width: 100%;">
-                                    <input type="file" class="custom-file-input" name="imageUpload" id="inputImageBanner" onchange="readURL(this)" accept=".png,.jpg,.jpeg">
+                                    <input type="file" class="custom-file-input" name="imageUpload" id="inputImageBanner" onchange="readURL(this)" accept=".png,.jpg,.jpeg" required>
                                     <label class="custom-file-label" for="inputGroupFile04">Choose file (max. 2MB)</label>
                                 </div>
                             </div>

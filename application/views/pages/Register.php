@@ -109,7 +109,7 @@
         <div class="row">
             <div class="col-6 form-group">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="firstname" placeholder="First Name" required="required">
+                    <input id="fname" type="text" class="form-control" name="firstname" placeholder="First Name" required="required">
                 </div>
             </div>
             <div class="col-6 form-group">
@@ -152,9 +152,10 @@
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 		</div>
 		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+            <button id="btnSignup" type="submit" class="btn btn-primary btn-lg">Sign Up</button>
         </div>
     </form>
 </div>
+    <?php echo $customJS;?>
 </body>
 </html>

@@ -2,7 +2,8 @@
     <nav id="navbarutama" class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
         <!-- Logo -->
         <div class="col-3">
-            <a class="navbar-brand" href="<?php echo base_url("Home");?>">manggatiga.com</a>
+            <img src="<?php echo base_url("/assets/logo/OurLogo.png ");?>" width="15%" height="15%">
+            <a class="navbar-brand" href="<?php echo base_url("Home");?>" style="font-family: Nunito, sans-serif; color:white; ">ManggaTiga</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,7 +32,7 @@
             $("#modalLoginForm").modal();
         });
         $("#btnRegister").click(function(){
-            let a = "<?php echo base_url('index.php/Redirect/register');?>";
+            let a = "<?php echo base_url('/Redirect/register');?>";
             window.location.href = a;
         });
     });

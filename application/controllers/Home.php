@@ -8,6 +8,7 @@ class Home extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Carousel_model');
+
     }
 
     public function index(){
@@ -20,6 +21,12 @@ class Home extends CI_Controller{
         $data['carousel'] = $this->load->view('pages/subPages/carousel.php',$res,TRUE);
         $data['card'] = $this->load->view('pages/subPages/card.php',NULL,TRUE);
         $data['footer'] = $this->load->view('pages/subPages/footer.php',NULL,TRUE);
+        if(!$this->session->userdata('email')){
+            $data['user'] = null;
+        }
+        else{
+            $data['user'] = true;
+        }
         $this->load->view('pages/home.php', $data);
         //print_r($res);
     }

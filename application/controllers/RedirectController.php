@@ -24,6 +24,8 @@ class RedirectController extends CI_Controller {
         $this->load->view("../views/pages/Detail.php",$this->data);        
     }
     public function toRegister(){
+        $this->custom['customJs'] = 'register';
+        $this->data['customJS'] = $this->load->view('include/customJS.php',$this->custom, TRUE);
         $this->load->view("../views/pages/Register.php",$this->data);
     }
     public function toShoppingChart(){

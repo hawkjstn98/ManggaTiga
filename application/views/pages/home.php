@@ -9,7 +9,8 @@
 </head>
 <body>
   <?php 
-    echo $staticnavbarLoggedin;
+   if($user!=null){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ;
+   // echo $staticnavbarUnLoggedin;
     echo $dynamicnavbar;
     echo $carousel;
   ?>

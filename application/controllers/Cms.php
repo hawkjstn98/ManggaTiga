@@ -21,7 +21,7 @@ class Cms extends CI_Controller{
     }
 
     public function BannerConfig(){
-        $this->custom['bannerJs'] = true;
+        $this->custom['customJs'] = 'banner';
         $this->custom['carouseldata'] = $this->Carousel_model->getCarousel();
         $this->data['bannercustomjs'] = $this->load->view('include/customJS.php',$this->custom, TRUE);
         $this->load->view('pages/bannerConf.php', $this->data);
