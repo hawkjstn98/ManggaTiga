@@ -37,6 +37,7 @@ class Product_model extends CI_Model{
             'promoId' => $param['promoId']
         );
         $query = $this->db->insert('barang', $data);
+        return $query;
     }
 
     public function newBrand($param){
@@ -45,6 +46,7 @@ class Product_model extends CI_Model{
             'brandNama' => $param
         );
         $query = $this->db->insert('brand', $data);
+        return $query;
     }
 }
 

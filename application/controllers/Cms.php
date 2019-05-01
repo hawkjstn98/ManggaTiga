@@ -31,7 +31,7 @@ class Cms extends CI_Controller{
         $this->custom['newproduct'] = true;
         $this->data['brand'] = $this->Product_model->getBrands();
         $this->data['category'] = $this->Product_model->getCategories();
-        $this->data['blankbegone'] = $this->load->view('include/blankoptionremover.php', NULL, TRUE);
+        $this->data['blankbegone'] = $this->load->view('include/blankoptionremover.php', $this->custom, TRUE);
         $this->load->view('pages/newproduct.php', $this->data);
     }
 
@@ -39,10 +39,20 @@ class Cms extends CI_Controller{
         $name = $this->input->post('ProductName');
         $brand = $this->input->post('Brand');
         $category = $this->input->post('Category');
+        $detail = $this->input->post('Detail');
         $qty = $this->input->post('QuantityPerUnit');
         $price = $this->input->post('Price');
-
-        echo json_encode(array("success"=>true, "data"=>$name));
+        $data = array(
+            'barangNama' => $name,
+            'details' => $detail,
+            'categoryId' => $category,
+            'brandId' => $brand,
+            'hargaJual' => $price,
+            'stock' => $qty,
+            'promoId' => 1
+        );
+        $model = $this->Product_model->newProduct($data);
+        echo json_encode(array("success"=>true, "data"=>$model));
     }
 
     public function NewBrand(){
@@ -52,19 +62,12 @@ class Cms extends CI_Controller{
     }
 
     public function InsertBrand(){
-
+        $name = $this->input->post('BrandName');
+        $model = $this->Product_model->newBrand($name);
+        echo json_encode(array("success"=>true, "data"=>$model));
     }
 
     public function ListProduct(){
-        // $dat = json_decode($this->Product_model->getProducts());
-        // $this->data['product'] = array(
-        //     'barangNama' => $dat->barangNama,
-        //     'brandNama' => $dat->brandNama,
-        //     'categoryNama' => $dat->categoryNama,
-        //     'persen' => $dat->persen,
-        //     'hargaJual' => $dat->hargaJual,
-        //     'stock' => $dat->stock
-        // );
         $this->data['product'] = $this->Product_model->getProducts();
         $this->load->view('pages/listproduct.php', $this->data);
     }
@@ -96,7 +99,7 @@ class Cms extends CI_Controller{
         }
         else{
             $rs = false;
-            $rd = "Ooops somehing went wrong with data";
+            $rd = "Ooops somehing went wrong with the data";
         }
         echo json_encode(array("success"=>$rs, "data"=>$rd));
     }

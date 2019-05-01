@@ -31,10 +31,9 @@ $(document).ready(function(){
 
         if(!kosong){
             let conf = confirm("Are you sure of the detail in the form ?");
-            alert(base+"Cms/InsertProduct");
             if(conf){
                 $.ajax({
-                    url: base+"Cms/InsertProduct",
+                    url: base+"cms/Admin/newProduct/insert_action",
                     type: "POST",
                     data: new FormData(this),
                     cache: false,

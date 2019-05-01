@@ -66,12 +66,26 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="Detail">Product Detail</label>
+                <textarea id="Detail" name="Detail" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+            <div class="form-group">
                 <label for="QuantityPerUnit">Quantity Per Unit</label>
-                <input type="number" class="form-control" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="Quantity Per Unit">
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="Quantity Per Unit">
+                  <div class="input-group-append">
+                    <span class="input-group-text">Unit</span>
+                  </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="Price">Price</label>
-                <input type="number" class="form-control" name="Price" id="Price" placeholder="Price">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon2">Rp.</span>
+                  </div>
+                  <input type="number" class="form-control" name="Price" id="Price" placeholder="Price">
+                </div>
             </div>
             <button class="btn btn-primary" type="submit" id="submitForm" value="Submit">Submit</button>
             <a class="btn btn-danger" href="<?php echo base_url('/') ?>">Cancel</a>

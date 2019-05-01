@@ -91,6 +91,7 @@
   </div>
 
   <?php echo $js ?>
+  <?php echo $blankbegone ?>
 </body>
 
 </html>
