@@ -1,5 +1,5 @@
 <!-- Card Item dipakai di page awal dan page kategori, masih sangat polos boleh dihias :") -->
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 18rem; margin-left:50px;">
     <a href="<?php echo base_url('index.php/Redirect/detail');?>">
         <img class="card-img-top" alt="Card image cap" src="http://localhost/assets/carousel/utin.png">
         <div class="card-body">
