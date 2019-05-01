@@ -114,38 +114,38 @@
             </div>
             <div class="col-6 form-group">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="lastname" placeholder="Last Name" required="required">
+                    <input id="lname" type="text" class="form-control" name="lastname" placeholder="Last Name" required="required">
                 </div>
             </div>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user"></i></span>
-				<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+				<input id="uname" type="text" class="form-control" name="username" placeholder="Username" required="required">
 			</div>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
-				<input type="email" class="form-control" name="email" placeholder="Email" required="required">
+				<input id="email" type="email" class="form-control" name="email" placeholder="Email" required="required">
 			</div>
         </div>
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-				<input type="text" class="form-control" name="password" placeholder="Password" required="required">
+				<input id="password" type="password" class="form-control" name="password" placeholder="Password" required="required">
 			</div>
         </div>
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-home"></i></span>
-				<input type="text" class="form-control" name="address" placeholder="Address" required="required">
+				<input id="address" type="text" class="form-control" name="address" placeholder="Address" required="required">
 			</div>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-				<input type="text" class="form-control" name="phonenumber" placeholder="Phone Number" required="required">
+				<input id="phone"  type="tel" class="form-control" name="phonenumber" placeholder="Example : 085368472863" required="required">
 			</div>
         </div>
         <div class="form-group">

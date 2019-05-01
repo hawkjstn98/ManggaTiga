@@ -32,7 +32,7 @@
             $("#modalLoginForm").modal();
         });
         $("#btnRegister").click(function(){
-            let a = "<?php echo base_url('/Redirect/register');?>";
+            let a = "<?php echo base_url('/UserData/UserRegister');?>";
             window.location.href = a;
         });
     });
