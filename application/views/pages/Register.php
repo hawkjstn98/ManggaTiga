@@ -100,7 +100,6 @@
 </head>
 <body>
 <div class="signup-form">
-    <form action="">
         <div class="form-header" align="center">
             <h2>Register</h2>
             <p>manggatiga.com</p>
@@ -109,44 +108,51 @@
         <div class="row">
             <div class="col-6 form-group">
                 <div class="input-group">
-                    <input id="fname" type="text" class="form-control" name="firstname" placeholder="First Name" required="required">
+                    <input id="fname" type="text" class="form-control <?php echo form_error("fname") != null ? "is-invalid" : ""; ?>" name="firstname" placeholder="First Name" required="required">
                 </div>
+                <small class="form-text text-danger"><?php echo form_error("fname")?></small>
             </div>
             <div class="col-6 form-group">
                 <div class="input-group">
-                    <input id="lname" type="text" class="form-control" name="lastname" placeholder="Last Name" required="required">
+                    <input id="lname" type="text" class="form-control <?php echo form_error("lname") != null ? "is-invalid" : ""; ?>" name="lastname" placeholder="Last Name" required="required">
                 </div>
+                <small class="form-text text-danger"><?php echo form_error("lname")?></small>
             </div>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user"></i></span>
-				<input id="uname" type="text" class="form-control" name="username" placeholder="Username" required="required">
+				<input id="uname" type="text" class="form-control <?php echo form_error("user") != null ? "is-invalid" : ""; ?>" name="username" placeholder="Username" required="required">
 			</div>
+            <small class="form-text text-danger"><?php echo form_error("user")?></small>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
-				<input id="email" type="email" class="form-control" name="email" placeholder="Email" required="required">
+				<input id="email" type="email" class="form-control <?php echo form_error("email") != null ? "is-invalid" : ""; ?>" name="email" placeholder="Email" required="required">
 			</div>
+            <small class="form-text text-danger"><?php echo form_error("email")?></small>
         </div>
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-				<input id="password" type="password" class="form-control" name="password" placeholder="Password" required="required">
+				<input id="password" type="password" class="form-control <?php echo form_error("pass") != null ? "is-invalid" : ""; ?>" name="password" placeholder="Password" required="required">
 			</div>
+            <small class="form-text text-danger"><?php echo form_error("pass")?></small>
         </div>
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-home"></i></span>
-				<input id="address" type="text" class="form-control" name="address" placeholder="Address" required="required">
+				<input id="address" type="text" class="form-control <?php echo form_error("address") != null ? "is-invalid" : ""; ?>" name="address" placeholder="Address" required="required">
 			</div>
+            <small class="form-text text-danger"><?php echo form_error("address")?></small>
         </div>
         <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-				<input id="phone"  type="tel" class="form-control" name="phonenumber" placeholder="Example : 085368472863" required="required">
+				<input id="phone"  type="tel" class="form-control <?php echo form_error("phone") != null ? "is-invalid" : ""; ?>" name="phonenumber" placeholder="Example : 085368472863" required="required">
 			</div>
+            <small class="form-text text-danger"><?php echo form_error("phone")?></small>
         </div>
         <div class="form-group">
 			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
@@ -154,7 +160,6 @@
 		<div class="form-group">
             <button id="btnSignup" type="submit" class="btn btn-primary btn-lg">Sign Up</button>
         </div>
-    </form>
 </div>
     <?php echo $customJS;?>
 </body>

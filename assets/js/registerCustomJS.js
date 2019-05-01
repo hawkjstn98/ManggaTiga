@@ -9,7 +9,31 @@ $(document).ready(function () {
         let phone = $('#phone').val();
         if(fname&&lname&&username&&email&&password&&address&&phone&&phone){
             $.ajax({
-                url: base+''
+                url: base+'UserData/Register',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    fname: fname,
+                    lname: lname,
+                    user: username,
+                    email: email,
+                    pass: password,
+                    address: address,
+                    phone: phone
+                },
+                success: function(res){
+                    if(res.success){
+                        alert(res.data);
+                        window.location.href = base+"Home";
+                    }else{
+                        if(res.formerror){
+                            $('body').html(res.formerror);
+                        }
+                        else{
+                            alert(res.data);
+                        }
+                    }
+                }
             });
         }
     });
