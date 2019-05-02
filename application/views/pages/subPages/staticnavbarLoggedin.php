@@ -17,11 +17,12 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
-      <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse col-4" id="navbarSupportedContent">
       <!-- List Menu -->
+          <p><?php echo  "Hello ,".$this->session->userdata('user'); ?></p>
         <a class="nav-link" href="<?php echo base_url("Redirect/shoppingchart");?>"><img src="<?php echo base_url("/assets/logo/cart.png");?>" width="20" height="20"></a>
         <a class="nav-link" href="#"><img src="<?php echo base_url("/assets/logo/user.png");?>" width="20" height="20"></a>
-        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log Out</button>
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" id="btnLogout">Log Out</button>
       </div>
     </div>
   </nav>

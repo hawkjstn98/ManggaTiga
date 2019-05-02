@@ -25,16 +25,3 @@
     </nav>
 </header>
 <br>
-
-<script>
-    $(document).ready(function(){
-        $("#btnLogin").click(function(){
-            $("#modalLoginForm").modal();
-        });
-        $("#btnRegister").click(function(){
-            let a = "<?php echo base_url('/UserData/UserRegister');?>";
-            window.location.href = a;
-        });
-    });
-    
-</script>

@@ -24,4 +24,19 @@ class UserData_model extends CI_Model{
         $result = $this->db->insert('user', $datarestructure);
         return $result;
     }
+
+    public function Login($data){
+        $datarestructure = array(
+            "email"=>$data["email"],
+            "password"=>hash("sha256",$data["password"])
+        );
+        $result = $this->db->select("username")->where("email", $datarestructure["email"])->where("password", $datarestructure["password"])->get('user')->row();
+        if($result){
+            $this->session->set_userdata('user',$result->username);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
