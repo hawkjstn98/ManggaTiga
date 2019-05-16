@@ -30,9 +30,13 @@ class UserData_model extends CI_Model{
             "email"=>$data["email"],
             "password"=>hash("sha256",$data["password"])
         );
-        $result = $this->db->select("username")->where("email", $datarestructure["email"])->where("password", $datarestructure["password"])->get('user')->row();
+        $result = $this->db->select("tipeUser")->select("username")->where("email", $datarestructure["email"])->where("password", $datarestructure["password"])->get('user')->row();
         if($result){
-            $this->session->set_userdata('user',$result->username);
+            if($result->tipeUser=="1"||$result->tipeUser==1){
+                $this->session->set_userdata('user','ADMINISTRATORMWB');
+            }else{
+                $this->session->set_userdata('user',$result->username);
+            }
             return true;
         }
         else{

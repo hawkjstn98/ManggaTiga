@@ -54,11 +54,11 @@ class Home extends CI_Controller{
             if($res){
                 $success = true;
                 $data = "Login Success";
-            }else{
+            }
+            else{
                 $success = false;
                 $data = "Email or password wrong";
             }
-
         }else{
             $success = false;
             $data = "Please Check Your Input !";

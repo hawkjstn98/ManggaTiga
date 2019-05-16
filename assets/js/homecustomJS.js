@@ -29,6 +29,7 @@ $(document).ready(function(){
                     password : pass
                 },
                 success: function(res){
+                    alert(res);
                     if(res.success){
                         alert("Login Success");
                         location.reload();
