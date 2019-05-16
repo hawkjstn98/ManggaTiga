@@ -50,17 +50,10 @@
     <h1 class="col-sm-4" style="text-align: center">Recommendation</h1>
   </div>
   <br>
-  <div class="container">
-    <div id="cardgridrecom" class="row">
       <?php
         echo $card;
-        echo $card;
-        echo $card;
-        echo $card;
-        echo $card;
       ?>
-    </div>
-  </div><br>
+  <br>
   <div class="row col-sm-12">
     <a class="col-sm-4" href="#"></a>
     <h1 class="col-sm-4" style="text-align: center">New Arrival</h1>

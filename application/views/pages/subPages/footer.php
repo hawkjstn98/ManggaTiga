@@ -31,6 +31,15 @@
     </div>
     <br>
     <div class="tulisanfooter">
+        <?php if($this->session->userdata('user')=='ADMINISTRATORMWB'){
+            echo '<button class="btn btn-primary" onclick="LoginAdmin()">CMS</button>';
+            echo '<script>' ;
+            echo "let bas='".base_url()."'\n";
+            echo 'function LoginAdmin(){';
+            echo 'window.location.href = bas+"cms/Admin"';
+            echo '}';
+            echo '</script>';
+        } ?>
         <div class="footer-copyright text-center">manggatiga.com</div>
         <div class="footer-copyright text-center py-3">© <?php echo date("Y")?> Copyright PT. Cerdas Sekali</div>
     </div>

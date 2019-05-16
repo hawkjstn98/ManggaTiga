@@ -13,11 +13,16 @@ class Cms extends CI_Controller{
         $this->data['topnavbar'] = $this->load->view('include/topnavbar.php', NULL, TRUE);
         $this->load->model('Carousel_model');
         $this->load->model('Product_model');
+
     }
 
     public function index(){
-
-        $this->load->view('pages/cms.php', $this->data);
+        if($this->session->userdata('user')=='ADMINISTRATORMWB'){
+            $this->load->view('pages/cms.php', $this->data);
+        }
+        else{
+            echo "ACCESS DENIED";
+        }
     }
 
     public function BannerConfig(){

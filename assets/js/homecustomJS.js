@@ -54,4 +54,6 @@ $(document).ready(function(){
         let a = base+"UserData/UserRegister";
         window.location.href = a;
     });
+
+
 });
