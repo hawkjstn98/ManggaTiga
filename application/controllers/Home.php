@@ -79,6 +79,23 @@ class Home extends CI_Controller{
 
     }
 
+    public function RenderProductData(){
+        $this->load->model('Product_model');
+        $pdata = $this->Product_model->renderRecommend();
+        if($pdata){
+            $success = true;
+            $data = $pdata;
+        }
+        else{
+            $success = false;
+            $data = "Data Couldn't be rendered";
+        }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$data
+        ));
+    }
+
 
 
 }

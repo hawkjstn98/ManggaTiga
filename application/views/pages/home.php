@@ -51,7 +51,7 @@
   </div>
   <br>
       <?php
-        echo $card;
+       // echo $card;
       ?>
   <br>
   <div class="row col-sm-12">
