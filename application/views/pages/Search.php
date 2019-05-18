@@ -10,6 +10,7 @@
 <body>
     <?php 
         if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ;
+        echo $dynamicnavbar;
     ?>
 
     <script>
