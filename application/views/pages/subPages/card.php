@@ -59,7 +59,7 @@
                             '<div class="card-footer" align="center" style="margin-bottom:10px">'+
                             harga +
                             '</div>'+
-                    '   </div>');
+                    '</div>');
                 }
             }
             else{
