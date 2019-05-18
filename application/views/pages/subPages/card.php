@@ -31,6 +31,7 @@
                 console.log(res.data);
                 let data = res.data;
                 a =  $('#cardgridrecom');
+                console.log(data);
                 for(let i = 0; i < res.data.length; i++){
                     // a.append('<div class="card" style="width: 18rem; margin-left:50px;">');
                     // a.append('<a href="+red+">');
@@ -52,7 +53,8 @@
                     '</div>'+
                     '</a>'+
                     '<div class="card-bottom" align="center" style="margin-bottom:10px">'+
-                    '<p class="card-text" id="cardHarga">'+data[i].hargaJual+'</p>'+
+                    '<p class="card-text" id="cardHarga"><del>'+data[i].hargaJual+'</del></p>'+
+                        '<p class="card-text" id="cardHarga">'+data[i].hargaJual*(100-data[i].persen)/100+'</p>'+
                     '</div>'+
                     '</div>')
                 }
