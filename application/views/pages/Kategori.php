@@ -22,26 +22,26 @@
     </script>
     <div class="row">
         <nav class="col-md-2 bg-dark d-none d-md-block bg-light sidebar fixed-left">
-            <h4 align="center" style="margin-top:10px;">Range Harga</h4>
+            <h4 align="center" style="margin-top:10px; color: white">Range Harga</h4>
             <hr>
                 <div class="container">
                     <div class="input-group">
-                        <input type="number" class="form-control" placeholder="Dari">
+                        <input id="fromField" type="number" class="form-control" placeholder="Dari">
                     </div>
                     <div class="input-group" style="margin-top:5px;">
-                        <input type="number" class="form-control" placeholder="Hingga">
+                        <input id="toField" type="number" class="form-control" placeholder="Hingga">
                     </div>
                     <div class="row" style="margin-top:5px;">
                         <div class="col-5">
-                            <button id="btnClear" type="submit" class="btn btn-primary bg-success">Clear</button>
+                            <button id="btnClear" class="btn btn-primary bg-success">Clear</button>
                         </div>
                         <div class="col-5">
-                            <button id="btnFilterHarga" type="submit" class="btn btn-primary bg-success">Filter</button>
+                            <button id="btnFilterHarga" class="btn btn-primary bg-success">Filter</button>
                         </div>
                     </div>
                 </div>
             <hr>
-            <h4 align="center">Merk</h4>
+            <h4 align="center" style="color: white">Merk yang ada</h4>
             <hr>
                 <div class="container" id="brandContainer">
 
@@ -76,7 +76,7 @@
             success: function (res) {
                 if (res.success) {
                    productData = res.data;
-                   a = $('#categoryProduct');
+                   let a = $('#categoryProduct');
                     for(let i = 0; i < res.data.length; i++){
                         let hJual = productData[i].hargaJual * 1;
                         let hJualDis = productData[i].hargaJual*(100-productData[i].persen)/100;
@@ -122,9 +122,8 @@
                             }
                         }
                         if(!check){
-                            bc.append('<div class="form-check">'+
-                                '<label class="form-check-label" for="merk1">'+
-                                '<input type="checkbox" class="form-check-input" name="merk" value="something">'+brand[i].brandNama+
+                            bc.append('<div class="form-check" style="color: lightgray">'+
+                                brand[i].brandNama+
                                 '</label>'+
                                 '</div>'
                             )
@@ -139,5 +138,72 @@
             }
         });
 
+        $('#btnFilterHarga').click(function(){
+            let from = $('#fromField').val();
+            let to = $('#toField').val();
+
+            if(from&&to) {
+                renderProductRange(from, to);
+            }
+            else {
+                reRenderProduct();
+            }
+        });
+
+        $('#btnClear').click(function(){
+            $('#fromField').val(' ');
+            $('#toField').val(' ');
+            reRenderProduct();
+        })
+
+        function renderProductRange(a,b){
+            let rp = $('#categoryProduct');
+            rp.html('');
+            for(let i = 0; i < productData.length; i++){
+                let hJual = productData[i].hargaJual * 1;
+                let hJualDis = productData[i].hargaJual*(100-productData[i].persen)/100;
+                let harga = (productData[i].stock <= 0 ? ('<p class="card-text" id="cardHarga" style="color:red;">Out of Stock</p>') : (productData[i].persen > 0 ? ('<p class="card-text" id="cardHarga"> <del><a style="color:red;"> Rp. '+ hJual.toLocaleString('id-ID') +'</a></del></p> <p class="card-text" id="cardHarga"> Rp. '+hJualDis.toLocaleString('id-ID')+'</p>') : ('<p class="card-text" id="cardHarga"> Rp. '+hJual.toLocaleString('id-ID')+'</p>')));
+                if(hJualDis>a && hJualDis<b){
+                    rp.append(
+                        '<div class="card" style="width: 18rem; margin-left:50px;">'+
+                        '<div class="card-body">' +
+                        '<a href="'+red+'">'+
+                        '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
+                        '<div class="card-body">'+
+                        '<h5 class="card-title" align="center" id="cardNamaBarang">'+productData[i].barangNama+'</h5>'+
+                        '</div>'+
+                        '</a>'+
+                        '</div>' +
+                        '<div class="card-footer" align="center" style="margin-bottom:10px">'+
+                        harga +
+                        '</div>'+
+                        '</div>');
+                }
+            }
+        }
+
+        function reRenderProduct(){
+            let rp = $('#categoryProduct');
+            rp.html('');
+            for(let i = 0; i < productData.length; i++){
+                let hJual = productData[i].hargaJual * 1;
+                let hJualDis = productData[i].hargaJual*(100-productData[i].persen)/100;
+                let harga = (productData[i].stock <= 0 ? ('<p class="card-text" id="cardHarga" style="color:red;">Out of Stock</p>') : (productData[i].persen > 0 ? ('<p class="card-text" id="cardHarga"> <del><a style="color:red;"> Rp. '+ hJual.toLocaleString('id-ID') +'</a></del></p> <p class="card-text" id="cardHarga"> Rp. '+hJualDis.toLocaleString('id-ID')+'</p>') : ('<p class="card-text" id="cardHarga"> Rp. '+hJual.toLocaleString('id-ID')+'</p>')));
+                rp.append(
+                    '<div class="card" style="width: 18rem; margin-left:50px;">'+
+                    '<div class="card-body">' +
+                    '<a href="'+red+'">'+
+                    '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
+                    '<div class="card-body">'+
+                    '<h5 class="card-title" align="center" id="cardNamaBarang">'+productData[i].barangNama+'</h5>'+
+                    '</div>'+
+                    '</a>'+
+                    '</div>' +
+                    '<div class="card-footer" align="center" style="margin-bottom:10px">'+
+                    harga +
+                    '</div>'+
+                    '</div>');
+            }
+        }
     </script>
 </body>
