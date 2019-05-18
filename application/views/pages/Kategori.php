@@ -71,4 +71,39 @@
     <?php
         echo $footer;
     ?>
+    <script>
+        var basds = '<?php echo base_url() ?>';
+        let cat = localStorage.getItem("category");
+        var productData = '';
+        $.ajax({
+            url: basds + 'CategoryController/renderCategory',
+            type: 'post',
+            dataType: 'json',
+            data: {'category' : cat},
+            success: function (res) {
+                if (res.success) {
+                    console.log(res);
+                } else {
+                    //alert(res.data);
+                   // console.log(res);
+                }
+            }
+        });
+
+        $.ajax({
+            url: basds + 'CategoryController/renderBrandFilter',
+            type: 'post',
+            data: {'category' : cat},
+            dataType: 'json',
+            success: function (res) {
+                if (res.success) {
+                    console.log(res);
+                } else {
+                    //alert(res.data);
+                    //console.log(res);
+                }
+            }
+        });
+
+    </script>
 </body>
