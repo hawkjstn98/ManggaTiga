@@ -19,7 +19,7 @@
 <script>
 
     var basds = '<?php echo base_url() ?>';
-    var red = '<?php echo base_url('index.php/Redirect/detail/');?>';
+    var red = '<?php echo base_url('index.php/Redirect/detail');?>';
 
         $.ajax({
         url: basds+'Home/RenderProductData',
@@ -41,18 +41,18 @@
                     // a.append('</a>');
                     // a.append('<div class="card-bottom" align="center" style="margin-bottom:10px">');
                     // a.append('<p class="card-text" id="cardHarga">'+data[i].hargaJual+'</p>');
-                    // a.append('</div>');base_url(index.php/Redirect/detail/data[i].barangId)
-                    // a.append('</div>');barangId
+                    // a.append('</div>');
+                    // a.append('</div>');
 
                     a.append('<div class="card" style="width: 18rem; margin-left:50px;">'+
-                    '<a href="'+red+data[i].barangId+'">'+
-                        '<img class="card-img-top" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
-                        '<div class="card-body">'+
-                            '<h5 class="card-title" align="center" id="cardNamaBarang">'+data[i].barangNama+'</h5>'+
-                        '</div>'+
+                    '<a href="'+red+'">'+
+                    '<img class="card-img-top" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
+                    '<div class="card-body">'+
+                    '<h5 class="card-title" align="center" id="cardNamaBarang">'+data[i].barangNama+'</h5>'+
+                    '</div>'+
                     '</a>'+
                     '<div class="card-bottom" align="center" style="margin-bottom:10px">'+
-                        '<p class="card-text" id="cardHarga">'+data[i].hargaJual+'</p>'+
+                    '<p class="card-text" id="cardHarga">'+data[i].hargaJual+'</p>'+
                     '</div>'+
                     '</div>')
                 }
