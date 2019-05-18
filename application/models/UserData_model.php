@@ -45,7 +45,7 @@ class UserData_model extends CI_Model{
     }
 
     public function renderUser($user){
-        $this->db->select(array('namaDepan', 'namaBelakang', 'email', 'noHP', 'saldo', 'alamat'));
+        $this->db->select(array('username','namaDepan', 'namaBelakang', 'email', 'noHP', 'saldo', 'alamat'));
         $this->db->from('user');
         $this->db->where('username', $user);
         $query = $this->db->get();
