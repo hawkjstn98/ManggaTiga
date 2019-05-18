@@ -18,7 +18,7 @@
                     <div class="col-8"><h5>Total Harga</h5></div>
                     <div class="col-4"><h5 id="sumItemPrice">Rp...</h5></div></div>
                 <hr>
-                <button class="btn btn-primary bg-success">Beli</button>
+                <button class="btn btn-primary bg-success" onclick='<?php echo base_url('/Redirect/payment');?>' type="button">Beli</button>
             </div>
         </div>
     </div>

@@ -45,6 +45,10 @@ class RedirectController extends CI_Controller {
         $this->load->view("../views/pages/Search.php",$this->data);   
     }
 
+    public function toPayment(){
+        $this->load->view("../views/pages/Payment.php",$this->data);
+    }
+
     public function toShoppingChart(){
         $this->data['emptycart'] = $this->load->view('pages/subPages/emptyCart.php',NULL,TRUE);
         $this->data['filledcart'] = $this->load->view('pages/subPages/filledCart.php',NULL,TRUE);
