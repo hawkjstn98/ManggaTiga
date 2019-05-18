@@ -87,6 +87,12 @@
                   <input type="number" class="form-control" name="Price" id="Price" placeholder="Price">
                 </div>
             </div>
+            <div class="form-group">
+              <div class="custom-file" style="width: 100%;">
+                  <input type="file" class="custom-file-input" name="-imageUpload" id="inputImageBanner" onchange="readURL(this)" accept=".png,.jpg,.jpeg" required multiple>
+                  <label class="custom-file-label" for="inputGroupFile04">Choose file (max. 2MB)</label>
+              </div>
+            </div>
             <button class="btn btn-primary" type="submit" id="submitForm" value="Submit">Submit</button>
             <a class="btn btn-danger" href="<?php echo base_url('/') ?>">Cancel</a>
           </form>
