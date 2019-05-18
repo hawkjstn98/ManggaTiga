@@ -32,7 +32,7 @@
         <script>
             var btnclick = function(click){
                 //alert(click.currentTarget.id);
-                localStorage.setItem("id",$("#"+click.currentTarget.id).html());
+                localStorage.setItem("category",$("#"+click.currentTarget.id).html());
             }
             $('.dropdown-item').on('click', btnclick);
         </script>

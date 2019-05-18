@@ -10,18 +10,18 @@
 <body>
     <?php
         if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ; 
-        //echo $staticnavbarUnloggedin;
-        //echo $dynamicnavbar;
+//        echo $staticnavbarUnloggedin;
+        echo $dynamicnavbar;
     ?>
     
     <script>
         $(document).ready(function(){
-            var judul = localStorage.getItem("id");
+            var judul = localStorage.getItem("category");
             //alert(judul);
             $("#judulCategory").text(judul);
         });
     </script>
-    <div class="row" style="margin-top:40px;">
+    <div class="row" >
         <nav class="col-md-2 bg-dark d-none d-md-block bg-light sidebar fixed-left">
             <h4 align="center" style="margin-top:10px;">Range Harga</h4>
             <hr>

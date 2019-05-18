@@ -19,7 +19,7 @@
       </div>
       <div class="collapse navbar-collapse col-4" id="navbarSupportedContent">
       <!-- List Menu -->
-        <a class="navbar-brand" href="#" style="font-family: Nunito, sans-serif; color:white; font-size:22px;"><?php echo  "Hello ,".$this->session->userdata('user'); ?></a>
+        <a class="navbar-brand" href="#" style="font-family: Nunito, sans-serif; color:white; font-size:14px;"><?php echo  "Hello ,".$this->session->userdata('user'); ?></a>
         <div style="margin-right:22px;">
           <button class="btn btn-primary" type="submit" onclick="location.href='<?php echo base_url('Redirect/shoppingchart');?>'" style="background-color: #71BEA3; border-color: #71BEA3;">
             <i class="fas fa-shopping-cart"></i>
@@ -35,3 +35,18 @@
   </nav>
 </header>
 <br>
+<script>
+    <?php echo "var baseee='".base_url()."';"; ?>
+    $('#btnLogout').click(function() {
+        $.ajax({
+            url: baseee+'/Home/Logout',
+            type: 'post',
+            data:{
+            },
+            success: function(res){
+                alert(res);
+                location.reload();
+            }
+        })
+    });
+</script>
