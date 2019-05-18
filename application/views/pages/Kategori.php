@@ -49,12 +49,6 @@
                 </div>
                 <div class="row" style="margin-top:5px;">
                     <div class="col-2"></div>
-                    <div class="col-5">
-                        <button id="btnClear" type="submit" class="btn btn-primary bg-success">Clear</button>
-                    </div>
-                    <div class="col-5">
-                        <button id="btnFilterHarga" type="submit" class="btn btn-primary bg-success">Filter</button>
-                    </div>
                 </div>
             <hr>
         </nav>
