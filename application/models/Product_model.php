@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Product_model extends CI_Model{
 
     public function getProducts(){
-        $this->db->select(array('barang.barangNama', 'brand.brandNama', 'category.categoryNama', 'promo.persen', 'barang.hargaJual', 'barang.stock'));
+        $this->db->select(array('barang.barangNama', 'brand.brandNama', 'category.categoryNama', 'promo.persen', 'barang.hargaJual', 'barang.stock', 'barang.barangId'));
         $this->db->from('barang');
         $this->db->join('brand', 'brand.brandId = barang.brandId');
         $this->db->join('category', 'category.categoryId = barang.categoryId');
