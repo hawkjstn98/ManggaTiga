@@ -30,4 +30,21 @@ class CategoryController extends CI_Controller
         ));
     }
 
+    public function renderBrandFilter(){
+        $this->load->model('Product_model');
+        $bdata =  $this->Product_model->renderbrandwithCategory($this->input->POST("category"));
+        if($bdata){
+            $success = true;
+            $data = $bdata;
+        }
+        else{
+            $success = false;
+            $data = "Data Couldn't be rendered";
+        }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$data
+        ));
+    }
+
 }
