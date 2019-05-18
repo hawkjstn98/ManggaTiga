@@ -57,11 +57,6 @@
             <div class="container" style="margin-bottom:25px;">
                 <div class="row">
                     <?php
-                        echo $card;
-                        echo $card;
-                        echo $card;
-                        echo $card;
-                        echo $card;
                     ?>
                 </div>
             </div>
@@ -75,6 +70,7 @@
         var basds = '<?php echo base_url() ?>';
         let cat = localStorage.getItem("category");
         var productData = '';
+        var brand = '';
         $.ajax({
             url: basds + 'CategoryController/renderCategory',
             type: 'post',
@@ -82,7 +78,10 @@
             data: {'category' : cat},
             success: function (res) {
                 if (res.success) {
-                    console.log(res);
+                   productData = res.data;
+                   for(let  i = 0 ; i < productData.length; i ++){
+
+                   }
                 } else {
                     //alert(res.data);
                    // console.log(res);
@@ -97,7 +96,8 @@
             dataType: 'json',
             success: function (res) {
                 if (res.success) {
-                    console.log(res);
+                    brand = res.data;
+                    console.log(brand);
                 } else {
                     //alert(res.data);
                     //console.log(res);
