@@ -28,7 +28,7 @@ class RedirectController extends CI_Controller {
         $ddata = $this->Product_model->renderDetail($id);
         if($ddata){
             $success = true;
-            $data['produk'] = $pdata
+            $data['produk'] = $pdata;
             $this->load->view("../views/pages/Detail.php",$this->data);        
         }
         else{
