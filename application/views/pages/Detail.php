@@ -17,6 +17,7 @@
 	<div class="card">
 		<div class="container-fluid">
 			<div class="wrapper row">
+			<?php foreach($produk as $barang): ?>
 				<div class="preview col-md-6">
 					<div class="preview-pic tab-content">
 					  <div class="tab-pane active" id="pic-1"><img src="mwbgod.jpg" /></div>
@@ -34,13 +35,13 @@
 					</ul>			
 				</div>
 				<div class="details col-md-6">
-					<h3 class="product-title">Mario Alexander</h3>
+					<h3 class="product-title"><?php echo $barang->barangNama?></h3>
 					<div class="container">
-						<p class="product-description">Mau Cari orang untuk dibully dan dikata katai inilah produk yang tepat.</p>
-						<h4 class="price">current price: <span> FREE</span></h4>
+						<p class="product-description"><?php echo $barang->details?></p>
+						<h4 class="price">current price: <span> <?php echo $barang->hargaJual?></span></h4>
 						<label>Jumlah : </label>
 						<div class="row">
-							<input id='txtQty' placeholder="Enter number" value="" min="0" max="50" type="number" class="input col-3" required>
+							<input id='txtQty' placeholder="Enter number" value="" min="0" max="<?php echo $barang->stock?>" type="number" class="input col-3" required>
 						</div>
 						<br>	
 						<div class="action row">
@@ -48,6 +49,7 @@
 						</div>
 					</div>
 				</div>
+			<?php endforeach ?>
 			</div>
 		</div>
 	</div>
