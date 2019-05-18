@@ -55,7 +55,8 @@ class Product_model extends CI_Model{
         $this->db->join('brand', 'brand.brandId = barang.brandId');
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
-        $this->db->limit(5);
+        $this->db->order_by("promo.persen","DESC");
+        $this->db->limit(6);
 //        $this->db->orderby(4, 'DESC');
         $query = $this->db->get();
 
