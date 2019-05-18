@@ -31,20 +31,22 @@
                     <div class="input-group" style="margin-top:5px;">
                         <input type="number" class="form-control" placeholder="Hingga">
                     </div>
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-5">
-                            <button id="btnClear" type="submit" class="btn btn-primary bg-success">Clear</button>
-                        </div>
-                        <div class="col-5">
-                            <button id="btnFilterHarga" type="submit" class="btn btn-primary bg-success">Filter</button>
-                        </div>
-                    </div>
+                    
                 </div>
             <hr>
             <h4 align="center">Merk</h4>
             <hr>
                 <div class="container" id="brandContainer">
 
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-2"></div>
+                    <div class="col-5">
+                        <button id="btnClear" type="submit" class="btn btn-primary bg-success">Clear</button>
+                    </div>
+                    <div class="col-5">
+                        <button id="btnFilterHarga" type="submit" class="btn btn-primary bg-success">Filter</button>
+                    </div>
                 </div>
             <hr>
         </nav>
