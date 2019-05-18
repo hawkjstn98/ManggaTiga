@@ -19,10 +19,17 @@
       </div>
       <div class="collapse navbar-collapse col-4" id="navbarSupportedContent">
       <!-- List Menu -->
-          <p><?php echo  "Hello ,".$this->session->userdata('user'); ?></p>
-        <a class="nav-link" href="<?php echo base_url("Redirect/shoppingchart");?>"><img src="<?php echo base_url("/assets/logo/cart.png");?>" width="20" height="20"></a>
-        <a class="nav-link" href="#"><img src="<?php echo base_url("/assets/logo/user.png");?>" width="20" height="20"></a>
-        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" id="btnLogout">Log Out</button>
+        <a class="navbar-brand" href="#" style="font-family: Nunito, sans-serif; color:white; font-size:22px;"><?php echo  "Hello ,".$this->session->userdata('user'); ?></a>
+        <div style="margin-right:22px;">
+          <button class="btn btn-primary" type="submit" onclick="location.href='<?php echo base_url('Redirect/shoppingchart');?>'" style="background-color: #71BEA3; border-color: #71BEA3;">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+        </div>
+        <div>
+          <button id="btnLogout" class="btn btn-danger" type="submit" style="background-color: #EE3541; border-color: #EE3541;">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
       </div>
     </div>
   </nav>

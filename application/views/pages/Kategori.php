@@ -8,18 +8,19 @@
     ?>
 </head>
 <body>
-    <?php 
-        echo $staticnavbarUnloggedin;
-        echo $dynamicnavbar;
+    <?php
+        if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ; 
+        //echo $staticnavbarUnloggedin;
+        //echo $dynamicnavbar;
     ?>
+    
     <script>
         $(document).ready(function(){
             var judul = localStorage.getItem("category");
-            //alert(judul);
             $("#judulCategory").text(judul);
         });
     </script>
-    <div class="row">
+    <div class="row" style="margin-top:40px;">
         <nav class="col-md-2 bg-dark d-none d-md-block bg-light sidebar fixed-left">
             <h4 align="center" style="margin-top:10px;">Range Harga</h4>
             <hr>

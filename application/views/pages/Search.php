@@ -9,9 +9,9 @@
 </head>
 <body>
     <?php 
-        echo $staticnavbarUnloggedin;
-        echo $dynamicnavbar;
+        if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ;
     ?>
+
     <script>
         $(document).ready(function(){
             var judul = localStorage.getItem("id");
