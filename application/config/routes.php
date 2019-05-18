@@ -60,6 +60,7 @@ $route['Redirect/search'] = 'RedirectController/toSearch';
 $route['Redirect/shoppingchart'] = 'RedirectController/toShoppingChart';
 $route['Redirect/register'] = 'RedirectController/toRegister';
 $route['Redirect/home'] = 'RedirectController/toHome';
+$route['Redirect/payment'] = 'RedirectController/toPayment';
 $route['cms/Admin'] = 'Cms';
 $route['cms/Admin/product'] = 'Cms/ShowProduct';
 $route['cms/Admin/banner'] = 'Cms/BannerConfig';
