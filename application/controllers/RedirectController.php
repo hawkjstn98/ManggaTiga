@@ -26,6 +26,9 @@ class RedirectController extends CI_Controller {
     public function toDetail(){
         $this->load->view("../views/pages/Detail.php",$this->data);        
     }
+    public function toSearch(){
+        $this->load->view("../views/pages/Search.php",$this->data);   
+    }
 
     public function toShoppingChart(){
         $this->data['emptycart'] = $this->load->view('pages/subPages/emptyCart.php',NULL,TRUE);
