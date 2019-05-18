@@ -33,7 +33,7 @@ $(document).ready(function(){
             let conf = confirm("Are you sure of the detail in the form ?");
             if(conf){
                 $.ajax({
-                    url: base+"cms/Admin/newProduct/insert_action",
+                    url: base+"cms/InsertProduct",
                     type: "POST",
                     data: new FormData(this),
                     cache: false,

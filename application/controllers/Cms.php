@@ -57,7 +57,40 @@ class Cms extends CI_Controller{
             'promoId' => 1
         );
         $model = $this->Product_model->newProduct($data);
+
+        $this->load->model('Uploadpicture_model');
+        $config["upload_path"] = "./assets/images/" . $this->getCategoryName($category);
+        $config["allowed_types"] = "png|jpg|jpeg";
+        $config["encrypt_name"] = TRUE;
+        $this->load->library('upload', $config);
+
+        if($this->upload->do_upload('imageUpload')){
+            $data = array('upload_data' => $this->upload->data());
+            //$brandId = $this->input->post('description');
+            $img = $data['upload_data']['file_name'];
+            $imgstr = "/assets/images/" . $this->getCategoryName($category) . "/" . $img;
+            $res = $this->Uploadpicture_model->uploadImage($brand, $imgstr);
+            $rs = true;
+            $rd = $res;
+        }
+        else{
+            $rs = false;
+            $rd = "Ooops somehing went wrong with the data";
+        }
+
         echo json_encode(array("success"=>true, "data"=>$model));
+    }
+
+    public function getBrandName($brandID){
+        foreach($this->Product_model->getBrands() as $brands){
+            if($brands->brandId == $brandID) return $brands->brandNama;
+        }
+    }
+
+    public function getCategoryName($categoryID){
+        foreach($this->Product_model->getCategories() as $categories){
+            if($categories->categoryId == $categoryID) return $categories->categoryNama;
+        }
     }
 
     public function NewBrand(){
