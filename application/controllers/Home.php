@@ -16,6 +16,7 @@ class Home extends CI_Controller{
         $this->data['dynamicnavbar'] = $this->load->view('pages/subPages/dynamicnavbar.php',NULL,TRUE);
         $this->data['carousel'] = $this->load->view('pages/subPages/carousel.php',$this->res,TRUE);
         $this->data['card'] = $this->load->view('pages/subPages/card.php',NULL,TRUE);
+        $this->data['cardArrival'] = $this->load->view('pages/subPages/cardArrival.php',NULL,TRUE);
         $this->data['footer'] = $this->load->view('pages/subPages/footer.php',NULL,TRUE);
         $this->custom['customJs'] = 'home';
         $this->data['customJS'] = $this->load->view('include/customJS.php',$this->custom, TRUE);
