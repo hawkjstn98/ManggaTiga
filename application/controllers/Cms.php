@@ -13,7 +13,7 @@ class Cms extends CI_Controller{
         $this->data['topnavbar'] = $this->load->view('include/topnavbar.php', NULL, TRUE);
         $this->load->model('Carousel_model');
         $this->load->model('Product_model');
-
+        $this->load->model('Transaction_model');
     }
 
     public function index(){
@@ -78,7 +78,7 @@ class Cms extends CI_Controller{
     }
     
     public function ListTransaction(){
-        $this->data['transaction'] = $this->Product_model->getTransactions();
+        $this->data['transaction'] = $this->Transaction_model->getTransactions();
         $this->load->view('pages/listtransaction.php', $this->data);
     }
 

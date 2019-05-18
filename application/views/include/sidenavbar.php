@@ -4,7 +4,7 @@
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url("cms/Admin"); ?>">
   <div class="sidebar-brand-icon rotate-n-15">
-    <i class="fas fa-handshake"></i>
+    <img style="filter: drop-shadow(0px 0px 10px rgba(0,0,0,.5))" src="<?php echo base_url('assets/logo/Ourlogo.png') ?>">
   </div>
   <div class="sidebar-brand-text mx-3">Mangga Tiga</div>
 </a>
@@ -54,7 +54,7 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link" href="#">
+  <a class="nav-link" href="<?php echo base_url('cms/Admin/listTransaction') ?>">
     <i class="fas fa-fw fa-file-alt"></i>
     <span>Report</span></a>
 </li>
