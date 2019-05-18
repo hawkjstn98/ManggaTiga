@@ -23,8 +23,19 @@ class RedirectController extends CI_Controller {
 
         $this->load->view("../views/pages/Kategori.php",$this->data);
     }
-    public function toDetail(){
-        $this->load->view("../views/pages/Detail.php",$this->data);        
+    public function toDetail($id){
+        $this->load->model('Product_model');
+        $ddata = $this->Product_model->renderDetail($id);
+        if($ddata){
+            $success = true;
+            $data['produk'] = $pdata
+            $this->load->view("../views/pages/Detail.php",$this->data);        
+        }
+        else{
+            $success = false;
+            $data = "Data Couldn't be rendered";
+        }
+        
     }
     public function toSearch(){
         $this->load->view("../views/pages/Search.php",$this->data);   
