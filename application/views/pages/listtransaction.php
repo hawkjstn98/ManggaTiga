@@ -37,6 +37,7 @@
           <table id="tableTransaksi">
             <thead>
               <tr>
+                <th>idbarang</th>
                 <th>Transaction ID</th>
                 <th>Nama User</th>
                 <th>Nama Barang</th>
@@ -50,6 +51,7 @@
                 $a = new \NumberFormatter("id-ID", \NumberFormatter::CURRENCY);
                 foreach ($transaction as $row){
                   echo "<tr>";
+                  echo "<td>".$row->barangId."</td>";
                   echo "<td>".$row->transactionId."</td>";
                   echo "<td>".$row->namaDepan." ".$row->namaBelakang."</td>";
                   echo "<td>".$row->barangNama."</td>";
@@ -111,25 +113,43 @@
     $(document).ready(function() {
       var tab = $('#tableTransaksi').DataTable({
         columnDefs:[
-          {
-            targets: 5,
+        {
+            targets: 0,
+            visible: false,
+        },
+        {
+            targets: 6,
             width: 60,
-          }
+        }
         ],
         processing: true,
       });
 
-      $("#tableBarang tbody").on("click", ".eb", function () {
-        let data = tab.row($(this).parents("tr")).data();
-        alert(data[0]);
-
-      });
-
       //DELETE BUTTON HANDLER
-      $("#tableBarang tbody").on("click", ".db", function () {
+      $("#tableTransaksi tbody").on("click", ".db", function () {
         let data = tab.row($(this).parents("tr")).data();
+        let base = "<?php echo base_url() ?>";
         alert(data[0]);
-
+        let conf = confirm("Are you sure want to delete this transaction ?");
+        if(conf){
+            let barang = data[0];
+            let id = data[1];
+            $.ajax({
+                url: base+"cms/Admin/DeleteTransaction",
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    "barang": barang,
+                    "id": id
+                },
+                success: function(res){
+                    if(res.success){
+                        alert(res.data+", Transaction Deleted");
+                        location.reload();
+                    }
+                }
+            });
+        }
       });
     });
   </script>

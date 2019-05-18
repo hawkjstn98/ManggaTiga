@@ -163,7 +163,3 @@ body {
               transform: scale(1); } }
   
   /*# sourceMappingURL=style.css.map */
-
-  .overlay{
-    filter: grayscale(100%);
-  }

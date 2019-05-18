@@ -82,7 +82,7 @@
             <table id="bannerData" class="display" style="width:100%">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Banner ID</th>
                     <th>Description</th>
                     <th>Image</th>
                     <th>Action</th>
@@ -91,14 +91,6 @@
                 <tbody id="dataCarousel">
 
                 </tbody>
-                <tfoot>
-                <tr>
-                    <th>Id</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                </tr>
-                </tfoot>
             </table>
 
         <!-- /.container-fluid -->

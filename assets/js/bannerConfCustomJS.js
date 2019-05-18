@@ -10,8 +10,8 @@ $(document).ready(function() {
             {data: "description"},
             {data: "path", render: convertImage },
             {data: "id", render: function(data, type, row, meta){
-                return '<button class="btn btn-primary" id='+data+'> Delete </button>'
-                }}
+                return '<button class="btn btn-danger" id='+data+'><i class="fas fa-times-circle"></i></button>';
+            }}
         ]
     });
     var btnclick = function(click){
@@ -36,7 +36,7 @@ $(document).ready(function() {
         }
     }
 
-    $('.btn-primary').on('click', btnclick);
+    $('.btn-danger').on('click', btnclick);
 
 
     function convertImage(data, type, full, meta){
