@@ -24,19 +24,21 @@ class RedirectController extends CI_Controller {
         $this->load->view("../views/pages/Kategori.php",$this->data);
     }
     public function toDetail($id){
+        
         $this->load->model('Product_model');
         $ddata = $this->Product_model->renderDetail($id);
+        $this->data['idBarang'] = $id;
         if($ddata){
             $success = true;
             $this->data['produk'] = $ddata;
-            $this->load->view("../views/pages/Detail.php",$this->data);        
+            $this->load->view("../views/pages/Detail.php",$this->data);     
         }
         else{
             $success = false;
             $data = "Data Couldn't be rendered";
         }
-        
     }
+
     public function toSearch(){
         $this->load->model('Product_model');
         $_COOKIE['search'] = $_POST['searchItem'];

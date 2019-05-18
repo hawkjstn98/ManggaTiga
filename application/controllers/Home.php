@@ -114,6 +114,25 @@ class Home extends CI_Controller{
         ));
     }
 
-
+    public function InputToCart(){
+        $this->load->model('UserData_model');
+        $idBarang = $this->input->post('idBarang');
+        $hargaBarang = $this->input->post('harga');
+        $jumlahBarang = $this->input->post('jumlah');
+        $user = $this->session->userdata('user');
+        $adata = $this->UserData_model->tambahKeranjang($idBarang, $hargaBarang, $jumlahBarang, $user);
+        if($adata){
+            $success = true;
+            $data = $adata;
+        }
+        else{
+            $success = false;
+            $data = "Data Couldn't be rendered";
+        }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$data
+        ));
+    }
 
 }

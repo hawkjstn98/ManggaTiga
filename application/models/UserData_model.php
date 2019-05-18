@@ -57,4 +57,38 @@ class UserData_model extends CI_Model{
 
 
     }
+
+    public function tambahKeranjang($id, $harga, $jlh, $name){
+        $this->db->select(array('shoppingCart'));
+        $this->db->from('user');
+        $this->db->where('username', $name);
+        $query = $this->db->get();
+        $isi = $query->result();
+        $hasil='';
+        if($isi){
+            $cart = json_decode($isi);
+            $cart.append(array(
+                "id"=>$id,
+                "harga"=>$harga,
+                "jumlah"=>$jlh
+            ));
+            $hasil = json_encode($cart);
+        }
+        else{
+            $hasil = json_encode(
+                array(array(
+                    "id"=>$id,
+                    "harga"=>$harga,
+                    "jumlah"=>$jlh
+                ))
+            );
+        }
+        $data = array(
+            "shoppingCart" => $hasil
+        );
+        $this->db->where('username', $name);
+        $result = $this->db->update('user', $data);
+        // print_r($hasil);
+        return $result;
+    }
 }

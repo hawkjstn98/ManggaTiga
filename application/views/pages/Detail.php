@@ -45,7 +45,7 @@
 						</div>
 						<br>	
 						<div class="action row">
-							<button class="btn btn-success" type="button">Add To Cart</button>
+							<button class="btn btn-success" type="button" id="buttonAdd">Add To Cart</button>
 						</div>
 					</div>
 				</div>
@@ -54,11 +54,45 @@
 		</div>
 	</div>
 </div>
+<script>
+	//let harga = (data[i].stock <= 0 ? ('<p class="card-text" id="cardHarga" style="color:red;">Out of Stock</p>') : (data[i].persen > 0 ? ('<p class="card-text" id="cardHarga"> <del><a style="color:red;"> Rp. '+ hJual.toLocaleString('id-ID') +'</a></del></p> <p class="card-text" id="cardHarga"> Rp. '+hJualDis.toLocaleString('id-ID')+'</p>') : ('<p class="card-text" id="cardHarga"> Rp. '+hJual.toLocaleString('id-ID')+'</p>')));
+</script>
 <?php 
     echo $footer;
 ?>
 <script>
-    $("#txtQty").inputSpinner();
+		var basds = '<?php echo base_url() ?>';
+		$(document).ready(function(){
+			$('#buttonAdd').click(function(){
+					let id = <?php echo $idBarang; ?>;
+					let harga = <?php echo $produk[0]->hargaJual ?>;
+					let jumlah = $('#txtQty').val();
+					
+					$.ajax({
+						url: basds+'Home/InputToCart',
+						type: 'post',
+								dataType : 'json',
+						data: {
+							"idBarang": id,
+							"harga": harga,
+							"jumlah": jumlah
+						},
+						success : function(res){
+								if(res.success){
+										alert("Ditambah ke keranjang " + id);
+								}
+								else{
+										alert("res.data");
+								}
+						}
+					});
+					alert("Ditambah ke keranjang " + id);
+			})
+				
+		});
+				
+		$("#txtQty").inputSpinner();
+				
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 18, 2019 at 02:26 PM
+-- Generation Time: May 18, 2019 at 04:29 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.20
 
@@ -355,7 +355,7 @@ CREATE TABLE `user` (
   `password` text NOT NULL,
   `namaDepan` text NOT NULL,
   `namaBelakang` text NOT NULL,
-  `email` text NOT NULL,
+  `email` varchar(50) NOT NULL,
   `noHP` text NOT NULL,
   `saldo` int(11) NOT NULL,
   `alamat` text NOT NULL,
@@ -445,6 +445,7 @@ ALTER TABLE `transaction_detail`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userId`),
   ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `tipeUser` (`tipeUser`);
 
 --
