@@ -28,7 +28,7 @@ class RedirectController extends CI_Controller {
         $ddata = $this->Product_model->renderDetail($id);
         if($ddata){
             $success = true;
-            $data['produk'] = $pdata;
+            $this->data['produk'] = $ddata;
             $this->load->view("../views/pages/Detail.php",$this->data);        
         }
         else{
@@ -38,6 +38,10 @@ class RedirectController extends CI_Controller {
         
     }
     public function toSearch(){
+        $this->load->model('Product_model');
+        $_COOKIE['search'] = $_POST['searchItem'];
+        $this->data['produk'] = $this->Product_model->searchbyName($_COOKIE['search']);
+        //print_r($this->data['produk']);
         $this->load->view("../views/pages/Search.php",$this->data);   
     }
 

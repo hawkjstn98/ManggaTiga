@@ -71,7 +71,7 @@
         let cat = localStorage.getItem("category");
         var productData = '';
         var brand = '';
-        var red = '<?php echo base_url('index.php/Redirect/detail');?>';
+        var red = '<?php echo base_url('index.php/RedirectController/toDetail/');?>';
         $.ajax({
             url: basds + 'CategoryController/renderCategory',
             type: 'post',
@@ -88,7 +88,7 @@
                         a.append(
                             '<div class="card" style="width: 18rem; margin-left:50px;">'+
                             '<div class="card-body">' +
-                            '<a href="'+red+'">'+
+                            '<a href="'+red+data[i].barangId+'">'+
                             '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
                             '<div class="card-body">'+
                             '<h5 class="card-title" align="center" id="cardNamaBarang">'+productData[i].barangNama+'</h5>'+

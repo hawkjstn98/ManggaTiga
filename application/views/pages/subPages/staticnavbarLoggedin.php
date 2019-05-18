@@ -34,7 +34,6 @@
     </div>
   </nav>
 </header>
-<br>
 <script>
     <?php echo "var baseee='".base_url()."';"; ?>
     $('#btnLogout').click(function() {
