@@ -16,7 +16,7 @@
         <div class="row" style="margin-bottom:40px;">
             <!-- Ini buat konten list item yang uda di card-->
             <div class="col-8" style="margin-top:20px;">
-                <h3>Chart</h3>
+                <h3>Check Out</h3>
                 <hr>
                 <div id="fieldCartCard" class="container">
                     
@@ -48,7 +48,7 @@
             "<div class='row'>"+
                 "<div class='col-2'><img src='" + pathItemImage + "' width='70' height='70'></div>"+
                     "<div class='col-6'>"+
-                        "<h5>[disini nama barang]</h6>"+
+                        "<h5>[disini nama barang]</h5>"+
                         "<hr>"+
                         "<h6>[disini harga]</h6>"+
                     "</div>"+
