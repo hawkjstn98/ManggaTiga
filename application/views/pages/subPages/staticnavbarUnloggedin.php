@@ -13,7 +13,7 @@
             <div class="col-5 wf">
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="location.href = '<?php echo base_url('/Redirect/search/');?>'" type="submit">Search</button>
+                    <button type="button" class="btn btn-outline-success my-2 my-sm-0" onclick="location.href = '<?php echo base_url('/Redirect/search/');?>'" type="submit">Search</button>
                 </form>
             </div>
             <div class="collapse navbar-collapse col-3" id="navbarSupportedContent">
