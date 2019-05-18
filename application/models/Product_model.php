@@ -126,7 +126,7 @@ class Product_model extends CI_Model{
         }
     }
 
-    public function rerenderDetail($id){
+    public function renderDetail($id){
         $this->db->select(array('barang.barangNama', 'brand.brandNama', 'category.categoryNama', 'promo.persen', 'barang.hargaJual', 'barang.stock', 'barang.barangId'));
         $this->db->from('barang');
         $this->db->join('brand', 'brand.brandId = barang.brandId');
