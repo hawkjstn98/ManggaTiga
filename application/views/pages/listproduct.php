@@ -37,6 +37,7 @@
           <table id="tableBarang">
             <thead>
               <tr>
+                <th>Test</th>
                 <th>Nama Barang</th>
                 <th>Brand</th>
                 <th>Category</th>
@@ -50,13 +51,14 @@
               <?php
                 foreach ($product as $row){
                   echo "<tr>";
+                  echo "<td>".$row->barangId."</td>";
                   echo "<td>".$row->barangNama."</td>";
                   echo "<td>".$row->brandNama."</td>";
                   echo "<td>".$row->categoryNama."</td>";
                   echo "<td>".$row->persen."</td>";
                   echo "<td>".$row->hargaJual."</td>";
                   echo "<td>".$row->stock."</td>";
-                  echo "<td>Action</td>";
+                  echo "<td> <button class='btn btn-warning text-white eb'><i class='fas fa-edit'></i></button><button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
                   echo "</tr>";
                 }
               ?>
@@ -110,7 +112,33 @@
   <?php echo $js ?>
   <script>
     $(document).ready(function() {
-      $('#tableBarang').DataTable();
+      var tab = $('#tableBarang').DataTable({
+        columnDefs:[
+          {
+            targets: 0,
+            visible: false,
+            searchable: false,
+          },
+          {
+            targets: 7,
+            width: 60,
+          }
+        ],
+        processing: true,
+      });
+
+      $("#tableBarang tbody").on("click", ".eb", function () {
+        let data = tab.row($(this).parents("tr")).data();
+        alert(data[0]);
+
+      });
+
+      //DELETE BUTTON HANDLER
+      $("#tableBarang tbody").on("click", ".db", function () {
+        let data = tab.row($(this).parents("tr")).data();
+        alert(data[0]);
+        
+      });
     });
   </script>
 </body>

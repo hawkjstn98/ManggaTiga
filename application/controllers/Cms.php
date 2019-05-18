@@ -76,6 +76,11 @@ class Cms extends CI_Controller{
         $this->data['product'] = $this->Product_model->getProducts();
         $this->load->view('pages/listproduct.php', $this->data);
     }
+    
+    public function ListTransaction(){
+        $this->data['transaction'] = $this->Product_model->getTransactions();
+        $this->load->view('pages/listtransaction.php', $this->data);
+    }
 
     public function UploadBanner(){
         $this->load->model('Uploadbanner_model');
