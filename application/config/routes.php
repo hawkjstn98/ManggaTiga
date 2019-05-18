@@ -68,3 +68,4 @@ $route['cms/Admin/newBrand'] = 'Cms/NewBrand';
 $route['cms/Admin/listProduct'] = 'Cms/ListProduct';
 $route['cms/Admin/newProduct/insert_action'] = 'Cms/InsertProduct';
 $route['cms/Admin/newBrand/insert_action'] = 'Cms/InsertBrand';
+$route['user/profile'] = 'ProfileController/toProfile';

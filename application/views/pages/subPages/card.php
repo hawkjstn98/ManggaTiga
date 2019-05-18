@@ -49,7 +49,7 @@
                     a.append(
                         '<div class="card" style="width: 18rem; margin-left:50px;">'+
                             '<div class="card-body">' +
-                                '<a href="'+red+'">'+
+                                '<a href="'+red+data[i].barangId+'">'+
                                     '<img class="card-img-top '+ (data[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
                                     '<div class="card-body">'+
                                         '<h5 class="card-title" align="center" id="cardNamaBarang">'+data[i].barangNama+'</h5>'+
