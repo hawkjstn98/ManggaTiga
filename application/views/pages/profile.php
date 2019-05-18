@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Light Bootstrap Dashboard by Creative Tim</title>
+    <title>Profile</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -36,10 +36,8 @@
 <?php
 if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ;
 ?>
-<div class="wrapper">
+<div class="wrapper" style="margin-top: 20px;">
     <div class="main-panel">
-
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -133,11 +131,8 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                     </div>
                     <div class="col-md-4">
                         <div class="card card-user">
-                            <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
-                            </div>
                             <div class="content">
-                                <div class="author">
+                                <div class="author" style="margin-top: 0.1px;">
                                     <a href="#">
                                         <h4 class="title">Mike Andrew<br />
                                             <small>michael24</small>
@@ -195,5 +190,22 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
 <script src="<?php echo base_url('assets/js/chartist.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/demo.js'); ?>"></script>
 
+<script>
+   <?php echo "var basedp='".base_url()."';"; ?>
+    $.ajax({
+        url: basedp+'ProfileController/renderUserData',
+        type: 'post',
+        dataType: 'json',
+        data: {"username": '<?php echo $this->session->userdata('user')?>'},
+        success: function(res){
+            if(res.success){
+                
+            }
+            else{
+                alert(res.data);
+            }
+        }
+    })
+</script>
 
 </html>
