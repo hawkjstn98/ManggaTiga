@@ -39,13 +39,12 @@ class Transaction_model extends CI_Model{
             $this->db->where('transactionId', $id);
             $query1 = $this->db->delete('transaction_detail');
 
-            $result = $query1->result();
+            $result = $query1;
             if($result){
-                $this->db->where('transactionId', $id);
-                $query2 = $this->db->delete('transaction_detail');
-                $result = $query2->result();
+                $query2 = $this->db->delete('transaction', array('transactionId' => $id));
+                $result = $query2;
                 if($result){
-                    return $query2->result();
+                    return $query2;
                 }
                 else{
                     return false;
