@@ -22,6 +22,7 @@
     $.ajax({
         url: basds+'Home/RenderProductDataNew',
         type: 'post',
+        dataType : 'json',
         data: {},
         success : function(res){
             if(res.success){
