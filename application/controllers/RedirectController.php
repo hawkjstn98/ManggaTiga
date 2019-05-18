@@ -38,7 +38,10 @@ class RedirectController extends CI_Controller {
         
     }
     public function toSearch(){
-        $_COOKIE['search']=$_POST['searchItem'];
+        $this->load->model('Product_model');
+        $_COOKIE['search'] = $_POST['searchItem'];
+        $this->data['produk'] = $this->Product_model->searchbyName($_COOKIE['search']);
+        //print_r($this->data['produk']);
         $this->load->view("../views/pages/Search.php",$this->data);   
     }
 
