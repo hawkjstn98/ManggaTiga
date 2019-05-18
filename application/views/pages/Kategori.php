@@ -14,7 +14,7 @@
     ?>
     <script>
         $(document).ready(function(){
-            var judul = localStorage.getItem("id");
+            var judul = localStorage.getItem("category");
             //alert(judul);
             $("#judulCategory").text(judul);
         });
@@ -56,13 +56,11 @@
             <hr>
             <div class="container" style="margin-bottom:25px;">
                 <div class="row">
-                    <?php
-                        echo $card;
-                        echo $card;
-                        echo $card;
-                        echo $card;
-                        echo $card;
-                    ?>
+                    <div class="container">
+                        <div id="cardgridcategory" class="row">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -71,4 +69,20 @@
     <?php
         echo $footer;
     ?>
+    <script>
+        var basds = '<?php echo base_url() ?>';
+        let cat = localStorage.getItem("category");
+        $.ajax({
+            url: basds + 'CategoryController/renderCategory',
+            type: 'post',
+            data: {'category' : cat},
+            success: function (res) {
+                if (res.success) {
+
+                } else {
+                    //alert(res.data);
+                }
+            }
+        })
+    </script>
 </body>
