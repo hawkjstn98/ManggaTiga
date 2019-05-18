@@ -11,6 +11,7 @@
     <?php
         if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ;
         echo $dynamicnavbar;
+               
     ?>
     <div class="container">
         <div class="row">
@@ -18,7 +19,11 @@
             <div class="container" style="margin-bottom:25px;">
                 <div class="row">
                     <?php
-                        echo $card;
+                        foreach($produk as $row){
+                            echo $row->barangNama;
+                            echo $row->hargaJual;
+                        }
+
                     ?>
                 </div>
             </div>
