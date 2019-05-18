@@ -49,16 +49,18 @@
             <tbody>
               <?php
                 $a = new \NumberFormatter("id-ID", \NumberFormatter::CURRENCY);
-                foreach ($transaction as $row){
-                  echo "<tr>";
-                  echo "<td>".$row->barangId."</td>";
-                  echo "<td>".$row->transactionId."</td>";
-                  echo "<td>".$row->namaDepan." ".$row->namaBelakang."</td>";
-                  echo "<td>".$row->barangNama."</td>";
-                  echo "<td>".$a->format($row->barangHarga)."</td>";
-                  echo "<td>".$row->jumlah." Unit</td>";
-                  echo "<td> <button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
-                  echo "</tr>";
+                if($transaction){
+                    foreach ($transaction as $row){
+                        echo "<tr>";
+                        echo "<td>".$row->barangId."</td>";
+                        echo "<td>".$row->transactionId."</td>";
+                        echo "<td>".$row->namaDepan." ".$row->namaBelakang."</td>";
+                        echo "<td>".$row->barangNama."</td>";
+                        echo "<td>".$a->format($row->barangHarga)."</td>";
+                        echo "<td>".$row->jumlah." Unit</td>";
+                        echo "<td> <button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
+                        echo "</tr>";
+                      }
                 }
               ?>
             </tbody>

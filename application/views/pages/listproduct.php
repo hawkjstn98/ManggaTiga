@@ -50,17 +50,19 @@
             <tbody>
               <?php
                 $a = new \NumberFormatter("id-ID", \NumberFormatter::CURRENCY);
-                foreach ($product as $row){
-                  echo "<tr>";
-                  echo "<td>".$row->barangId."</td>";
-                  echo "<td>".$row->barangNama."</td>";
-                  echo "<td>".$row->brandNama."</td>";
-                  echo "<td>".$row->categoryNama."</td>";
-                  echo "<td>".$row->persen."%</td>";
-                  echo "<td>".$a->format($row->hargaJual)."</td>";
-                  echo "<td>".$row->stock." Unit</td>";
-                  echo "<td> <button class='btn btn-warning text-white eb'><i class='fas fa-edit'></i></button><button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
-                  echo "</tr>";
+                if($product){
+                  foreach ($product as $row){
+                    echo "<tr>";
+                    echo "<td>".$row->barangId."</td>";
+                    echo "<td>".$row->barangNama."</td>";
+                    echo "<td>".$row->brandNama."</td>";
+                    echo "<td>".$row->categoryNama."</td>";
+                    echo "<td>".$row->persen."%</td>";
+                    echo "<td>".$a->format($row->hargaJual)."</td>";
+                    echo "<td>".$row->stock." Unit</td>";
+                    echo "<td> <button class='btn btn-warning text-white eb'><i class='fas fa-edit'></i></button><button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
+                    echo "</tr>";
+                  }
                 }
               ?>
             </tbody>

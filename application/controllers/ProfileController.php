@@ -17,4 +17,22 @@ class ProfileController extends CI_Controller
     public function toProfile(){
         $this->load->view("../views/pages/profile.php",$this->data);
     }
+
+    public function renderUserData(){
+        $this->load->model('UserData_model');
+        $usn = $this->input->post('username');
+        $udata = $this->UserData_model->renderUser($usn);
+        if($udata){
+            $success = true;
+            $data = $udata;
+        }
+        else{
+            $success = false;
+            $data = "Data Couldn't be rendered";
+        }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$data
+        ));
+    }
 }
