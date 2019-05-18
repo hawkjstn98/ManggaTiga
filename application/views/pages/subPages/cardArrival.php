@@ -43,18 +43,20 @@
                     // a.append('</div>');
                     // a.append('</div>');
 
+                    let hJual = data[i].hargaJual * 1;
+                    let hJualDis = data[i].hargaJual*(100-data[i].persen)/100;
+                    let harga = (data[i].persen > 0 ? ('<div class="card-footer"><p class="card-text" id="cardHarga"> <del><a style="color:red;"> Rp. '+ hJual.toLocaleString('id-ID') +'</a></del></p> <p class="card-text" id="cardHarga"> Rp. '+hJualDis.toLocaleString('id-ID')+'</p></div>') : ('<div class="card-footer"><p class="card-text" id="cardHarga"> Rp. '+hJual.toLocaleString('id-ID')+'</p></div>'));
                     a.append('<div class="card" style="width: 18rem; margin-left:50px;">'+
-                        '<a href="'+red+'">'+
+                    '<a href="'+red+'">'+
                         '<img class="card-img-top" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
                         '<div class="card-body">'+
-                        '<h5 class="card-title" align="center" id="cardNamaBarang">'+data[i].barangNama+'</h5>'+
+                            '<h5 class="card-title" align="center" id="cardNamaBarang">'+data[i].barangNama+'</h5>'+
                         '</div>'+
-                        '</a>'+
-                        '<div class="card-bottom" align="center" style="margin-bottom:10px">'+
-                        '<p class="card-text" id="cardHarga"><del>'+data[i].hargaJual+'</del></p>'+
-                        '<p class="card-text" id="cardHarga">'+data[i].hargaJual*(100-data[i].persen)/100+'</p>'+
-                        '</div>'+
-                        '</div>')
+                    '</a>'+
+                    '<div class="card-bottom" align="center" style="margin-bottom:10px">'+
+                        harga +
+                    '</div>'+
+                    '</div>');
                 }
             }
             else{
