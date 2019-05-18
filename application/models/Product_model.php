@@ -16,12 +16,12 @@ class Product_model extends CI_Model{
 
     public function getCategories(){
         $query = $this->db->get('category');
-        return $query->result(); 
+        return $query->result();
     }
 
     public function getBrands(){
         $query = $this->db->get('brand');
-        return $query->result(); 
+        return $query->result();
     }
 
     public function newProduct($param){
@@ -55,8 +55,8 @@ class Product_model extends CI_Model{
         $this->db->join('brand', 'brand.brandId = barang.brandId');
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
-        $this->db->limit(10);
-//        $this->db->orderby(4, 'DESC');
+        $this->db->limit(6);
+        $this->db->order_by('promo.persen', 'DESC');
         $query = $this->db->get();
 
         $result = $query->result();
