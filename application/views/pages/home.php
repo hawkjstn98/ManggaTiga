@@ -62,7 +62,7 @@
   <div class="container">
     <div id="cardgridnew" class="row">
       <?php
-        echo $cardArrival;
+        //echo $card;
       ?>
     </div>
   </div><br>

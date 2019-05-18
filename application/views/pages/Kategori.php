@@ -14,7 +14,7 @@
     ?>
     <script>
         $(document).ready(function(){
-            var judul = localStorage.getItem("category");
+            var judul = localStorage.getItem("id");
             //alert(judul);
             $("#judulCategory").text(judul);
         });
@@ -56,11 +56,13 @@
             <hr>
             <div class="container" style="margin-bottom:25px;">
                 <div class="row">
-                    <div class="container">
-                        <div id="cardgridcategory" class="row">
-
-                        </div>
-                    </div>
+                    <?php
+                        echo $card;
+                        echo $card;
+                        echo $card;
+                        echo $card;
+                        echo $card;
+                    ?>
                 </div>
             </div>
         </main>

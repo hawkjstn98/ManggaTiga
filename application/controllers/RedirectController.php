@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 class RedirectController extends CI_Controller {
-    public $category;
     public function __construct()
     {
         parent::__construct();
@@ -21,6 +20,7 @@ class RedirectController extends CI_Controller {
         $this->load->view("../views/pages/home.php",$this->data);
     }
     public function toCategory(){
+
         $this->load->view("../views/pages/Kategori.php",$this->data);
     }
     public function toDetail(){
