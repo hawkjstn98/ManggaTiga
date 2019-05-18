@@ -19,7 +19,7 @@
 <script>
 
     var basds = '<?php echo base_url() ?>';
-    var red = '<?php echo base_url('index.php/Redirect/detail');?>';
+    var red = '<?php echo base_url('index.php/Redirect/detail/');?>';
 
         $.ajax({
         url: basds+'Home/RenderProductData',
