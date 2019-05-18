@@ -38,6 +38,7 @@ class RedirectController extends CI_Controller {
         
     }
     public function toSearch(){
+        $_COOKIE['search']=$_POST['searchItem'];
         $this->load->view("../views/pages/Search.php",$this->data);   
     }
 
