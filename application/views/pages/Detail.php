@@ -10,7 +10,8 @@
 </head>
 <body>
 <?php 
-    if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ;
+		if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ;
+		echo $dynamicnavbar;
 ?>
 <div class="container" style="margin-bottom:25px;">
 	<div class="card">
