@@ -51,7 +51,7 @@
   </div>
   <br>
       <?php
-       // echo $card;
+       echo $card;
       ?>
   <br>
   <div class="row col-sm-12">
@@ -62,7 +62,7 @@
   <div class="container">
     <div id="cardgridnew" class="row">
       <?php
-        echo $card;
+        //echo $card;
       ?>
     </div>
   </div><br>
