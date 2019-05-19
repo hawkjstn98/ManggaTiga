@@ -109,11 +109,12 @@ class UserData_model extends CI_Model{
 
     public function renderTransaction($usn){
         $id = $this->getUserId($usn);
-        $this->db->select(array('transaction.transactionId','barang.barangNama','transaction_detail.barangHarga', 'transaction_detail.jumlah'));
+        $this->db->select(array('transaction.waktu','transaction.transactionId','barang.barangNama','transaction_detail.barangHarga', 'transaction_detail.jumlah'));
         $this->db->from('transaction');
         $this->db->join('user', 'user.userId = transaction.userId');
         $this->db->join('transaction_detail', 'transaction_detail.transactionId = transaction.transactionId');
         $this->db->join('barang', 'barang.barangId = transaction_detail.barangId');
+        $this->db->order_by('transaction.transactionId','DESC');
         $this->db->where('user.userId',$id);
         $query = $this->db->get();
         $result = $query->result();

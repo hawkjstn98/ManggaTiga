@@ -61,8 +61,14 @@ class ProfileController extends CI_Controller
         $this->load->model('UserData_model');
         $user = $this->input->post('username');
         $tsdata = $this->UserData_model->renderTransaction($user);
+        $tempdata = array();
         if($tsdata){
             $success = true;
+            foreach($tsdata as $i){
+                if($tempdata.size==0){
+                    $tempdata.array_push($i);
+                }
+            }
             $data = $tsdata;
         }
         else{

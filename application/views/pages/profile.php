@@ -41,7 +41,7 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12" style="margin-top: 5%">
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Edit Profile</h4>
@@ -99,15 +99,16 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="card card-user">
-                            <div class="content">
+                            <div class="content" id="detail">
                                 <div class="author" style="margin-top: 0.1px;">
                                     <a>
                                         <h4 class="title">Transaction History<br/>
                                         </h4>
                                     </a>
                                 </div>
+
                             </div>
                             <hr>
                             <div class="text-center">
@@ -193,15 +194,24 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
            dataType: 'json',
            data: {"username": '<?php echo $this->session->userdata('user')?>'},
            success: function(res){
-               console.log(res.data);
+               console.log(res);
                var data = res.data;
                if(res.success){
-                   $('#email').val(data[0].email);
-                   $('#username').val(data[0].username);
-                   $('#address').val(data[0].alamat);
-                   $('#fname').val(data[0].namaDepan);
-                   $('#lname').val(data[0].namaBelakang);
-                   $('#phone').val(data[0].noHP);
+                  let det = $('#detail');
+                  for(let i =0; i< data.length; i++){
+                      // det.append('<div class="card" style="width: 100%;">'+
+                      //     '<div class="card-body">'+
+                      //     '<h5 class="card-title">Transaction Id : '+data[i].transactionId+'</h5>'+
+                      //       '<h6 class="card-subtitle mb-2 text-muted">Time : '+data[i].waktu+' </h6>'+
+                      //         for(let j=i; data[i].transactionId==data[i+1].transactionId;j++){
+                      //         }
+                  // }
+                  //     <p class="card-text">Detail</p>
+                  //         <a style="color: deepskyblue">Total : </a>
+                  //     </div>
+                  //     </div>')
+                  // }
+                  }
                }
                else{
                    alert(res.data);
