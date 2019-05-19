@@ -106,4 +106,31 @@ class UserData_model extends CI_Model{
             return false;
         }
     }
+
+    public function renderTransaction($usn){
+        $id = $this->getUserId($usn);
+        $this->db->select(array('transaction.transactionId','barang.barangNama','transaction_detail.barangHarga', 'transaction_detail.jumlah'));
+        $this->db->from('transaction');
+        $this->db->join('user', 'user.userId = transaction.userId');
+        $this->db->join('transaction_detail', 'transaction_detail.transactionId = transaction.transactionId');
+        $this->db->join('barang', 'barang.barangId = transaction_detail.barangId');
+        $this->db->where('user.userId',$id);
+        $query = $this->db->get();
+        $result = $query->result();
+        if($result){
+            return $query->result();
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function getUserId($username){
+        $this->db->select('userId');
+        $this->db->from('user');
+        $this->db->where('username', $username);
+        $query = $this->db->get();
+        $res = $query->row();
+        return $res->userId;
+    }
 }
