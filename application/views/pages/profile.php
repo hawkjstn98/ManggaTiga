@@ -93,7 +93,7 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right" id="btnUpdate">Update Profile</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -182,7 +182,27 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                 alert(res.data);
             }
         }
-    })
+    });
+
+    $('#btnUpdate').click(function(){
+        let fname = $('#fname').val();
+        let lname = $('#lname').val();
+        let address = $('#address').val();
+        if(fname && lname && address){
+            $.ajax({
+                url: basedp+'ProfileController/updateDataUser',
+                type: 'post',
+                dataType: 'json',
+                data: {"firstName": fname,
+                    "lastName": lname,
+                    "address": address
+                },
+                success: function(res){
+                    
+                }
+            })
+        }
+    });
 </script>
 
 </html>

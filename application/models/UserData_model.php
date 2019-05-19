@@ -91,4 +91,8 @@ class UserData_model extends CI_Model{
         // print_r($hasil);
         return $result;
     }
+
+    public function updateUser(){
+        
+    }
 }

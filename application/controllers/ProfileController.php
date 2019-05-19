@@ -35,4 +35,13 @@ class ProfileController extends CI_Controller
             "data"=>$data
         ));
     }
+
+    public function updateDataUser(){
+        $this->load->model('UserData_model');
+        $fname = $this->input->post('firstName');
+        $lname = $this->input->post('lastName');
+        $address = $this->input->post('address');
+
+
+    }
 }
