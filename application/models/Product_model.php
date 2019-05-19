@@ -45,11 +45,37 @@ class Product_model extends CI_Model{
         return $query;
     }
 
+    public function updateProduct($param){
+        $data = array(
+            'barangId' => $param['brandId'],
+            'hargaJual' => $param['hargaJual'],
+            'stock' => $param['stock'],
+            'promoId' => $param['promoId'],
+            'aksesBarang' => $param['aksesBarang']
+        );
+
+        // echo $data['barangId'];
+        // echo $data['hargaJual'];
+        // echo $data['stock'];
+        //print_r($data['promoId']);
+        // echo $data['aksesBarang'];
+
+        $this->db->set('hargaJual', $data['hargaJual']);
+        $this->db->set('stock', $data['stock']);
+        $this->db->set('promoId', $data['promoId']);
+        $this->db->set('aksesBarang', $data['aksesBarang']);
+        $this->db->where('barangId', $data['barangId']);
+        $query = $this->db->update('barang');
+        
+        print_r($query);
+    }
+
     public function editModalProduct($param){
-        $this->db->select(array('barangNama', 'hargaJual', 'stock', 'aksesBarang'));
+        $this->db->select(array('barangNama', 'hargaJual', 'stock', 'aksesBarang', 'promoId'));
         $this->db->from('barang');
         $this->db->where('barangId', $param);
         $query = $this->db->get();
+        //print_r($query);
         return $query->result();
     }
 
