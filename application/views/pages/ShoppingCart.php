@@ -45,6 +45,11 @@
 </body>
 <script>
     var pathItemImage="";
+
+    function renderCart(){
+
+    }
+
     $("#fieldCartCard").append(
         "<div class='card'>"+
             "<div class='row'>"+
@@ -58,7 +63,6 @@
                         "<div class='col-3'>"+
                             "<label>Jumlah : </label>"+
                             "<div class='row'>"+
-                                "<input class='editQty' placeholder='Enter number' value='' min='0' max='50' type='number' class='input' required>"+
                                 "<div class='col-4'></div><button align='center' style='margin-top:10px; margin-left:' class='btn btn-secondary bg-danger'><i class='fa fa-trash'></i></button>"+
                             "</div>"+
                         "</div>"+
@@ -67,5 +71,4 @@
             "</div>"+
         "</div>"
     );
-    $(".editQty").inputSpinner();
 </script>

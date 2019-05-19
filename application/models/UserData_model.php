@@ -62,15 +62,17 @@ class UserData_model extends CI_Model{
         $this->db->from('user');
         $this->db->where('username', $name);
         $query = $this->db->get();
-        $isi = $query->result();
+        $isi = $query->row();
         $hasil='';
-        if($isi){
-            $cart = json_decode($isi);
-            $cart.append(array(
+        $cart = array();
+        if($isi->shoppingCart!='Not Available Yet'){
+            array_push($cart,json_decode($isi->shoppingCart) );
+            $temp = (array(
                 "id"=>$id,
                 "harga"=>$harga,
                 "jumlah"=>$jlh
             ));
+            array_push($cart, $temp);
             $hasil = json_encode($cart);
         }
         else{
