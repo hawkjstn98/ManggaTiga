@@ -130,7 +130,7 @@
             </div>
           </div>
           <div class="form-group" id="promo-mod">
-            <label for="promo1">Promo:</label>
+            <label for="promo1">Promo</label>
             <select class="form-control" id="promo1">
               <?php
                   foreach ($promo as $row){
@@ -159,6 +159,13 @@
               </div>
             </div>
           </div>
+          <div class="form-group" id="akses-mod">
+            <label for="akses1">Availability</label>
+            <select class="form-control" id="akses1">
+              <option value="0">Unavailable</option>
+              <option value="1">Available</option>
+            </select>
+          </div>
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -171,7 +178,7 @@
   <?php echo $js ?>
   <script>
     $(document).ready(function() {
-      var base = <?php echo base_url('') ?>
+      var base = "<?php echo base_url(''); ?>";
       var tab = $('#tableBarang').DataTable({
         columnDefs:[
           {
@@ -193,34 +200,36 @@
         })
       .remove();
 
+      // $.ajax({
+      //   url: base+'Cms/InputToCart',
+      //   type: 'post',
+      //       dataType : 'json',
+      //   data: {
+      //     "idBarang": id,
+      //     "harga": harga,
+      //     "jumlah": jumlah
+      //   },
+      //   success : function(res){
+      //     if(res.success){
+      //       alert("Ditambah ke keranjang " + id);
+      //     }
+      //     else if(res.data == "SessionNotFound"){
+      //       alert("Login First");
+      //       $('#modalLoginForm').modal();
+      //       $('#email').focus();
+      //     }
+      //     else{
+      //       alert(res.data);
+      //     }
+      //   }
+      // });
+
       //EDIT BUTTON HANDLER
       $("#tableBarang tbody").on("click", ".eb", function () {
         let data = tab.row($(this).parents("tr")).data();
-        $.ajax({
-          url: base+'Cms/InputToCart',
-          type: 'post',
-              dataType : 'json',
-          data: {
-            "idBarang": id,
-            "harga": harga,
-            "jumlah": jumlah
-          },
-          success : function(res){
-            if(res.success){
-                              alert("Ditambah ke keranjang " + id);
-            }
-            else if(res.data == "SessionNotFound"){
-              alert("Login First");
-              $('#modalLoginForm').modal();
-              $('#email').focus();
-            }
-            else{
-              alert(res.data);
-            }
-          }
-        });
         $('#editModal').modal();
-      });
+
+        });
 
       //DELETE BUTTON HANDLER
       $("#tableBarang tbody").on("click", ".db", function () {
