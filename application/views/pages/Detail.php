@@ -38,7 +38,7 @@
 					<h3 class="product-title"><?php echo $barang->barangNama?></h3>
 					<div class="container">
 						<p class="product-description"><?php echo $barang->details?></p>
-						<h4 class="price">current price: <span> <?php echo $barang->hargaJual?></span></h4>
+						<h4 class="price">Current Price: <span class="spanHarga">  </span></h4>
 						<label>Jumlah : </label>
 						<div class="row">
 							<input id='txtQty' placeholder="Enter number" value="" min="0" max="<?php echo $barang->stock?>" type="number" class="input col-3" required>
@@ -62,7 +62,9 @@
 ?>
 <script>
 		var basds = '<?php echo base_url() ?>';
+		let har = <?php echo $barang->hargaJual ?>;
 		$(document).ready(function(){
+			$('.spanHarga').html("Rp"+har.toLocaleString('id-ID'));
 			$('#buttonAdd').click(function(){
 					let id = <?php echo $idBarang; ?>;
 					let harga = <?php echo $produk[0]->hargaJual ?>;
@@ -78,15 +80,19 @@
 							"jumlah": jumlah
 						},
 						success : function(res){
-								if(res.success){
-										alert("Ditambah ke keranjang " + id);
-								}
-								else{
-										alert("res.data");
-								}
+							if(res.success){
+									alert("Ditambah ke keranjang " + id);
+							}
+							else if(res.data == "SessionNotFound"){
+								alert("Login First");
+								$('#modalLoginForm').modal();
+								$('#email').focus();
+							}
+							else{
+								alert("res.data");
+							}
 						}
 					});
-					alert("Ditambah ke keranjang " + id);
 			})
 				
 		});
