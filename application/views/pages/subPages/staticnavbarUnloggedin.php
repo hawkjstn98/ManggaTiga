@@ -12,7 +12,7 @@
             <!-- Search Bar -->
             <div class="col-5 wf">
                 <form class="form-inline" method="POST" action='<?php echo base_url('/Redirect/search/');?>'> 
-                    <input name="searchItem" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input name="searchItem" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>

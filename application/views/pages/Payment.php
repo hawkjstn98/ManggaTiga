@@ -21,8 +21,10 @@
                     <h4 style="font-family: Nunito, sans-serif;">Alamat Pengiriman</h4>
                     <hr>
                     <h5 id="username" style="font-family: Nunito, sans-serif;"><b>Nama</b></h5>
+                    <h5 id="username" style="font-family: Nunito, sans-serif;"><b>Email</b></h5>
+                    <h6 id="username" style="font-family: Nunito, sans-serif;">Nomor Telpon</h6>
                     <h6 id="username" style="font-family: Nunito, sans-serif;">Alamat</h6>
-                    
+                    <h6 id="username" style="font-family: Nunito, sans-serif;">Saldo</h6>
                 </div>
                 <div id="fieldCartCard" class="container">
                 </div>
@@ -37,7 +39,7 @@
                         <div class="col-4"><h5 id="sumItemPrice">Rp...</h5></div>
                     </div>
                     <hr>
-                    <button class="btn btn-primary bg-success" onclick="window.location.href='<?php echo base_url('Redirect/payment');?>'" type="button">Beli</button>
+                    <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('Redirect/payment');?>'" type="button">Beli</button>
                 </div>
             </div>
         </div>
