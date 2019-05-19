@@ -91,12 +91,13 @@ class UserData_model extends CI_Model{
         return $result;
     }
 
-    public function updateUser($fname, $lname, $address, $user){
+    public function updateUser($fname, $lname, $address, $user, $balance){
         if($fname&&$lname&&$address&&$user){
             $data = array(
                 'namaDepan' => $fname,
                 'namaBelakang' => $lname,
-                'alamat'=>$address
+                'alamat'=>$address,
+                'saldo'=>$balance
             );
 
             $this->db->where('username', $user);
