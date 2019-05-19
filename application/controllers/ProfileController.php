@@ -60,6 +60,18 @@ class ProfileController extends CI_Controller
     public function renderTranscationData(){
         $this->load->model('UserData_model');
         $user = $this->input->post('username');
-        
+        $tsdata = $this->UserData_model->renderTransaction($user);
+        if($tsdata){
+            $success = true;
+            $data = $tsdata;
+        }
+        else{
+            $success = false;
+            $data = "Data Couldn't be rendered";
+        }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$data
+        ));
     }
 }

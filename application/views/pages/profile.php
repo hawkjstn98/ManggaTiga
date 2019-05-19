@@ -188,7 +188,7 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
 
    function renderTransaction(){
        $.ajax({
-           url: basedp+'ProfileController/renderTransactionData',
+           url: basedp+'ProfileController/renderTranscationData',
            type: 'post',
            dataType: 'json',
            data: {"username": '<?php echo $this->session->userdata('user')?>'},
