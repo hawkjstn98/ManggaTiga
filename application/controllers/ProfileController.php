@@ -56,4 +56,10 @@ class ProfileController extends CI_Controller
             "data"=>$data
         ));
     }
+
+    public function renderTranscationData(){
+        $this->load->model('UserData_model');
+        $user = $this->input->post('username');
+        
+    }
 }

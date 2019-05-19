@@ -160,9 +160,35 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
 
    renderData();
 
+   renderTransaction();
+
    function renderData(){
        $.ajax({
            url: basedp+'ProfileController/renderUserData',
+           type: 'post',
+           dataType: 'json',
+           data: {"username": '<?php echo $this->session->userdata('user')?>'},
+           success: function(res){
+               console.log(res.data);
+               var data = res.data;
+               if(res.success){
+                   $('#email').val(data[0].email);
+                   $('#username').val(data[0].username);
+                   $('#address').val(data[0].alamat);
+                   $('#fname').val(data[0].namaDepan);
+                   $('#lname').val(data[0].namaBelakang);
+                   $('#phone').val(data[0].noHP);
+               }
+               else{
+                   alert(res.data);
+               }
+           }
+       });
+   }
+
+   function renderTransaction(){
+       $.ajax({
+           url: basedp+'ProfileController/renderTransactionData',
            type: 'post',
            dataType: 'json',
            data: {"username": '<?php echo $this->session->userdata('user')?>'},
