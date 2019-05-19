@@ -20,7 +20,7 @@ class Home extends CI_Controller{
         $this->data['footer'] = $this->load->view('pages/subPages/footer.php',NULL,TRUE);
         $this->custom['customJs'] = 'home';
         $this->data['customJS'] = $this->load->view('include/customJS.php',$this->custom, TRUE);
-        if(empty($this->session->userdata('email'))){
+        if(empty($this->session->has_userdata('user'))){
             $this->data['user'] = false;
         }
         else{
@@ -54,6 +54,7 @@ class Home extends CI_Controller{
             if($res){
                 $success = true;
                 $data = "Login Success";
+                $this->data['user'] = true;
             }
             else{
                 $success = false;
