@@ -103,16 +103,11 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                         <div class="card card-user">
                             <div class="content">
                                 <div class="author" style="margin-top: 0.1px;">
-                                    <a href="#">
-                                        <h4 class="title">Mike Andrew<br />
-                                            <small>michael24</small>
+                                    <a>
+                                        <h4 class="title">Transaction History<br/>
                                         </h4>
                                     </a>
                                 </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                    Your chick she so thirsty <br>
-                                    I'm in that two seat Lambo"
-                                </p>
                             </div>
                             <hr>
                             <div class="text-center">
