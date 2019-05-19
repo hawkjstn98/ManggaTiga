@@ -130,6 +130,7 @@
         processing: true,
       });
 
+      //EDIT BUTTON HANDLER
       $("#tableBarang tbody").on("click", ".eb", function () {
         let data = tab.row($(this).parents("tr")).data();
         alert(data[0]);
@@ -139,8 +140,27 @@
       //DELETE BUTTON HANDLER
       $("#tableBarang tbody").on("click", ".db", function () {
         let data = tab.row($(this).parents("tr")).data();
-        alert(data[0]);
-
+        let base = "<?php echo base_url() ?>";
+        //alert("ID: " + data[0]);
+        //alert("Barang: " + data[1]);
+        let conf = confirm("Are you sure want to delete this transaction ?");
+        if(conf){
+            let barang = data[1];
+            let id = data[0];
+            $.ajax({
+                url: base+"cms/DeleteProduct",
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    "barang": barang,
+                    "id": id
+                },
+                success: function(){
+                  location.reload();
+                }
+              
+            });
+        }
       });
     });
   </script>

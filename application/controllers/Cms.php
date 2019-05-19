@@ -110,6 +110,20 @@ class Cms extends CI_Controller{
         $this->load->view('pages/listproduct.php', $this->data);
     }
     
+    public function DeleteProduct(){
+        $id = $this->input->post('id');
+        $barang = $this->input->post('barang');
+        $res = $this->Product_model->deleteProduct($barang, $id);
+        if($res){
+            $rs = true;
+            $rt = "Delete Success";
+        }else{
+            $rs = false;
+            $rt = "Delete Failed";
+        }
+        echo json_encode(array("success"=>$rs, "data"=>$rt));
+    }
+
     public function ListTransaction(){
         $this->data['transaction'] = $this->Transaction_model->getTransactions();
         $this->load->view('pages/listtransaction.php', $this->data);

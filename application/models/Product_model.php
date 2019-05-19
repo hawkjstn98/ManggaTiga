@@ -163,6 +163,24 @@ class Product_model extends CI_Model{
         }
     }
 
+    public function deleteProduct($barang, $id){ //ambil dari Transaction_model.php
+        $jumlah = $this->db->select('barangId')->from('barang')->where('barangId', $id)->get()->result();
+        if(count($jumlah)>=1){
+            $this->db->where('barangId', $id);
+            $this->db->where('barangNama', $barang);
+            $query = $this->db->delete('barang');
+            
+            $result = $query;
+
+            if($result){
+                return $query;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+
 }
 
 ?>
