@@ -1,6 +1,6 @@
 <!-- Card Item dipakai di page awal dan page kategori, masih sangat polos boleh dihias :") -->
 <div class="container">
-    <div id="cardgridarrive" class="row">
+    <div id="cardgridnew" class="row">
 
     </div>
 </div>
@@ -18,7 +18,7 @@
             if(res.success){
                 console.log(res.data);
                 let data = res.data;
-                a =  $('#cardgridarrive');
+                a =  $('#cardgridnew');
                 console.log(data);
                 for(let i = 0; i < res.data.length; i++){
                     // a.append('<div class="card" style="width: 18rem; margin-left:50px;">');

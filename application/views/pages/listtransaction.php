@@ -38,11 +38,12 @@
             <thead>
               <tr>
                 <th>idbarang</th>
-                <th>Transaction ID</th>
+                <th>ID</th>
                 <th>Nama User</th>
                 <th>Nama Barang</th>
-                <th>Harga</th>
+                <th>Alamat</th>
                 <th>Jumlah Barang</th>
+                <th>Total</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -56,8 +57,9 @@
                         echo "<td>".$row->transactionId."</td>";
                         echo "<td>".$row->namaDepan." ".$row->namaBelakang."</td>";
                         echo "<td>".$row->barangNama."</td>";
-                        echo "<td>".$a->format($row->barangHarga)."</td>";
+                        echo "<td>".$row->alamat."</td>";
                         echo "<td>".$row->jumlah." Unit</td>";
+                        echo "<td>".$a->format($row->jumlah*$row->barangHarga)."</td>";
                         echo "<td> <button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
                         echo "</tr>";
                       }

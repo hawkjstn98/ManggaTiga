@@ -29,13 +29,10 @@
     <h1 class="col-sm-4" style="text-align: center">New Arrival</h1>
   </div>
   <br>
-  <div class="container">
-    <div id="cardgridnew" class="row">
       <?php
         echo $cardArrival;
       ?>
-    </div>
-  </div><br>
+  <br>
   <?php
     echo $footer;
     echo $customJS;

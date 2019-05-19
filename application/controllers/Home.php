@@ -20,13 +20,12 @@ class Home extends CI_Controller{
         $this->data['footer'] = $this->load->view('pages/subPages/footer.php',NULL,TRUE);
         $this->custom['customJs'] = 'home';
         $this->data['customJS'] = $this->load->view('include/customJS.php',$this->custom, TRUE);
-        if(!$this->session->userdata('email')){
-            $this->data['user'] = null;
+        if(empty($this->session->userdata('email'))){
+            $this->data['user'] = false;
         }
         else{
             $this->data['user'] = true;
         }
-
     }
 
     public function index(){
@@ -115,24 +114,32 @@ class Home extends CI_Controller{
     }
 
     public function InputToCart(){
-        $this->load->model('UserData_model');
-        $idBarang = $this->input->post('idBarang');
-        $hargaBarang = $this->input->post('harga');
-        $jumlahBarang = $this->input->post('jumlah');
-        $user = $this->session->userdata('user');
-        $adata = $this->UserData_model->tambahKeranjang($idBarang, $hargaBarang, $jumlahBarang, $user);
-        if($adata){
-            $success = true;
-            $data = $adata;
+        if($this->data['user']){
+            $this->load->model('UserData_model');
+            $idBarang = $this->input->post('idBarang');
+            $hargaBarang = $this->input->post('harga');
+            $jumlahBarang = $this->input->post('jumlah');
+            $user = $this->session->userdata('user');
+            $adata = $this->UserData_model->tambahKeranjang($idBarang, $hargaBarang, $jumlahBarang, $user);
+            if($adata){
+                $success = true;
+                $data = $adata;
+            }
+            else{
+                $success = false;
+                $data = "Data Couldn't be rendered";
+            }
+            echo json_encode(array(
+                "success"=>$success,
+                "data"=>$data
+            ));
         }
         else{
-            $success = false;
-            $data = "Data Couldn't be rendered";
+            echo json_encode(array(
+                "success"=>false,
+                "data"=>"SessionNotFound"
+            ));
         }
-        echo json_encode(array(
-            "success"=>$success,
-            "data"=>$data
-        ));
     }
 
 }

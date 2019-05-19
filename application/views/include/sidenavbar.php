@@ -56,7 +56,7 @@
 <li class="nav-item">
   <a class="nav-link" href="<?php echo base_url('cms/Admin/listTransaction') ?>">
     <i class="fas fa-fw fa-file-alt"></i>
-    <span>Report</span></a>
+    <span>Transactions</span></a>
 </li>
 
 <!-- Divider -->
