@@ -34,7 +34,7 @@
 </head>
 <body>
 <?php
-if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; } ;
+if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { echo $staticnavbarUnloggedin; echo "<h2 style='margin-left: 40% ;margin-top: 50%'>PLEASE LOGIN FIRST<h2></h2>"; return; } ;
 ?>
 <div class="wrapper" style="margin-top: 20px;">
     <div class="main-panel">
@@ -199,24 +199,28 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                if(res.success){
                   let det = $('#detail');
                   for(let i =0; i< data.length; i++){
-                      // det.append('<div class="card" style="width: 100%;">'+
-                      //     '<div class="card-body">'+
-                      //     '<h5 class="card-title">Transaction Id : '+data[i].transactionId+'</h5>'+
-                      //       '<h6 class="card-subtitle mb-2 text-muted">Time : '+data[i].waktu+' </h6>'+
-                      //         for(let j=i; data[i].transactionId==data[i+1].transactionId;j++){
-                      //         }
-                  // }
-                  //     <p class="card-text">Detail</p>
-                  //         <a style="color: deepskyblue">Total : </a>
-                  //     </div>
-                  //     </div>')
-                  // }
+                      let z = '';
+                      let total = 0;
+                      for(let j = 0; j < data[i].barang.length; j++){
+                          z+='<h5 class="card-text">Nama : '+data[i].barang[j].barangNama+'</h5>'+
+                              '<h6 class="card-text">Jumlah : '+data[i].barang[j].barangJumlah+'</h6>'+
+                              '<h6 class="card-text">Harga  : '+data[i].barang[j].barangHarga+'</h6>'+
+                              '<hr align="center" width="50%">';
+                          total += (data[i].barang[j].barangJumlah*data[i].barang[j].barangHarga)
+                      }
+                      det.append('<div class="card" style="width: 100%;">'+
+                          '<div class="card-body">'+
+                          '<h5 class="card-title">Transaction Id : '+data[i].id+'</h5>'+
+                            '<h6 class="card-subtitle mb-2 text-muted">Time : '+data[i].waktu+' </h6>'+
+                            '<h4 class="card-text">Detail</h4>'+z+
+                            '<h4 class="card-footer" style="color: deepskyblue">Total : '+total+'</h4>');
+                      }
                   }
-               }
-               else{
-                   alert(res.data);
-               }
-           }
+                   else{
+                       alert(res.data);
+                   }
+               // ''<a style="color: deepskyblue">Total : </a>
+                  }
        });
    }
 

@@ -67,43 +67,47 @@ class ProfileController extends CI_Controller
         if($tsdata){
             $success = true;
             foreach($tsdata as $i){
-                if($tempdata.count()==0){
+                if(sizeof($tempdata)==0){
                     $tempbarang = array(
-                        "barangNama": $i->barangId;
-                        "barangHarga": $i->barangHarga;
-                        "barangJumlah": $i->jumlah;
-                    )
+                        "barangNama"=>$i->barangNama,
+                        "barangHarga"=> $i->barangHarga,
+                        "barangJumlah"=> $i->jumlah
+                    );
                     $temptrans = array(
-                        "id": $i->transactionId;
-                        "waktu": $i->waktu;
-                        "barang": $tempbarang;
-                    )
-                    $tempdata.array_push($temptrans);
-                }
-                $index = $tempdata.count() - 1;
-                if($tempdata[$index]->transactionId == $i->transactionId){
-                    $tempbarang = array(
-                        "barangNama": $i->barangId;
-                        "barangHarga": $i->barangHarga;
-                        "barangJumlah": $i->jumlah;
-                    )
-                    $tempdata[$index]->barang.array_push($tempbarang);
+                        "id"=>$i->transactionId,
+                        "waktu"=> $i->waktu,
+                        "barang"=> array()
+                    );
+                    array_push($temptrans['barang'], $tempbarang);
+                    array_push($tempdata,$temptrans);
                 }
                 else{
-                    $tempbarang = array(
-                        "barangNama": $i->barangId;
-                        "barangHarga": $i->barangHarga;
-                        "barangJumlah": $i->jumlah;
-                    )
-                    $temptrans = array(
-                        "id": $i->transactionId;
-                        "waktu": $i->waktu;
-                        "barang": $tempbarang;
-                    )
-                    $tempdata.array_push($temptrans);
+                    $index = count($tempdata) - 1;
+                    if($tempdata[$index]['id'] == $i->transactionId){
+                        $tempbarang = array(
+                            "barangNama"=>$i->barangNama,
+                            "barangHarga"=> $i->barangHarga,
+                            "barangJumlah"=> $i->jumlah
+                        );
+                        array_push($tempdata[$index]['barang'],$tempbarang);
+                    }
+                    else{
+                        $tempbarang = array(
+                            "barangNama"=>$i->barangNama,
+                            "barangHarga"=> $i->barangHarga,
+                            "barangJumlah"=>$i->jumlah
+                        );
+                        $temptrans = array(
+                            "id"=>$i->transactionId,
+                            "waktu"=>$i->waktu,
+                            "barang"=> array()
+                        );
+                        array_push($temptrans['barang'], $tempbarang);
+                        array_push( $tempdata,$temptrans);
+                    }
                 }
             }
-            $data = $tsdata;
+            $data = $tempdata;
         }
         else{
             $success = false;
