@@ -40,7 +40,7 @@
 						<p class="product-description"><?php echo $barang->details?></p>
 						<h4 class="price">Current Price: <span class="spanHarga">  </span></h4>
 						<label>Jumlah : </label>
-						<div class="row">
+						<div class="row" id="barangStock">
 							<input id='txtQty' placeholder="Enter number" value="" min="0" max="<?php echo $barang->stock?>" type="number" class="input col-3" required>
 						</div>
 						<br>	
@@ -63,8 +63,19 @@
 <script>
 		var basds = '<?php echo base_url() ?>';
 		let har = <?php echo $barang->hargaJual ?>;
+		let stock = <?php echo $barang->stock ?>;
+		let persen = <?php echo $barang->persen ?>;
 		$(document).ready(function(){
-			$('.spanHarga').html("Rp"+har.toLocaleString('id-ID'));
+			if(persen > 0){
+				let harpersen = har*(100-persen);
+				$('.spanHarga').html('<del><a style="color:red;">Rp '+harpersen.toLocaleString('id-ID')+'</a></del> '+"Rp "+har.toLocaleString('id-ID'));
+			}
+			else{
+				$('.spanHarga').html("Rp "+har.toLocaleString('id-ID'));
+			}
+			if(stock <= 0){
+				$('#barangStock').html('<p class="card-text" id="cardHarga" style="color:red;">Out of Stock</p>');
+			}
 			$('#buttonAdd').click(function(){
 					let id = <?php echo $idBarang; ?>;
 					let harga = <?php echo $produk[0]->hargaJual ?>;
