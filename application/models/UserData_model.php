@@ -57,10 +57,10 @@ class UserData_model extends CI_Model{
         }
     }
 
-    public function tambahKeranjang($id, $harga, $jlh, $name){
+    public function tambahKeranjang($name, $harga, $jlh, $user){
         $this->db->select(array('shoppingCart'));
         $this->db->from('user');
-        $this->db->where('username', $name);
+        $this->db->where('username', $user);
         $query = $this->db->get();
         $isi = $query->row();
         $hasil='';
@@ -71,7 +71,7 @@ class UserData_model extends CI_Model{
                 array_push($cart, $tempcart[$i]);
             }
             $temp = (array(
-                "id"=>$id,
+                "namaBarang"=>$name,
                 "harga"=>$harga,
                 "jumlah"=>$jlh
             ));
@@ -81,7 +81,7 @@ class UserData_model extends CI_Model{
         else{
             $hasil = json_encode(
                 array(array(
-                    "id"=>$id,
+                    "namaBarang"=>$name,
                     "harga"=>$harga,
                     "jumlah"=>$jlh
                 ))
@@ -90,7 +90,7 @@ class UserData_model extends CI_Model{
         $data = array(
             "shoppingCart" => $hasil
         );
-        $this->db->where('username', $name);
+        $this->db->where('username', $user);
         $result = $this->db->update('user', $data);
         // print_r($hasil);
         return $result;
@@ -104,7 +104,6 @@ class UserData_model extends CI_Model{
                 'alamat'=>$address,
                 'saldo'=>$balance
             );
-
             $this->db->where('username', $user);
             $this->db->update('user', $data);
             return true;
@@ -140,5 +139,19 @@ class UserData_model extends CI_Model{
         $query = $this->db->get();
         $res = $query->row();
         return $res->userId;
+    }
+
+    public function renderCart($username){
+        $this->db->select('shoppingCart');
+        $this->db->from('user');
+        $this->db->where('username', $username);
+        $query = $this->db->get();
+        $result = $query->row();
+        if($result){
+            return json_decode($result->shoppingCart);
+        }
+        else{
+            return false;
+        }
     }
 }

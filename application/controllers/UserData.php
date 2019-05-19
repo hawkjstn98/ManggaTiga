@@ -65,4 +65,23 @@ class UserData extends CI_Controller{
            "formerror"=>isset($formerr) ? $formerr : null
         ));
     }
+
+    public function renderShoppingCart(){
+        $this->load->model('UserData_model');
+        $usn = $this->input->post('username');
+        $cproduct = $this->UserData_model->renderCart($usn);
+        if($cproduct){
+            $success = true;
+            $data = $cproduct;
+        }
+        else{
+            $success = false;
+            $data = "Update Data Failed";
+        }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$cproduct
+        ));
+    }
+
 }

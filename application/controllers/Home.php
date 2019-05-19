@@ -117,11 +117,11 @@ class Home extends CI_Controller{
     public function InputToCart(){
         if($this->data['user']){
             $this->load->model('UserData_model');
-            $idBarang = $this->input->post('idBarang');
+            $name = $this->input->post('name');
             $hargaBarang = $this->input->post('harga');
             $jumlahBarang = $this->input->post('jumlah');
             $user = $this->session->userdata('user');
-            $adata = $this->UserData_model->tambahKeranjang($idBarang, $hargaBarang, $jumlahBarang, $user);
+            $adata = $this->UserData_model->tambahKeranjang($name, $hargaBarang, $jumlahBarang, $user);
             if($adata){
                 $success = true;
                 $data = $adata;

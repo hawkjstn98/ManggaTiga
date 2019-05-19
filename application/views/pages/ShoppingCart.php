@@ -45,30 +45,67 @@
 </body>
 <script>
     var pathItemImage="";
+    var data = [];
+    <?php echo "var basesc='".base_url()."';"; ?>
+
+    renderCart();
 
     function renderCart(){
+        $.ajax({
+            url: basesc+'UserData/renderShoppingCart',
+            type:'post',
+            data: {"username": '<?php echo $this->session->userdata('user')?>'},
+            dataType: 'json',
+            success: function(res){
+                if(res.success){
+                    data = res.data;
+                    console.log(data);
+                    renderItem(data);
 
+                }
+                else{
+                    alert(res.data);
+                }
+            }
+        });
     }
 
-    $("#fieldCartCard").append(
-        "<div class='card'>"+
-            "<div class='row'>"+
-                "<div class='col-2'><img src='" + pathItemImage + "' width='70' height='70'></div>"+
-                    "<div class='col-6'>"+
-                        "<h5>[disini nama barang]</h5>"+
-                        "<hr>"+
-                        "<h6>[disini harga]</h6>"+
-                    "</div>"+
-                    "<div class='col-1'></div>"+
-                        "<div class='col-3'>"+
-                            "<label>Jumlah : </label>"+
-                            "<div class='row'>"+
-                                "<div class='col-4'></div><button align='center' style='margin-top:10px; margin-left:' class='btn btn-secondary bg-danger'><i class='fa fa-trash'></i></button>"+
-                            "</div>"+
-                        "</div>"+
-                    "</div>"+
-                "</div>"+
-            "</div>"+
-        "</div>"
-    );
+    function renderItem(data){
+        $("#fieldCartCard").html('');
+        for(let i = 0; i < data.length; i++) {
+            $("#fieldCartCard").append(
+                "<div class='card'>" +
+                "<div class='row'>" +
+                "<div class='col-2'><img src='" + pathItemImage + "' width='70' height='70'></div>" +
+                "<div class='col-6'>" +
+                "<h5>" + data[i].namaBarang + "</h5>" +
+                "<hr>" +
+                "<h6>" + data[i].harga + "</h6>" +
+                "</div>" +
+                "<div class='col-1'></div>" +
+                "<div class='col-3'>" +
+                "<label>Jumlah : " + data[i].jumlah + " </label>" +
+                "<div class='row'>" +
+                "<div class='col-4'></div><button align='center' style='margin-top:10px; margin-left:' class='btn btn-secondary bg-danger' onclick='deleteItem(" + '"' + data[i].namaBarang + '"' + ")'><i class='fa fa-trash'></i></button>" +
+                "</div>" +
+                "</div>" +
+                "</div>" +
+                "</div>" +
+                "</div>" +
+                "</div>")
+        }
+    }
+    function deleteItem(nama){
+        alert(nama);
+        for(let i = 0 ; data.length; i++){
+            if(data[i].namaBarang==nama){
+                data.pop(data,i);
+                renderItem(data);
+                //abis render ulang mustinya di request lagi biar shopping cartnya ke update
+                break;
+            }
+        }
+    }
+
+
 </script>

@@ -77,8 +77,8 @@
 				$('#barangStock').html('<p class="card-text" id="cardHarga" style="color:red;">Out of Stock</p>');
 			}
 			$('#buttonAdd').click(function(){
-					let id = <?php echo $idBarang; ?>;
-					let harga = <?php echo $produk[0]->hargaJual ?>;
+					let name = '<?php echo $produk[0]->barangNama ?>';
+					let harga = '<?php echo $produk[0]->hargaJual ?>';
 					let jumlah = $('#txtQty').val();
 					
 					$.ajax({
@@ -86,13 +86,13 @@
 						type: 'post',
 								dataType : 'json',
 						data: {
-							"idBarang": id,
+							"name": name,
 							"harga": harga,
 							"jumlah": jumlah
 						},
 						success : function(res){
 							if(res.success){
-                                alert("Ditambah ke keranjang " + id);
+                                alert("Ditambah ke keranjang " + name);
 							}
 							else if(res.data == "SessionNotFound"){
 								alert("Login First");
