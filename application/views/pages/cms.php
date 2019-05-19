@@ -159,7 +159,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" id="btnLogout">Logout</a>
         </div>
       </div>
     </div>
@@ -167,7 +167,27 @@
 
   <?php echo $js ?>
   <?php echo $chart ?>
+<script>
+    <?php echo "var baseee='".base_url()."';"; ?>
+    $('#btnLogout').click(function(){
+        $.ajax({
+            url: baseee+'/Home/Logout',
+            type: 'post',
+            data:{
+            },
+            success: function(res){
+                alert(res);
+                location.reload();
+            }
+        })
+    });
 
+
+
+    $('#btnProfile').click(function(){
+        window.location.href = base+'user/profile';
+    });
+</script>
 </body>
 
 </html>
