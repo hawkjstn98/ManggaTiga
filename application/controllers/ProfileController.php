@@ -62,11 +62,45 @@ class ProfileController extends CI_Controller
         $user = $this->input->post('username');
         $tsdata = $this->UserData_model->renderTransaction($user);
         $tempdata = array();
+        $tempbarang = array();
+        $temptrans = array();
         if($tsdata){
             $success = true;
             foreach($tsdata as $i){
-                if($tempdata.size==0){
-                    $tempdata.array_push($i);
+                if($tempdata.count()==0){
+                    $tempbarang = array(
+                        "barangNama": $i->barangId;
+                        "barangHarga": $i->barangHarga;
+                        "barangJumlah": $i->jumlah;
+                    )
+                    $temptrans = array(
+                        "id": $i->transactionId;
+                        "waktu": $i->waktu;
+                        "barang": $tempbarang;
+                    )
+                    $tempdata.array_push($temptrans);
+                }
+                $index = $tempdata.count() - 1;
+                if($tempdata[$index]->transactionId == $i->transactionId){
+                    $tempbarang = array(
+                        "barangNama": $i->barangId;
+                        "barangHarga": $i->barangHarga;
+                        "barangJumlah": $i->jumlah;
+                    )
+                    $tempdata[$index]->barang.array_push($tempbarang);
+                }
+                else{
+                    $tempbarang = array(
+                        "barangNama": $i->barangId;
+                        "barangHarga": $i->barangHarga;
+                        "barangJumlah": $i->jumlah;
+                    )
+                    $temptrans = array(
+                        "id": $i->transactionId;
+                        "waktu": $i->waktu;
+                        "barang": $tempbarang;
+                    )
+                    $tempdata.array_push($temptrans);
                 }
             }
             $data = $tsdata;
