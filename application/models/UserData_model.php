@@ -66,7 +66,10 @@ class UserData_model extends CI_Model{
         $hasil='';
         $cart = array();
         if($isi->shoppingCart!='Not Available Yet'){
-            array_push($cart,json_decode($isi->shoppingCart) );
+            $tempcart = json_decode($isi->shoppingCart);
+            for($i = 0 ; $i < sizeof($tempcart); $i++){
+                array_push($cart, $tempcart[$i]);
+            }
             $temp = (array(
                 "id"=>$id,
                 "harga"=>$harga,
