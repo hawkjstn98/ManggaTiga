@@ -89,7 +89,7 @@
             </div>
             <div class="form-group">
               <div class="custom-file" style="width: 100%;">
-                  <input type="file" class="custom-file-input" name="-imageUpload" id="inputImageBanner" onchange="readURL(this)" accept=".png,.jpg,.jpeg" required multiple>
+                  <input type="file" class="custom-file-input" name="imageUpload" id="inputImageBanner" onchange="readURL(this)" accept=".png,.jpg,.jpeg" required multiple>
                   <label class="custom-file-label" for="inputGroupFile04">Choose file (max. 2MB)</label>
               </div>
             </div>

@@ -14,71 +14,88 @@ class Cms extends CI_Controller{
         $this->load->model('Carousel_model');
         $this->load->model('Product_model');
         $this->load->model('Transaction_model');
-    }
 
-    public function index(){
         if($this->session->userdata('user')=='ADMINISTRATORMWB'){
-            $this->load->view('pages/cms.php', $this->data);
+            //$this->load->view('pages/cms.php', $this->data);
+            $this->data['logged'] = true;
         }
         else{
+            $this->data['logged'] = false;
             echo "ACCESS DENIED";
         }
     }
 
+    public function index(){
+        // if($this->session->userdata('user')=='ADMINISTRATORMWB'){
+        if($this->data['logged']){
+            $this->load->view('pages/cms.php', $this->data);
+        }
+        // }
+        // else{
+        //     echo "ACCESS DENIED";
+        // }
+    }
+
     public function BannerConfig(){
-        $this->custom['customJs'] = 'banner';
-        $this->custom['carouseldata'] = $this->Carousel_model->getCarousel();
-        $this->data['bannercustomjs'] = $this->load->view('include/customJS.php',$this->custom, TRUE);
-        $this->load->view('pages/bannerConf.php', $this->data);
+        if($this->data['logged']){
+            $this->custom['customJs'] = 'banner';
+            $this->custom['carouseldata'] = $this->Carousel_model->getCarousel();
+            $this->data['bannercustomjs'] = $this->load->view('include/customJS.php',$this->custom, TRUE);
+            $this->load->view('pages/bannerConf.php', $this->data);
+        }
     }
 
     public function NewProduct(){
-        $this->custom['customJs'] = 'newproduct';
-        $this->data['brand'] = $this->Product_model->getBrands();
-        $this->data['category'] = $this->Product_model->getCategories();
-        $this->data['blankbegone'] = $this->load->view('include/customJS.php', $this->custom, TRUE);
-        $this->load->view('pages/newproduct.php', $this->data);
+        if($this->data['logged']){
+            $this->custom['customJs'] = 'newproduct';
+            $this->data['brand'] = $this->Product_model->getBrands();
+            $this->data['category'] = $this->Product_model->getCategories();
+            $this->data['blankbegone'] = $this->load->view('include/customJS.php', $this->custom, TRUE);
+            $this->load->view('pages/newproduct.php', $this->data);
+        }
     }
 
     public function InsertProduct(){
-        $name = $this->input->post('ProductName');
-        $brand = $this->input->post('Brand');
-        $category = $this->input->post('Category');
-        $detail = $this->input->post('Detail');
-        $qty = $this->input->post('QuantityPerUnit');
-        $price = $this->input->post('Price');
-        $data = array(
-            'barangNama' => $name,
-            'details' => $detail,
-            'categoryId' => $category,
-            'brandId' => $brand,
-            'hargaJual' => $price,
-            'stock' => $qty,
-            'promoId' => 1
-        );
-        $model = $this->Product_model->newProduct($data);
+        if($this->data['logged']){
+            $name = $this->input->post('ProductName');
+            $brand = $this->input->post('Brand');
+            $category = $this->input->post('Category');
+            $detail = $this->input->post('Detail');
+            $qty = $this->input->post('QuantityPerUnit');
+            $price = $this->input->post('Price');
+            $data = array(
+                'barangNama' => $name,
+                'details' => $detail,
+                'categoryId' => $category,
+                'brandId' => $brand,
+                'hargaJual' => $price,
+                'stock' => $qty,
+                'promoId' => 1
+            );
+            $model = $this->Product_model->newProduct($data);
 
-        $this->load->model('Uploadpicture_model');
-        $config["upload_path"] = "./assets/images/" . $this->getCategoryName($category);
-        $config["allowed_types"] = "png|jpg|jpeg";
-        $config["encrypt_name"] = TRUE;
-        $this->load->library('upload', $config);
+            $this->load->model('Uploadpicture_model');
+            $config["upload_path"] = "./assets/images/" . $this->getCategoryName($category);
+            $config["allowed_types"] = "png|jpg|jpeg";
+            $config["encrypt_name"] = TRUE;
+            $this->load->library('upload', $config);
 
-        if($this->upload->do_upload('imageUpload')){
-            $data = array('upload_data' => $this->upload->data());
-            //$brandId = $this->input->post('description');
-            $img = $data['upload_data']['file_name'];
-            $imgstr = "/assets/images/" . $this->getCategoryName($category) . "/" . $img;
-            $res = $this->Uploadpicture_model->uploadImage($brand, $imgstr);
-            $rs = true;
-            $rd = $res;
+            if($this->upload->do_upload('imageUpload')){
+                $data = array('upload_data' => $this->upload->data());
+                //$brandId = $this->input->post('description');
+                $img = $data['upload_data']['file_name'];
+                $imgstr = "/assets/images/" . $this->getCategoryName($category) . "/" . $img;
+                $res = $this->Uploadpicture_model->uploadImage($brand, $imgstr);
+                $rs = true;
+                $rd = $res;
+            }
+            else{
+                $rs = false;
+                $rd = "Ooops somehing went wrong with the data";
+            }
+
+            echo json_encode(array("success"=>true, "data"=>$model));
         }
-        else{
-            $rs = false;
-            $rd = "Ooops somehing went wrong with the data";
-        }
-
-        echo json_encode(array("success"=>true, "data"=>$model));
     }
 
     public function getBrandName($brandID){
@@ -94,85 +111,115 @@ class Cms extends CI_Controller{
     }
 
     public function NewBrand(){
-        $this->custom['customJs'] = 'newbrand';
-        $this->data['blankbegone'] = $this->load->view('include/customJS.php', $this->custom, TRUE);
-        $this->load->view('pages/newbrand.php', $this->data);
+        if($this->data['logged']){
+            $this->custom['customJs'] = 'newbrand';
+            $this->data['blankbegone'] = $this->load->view('include/customJS.php', $this->custom, TRUE);
+            $this->load->view('pages/newbrand.php', $this->data);
+        }
     }
 
     public function InsertBrand(){
-        $name = $this->input->post('BrandName');
-        $model = $this->Product_model->newBrand($name);
-        echo json_encode(array("success"=>true, "data"=>$model));
+        if($this->data['logged']){
+            $name = $this->input->post('BrandName');
+            $model = $this->Product_model->newBrand($name);
+            echo json_encode(array("success"=>true, "data"=>$model));
+        }
     }
 
     public function ListProduct(){
-        $this->data['product'] = $this->Product_model->getProducts();
-        $this->load->view('pages/listproduct.php', $this->data);
+        if($this->data['logged']){
+            $this->data['product'] = $this->Product_model->getProducts();
+            $this->load->view('pages/listproduct.php', $this->data);
+        }
     }
     
+    public function DeleteProduct(){
+        if($this->data['logged']){
+            $id = $this->input->post('id');
+            $barang = $this->input->post('barang');
+            $res = $this->Product_model->deleteProduct($barang, $id);
+            if($res){
+                $rs = true;
+                $rt = "Delete Success";
+            }else{
+                $rs = false;
+                $rt = "Delete Failed";
+            }
+            echo json_encode(array("success"=>$rs, "data"=>$rt));
+        }
+    }
+
     public function ListTransaction(){
-        $this->data['transaction'] = $this->Transaction_model->getTransactions();
-        $this->load->view('pages/listtransaction.php', $this->data);
+        if($this->data['logged']){
+            $this->data['transaction'] = $this->Transaction_model->getTransactions();
+            $this->load->view('pages/listtransaction.php', $this->data);
+        }
     }
 
     public function DeleteTransaction(){
-        $id = $this->input->post('id');
-        $barang = $this->input->post('barang');
-        $res = $this->Transaction_model->deleteTransaction($barang, $id);
-        if($res){
-            $rs = true;
-            $rt = "Delete Success";
-        }else{
-            $rs = false;
-            $rt = "Delete Failed";
+        if($this->data['logged']){
+            $id = $this->input->post('id');
+            $barang = $this->input->post('barang');
+            $res = $this->Transaction_model->deleteTransaction($barang, $id);
+            if($res){
+                $rs = true;
+                $rt = "Delete Success";
+            }else{
+                $rs = false;
+                $rt = "Delete Failed";
+            }
+            echo json_encode(array("success"=>$rs, "data"=>$rt));
         }
-        echo json_encode(array("success"=>$rs, "data"=>$rt));
     }
 
     public function UploadBanner(){
-        $this->load->model('Uploadbanner_model');
-        $config["upload_path"] = "./assets/carousel";
-        $config["allowed_types"] = "png|jpg|jpeg";
-        $config["encrypt_name"] = TRUE;
-        //echo json_encode("ShoppingChart");
-        $this->load->library('upload',$config);
+        if($this->data['logged']){
+            $this->load->model('Uploadbanner_model');
+            $config["upload_path"] = "./assets/carousel";
+            $config["allowed_types"] = "png|jpg|jpeg";
+            $config["encrypt_name"] = TRUE;
+            //echo json_encode("ShoppingChart");
+            $this->load->library('upload',$config);
 
-//        $proses = $this->upload->do_upload('imageUpload');
-//        if($proses) {
-//            print_r($this->upload->data());
-//        } else {
-//            print_r($this->upload->display_error());
-//        }
+        //    $proses = $this->upload->do_upload('imageUpload');
+        //    if($proses) {
+        //        print_r($this->upload->data());
+        //    } else {
+        //        print_r($this->upload->display_error());
+        //    }
 
 
-        if($this->upload->do_upload('imageUpload')){
-            $data = array('upload_data' => $this->upload->data());
-            $desc = $this->input->post('description');
-            $img = $data['upload_data']['file_name'];
-            $imgstr = "/assets/carousel/".$img;
-            $res = $this->Uploadbanner_model->uploadImage($desc, $imgstr);
-            $rs = true;
-            $rd = $res;
+            if($this->upload->do_upload('imageUpload')){
+                $data = array('upload_data' => $this->upload->data());
+                $desc = $this->input->post('description');
+                $img = $data['upload_data']['file_name'];
+                $imgstr = "/assets/carousel/".$img;
+                $res = $this->Uploadbanner_model->uploadImage($desc, $imgstr);
+                $rs = true;
+                $rd = $res;
+            }
+            else{
+                $rs = false;
+                $rd = "Ooops somehing went wrong with the data";
+            }
+            echo json_encode(array("success"=>$rs, "data"=>$rd));
         }
-        else{
-            $rs = false;
-            $rd = "Ooops somehing went wrong with the data";
-        }
-        echo json_encode(array("success"=>$rs, "data"=>$rd));
     }
 
     public function DeleteBanner(){
-        $this->load->model("Uploadbanner_model");
-        $id = $this->input->post('id');
-        $res = $this->Uploadbanner_model->deleteImage($id);
-        if($res){
-            $rs = true;
-            $rt = "Delete Success";
-        }else{
-            $rs = false;
-            $rt = "Delete Failed";
+        if($this->data['logged']){
+            $this->load->model("Uploadbanner_model");
+            $id = $this->input->post('id');
+            $res = $this->Uploadbanner_model->deleteImage($id);
+            if($res){
+                $rs = true;
+                $rt = "Delete Success";
+            }else{
+                $rs = false;
+                $rt = "Delete Failed";
+            }
+            echo json_encode(array("success"=>$rs, "data"=>$rt));
         }
-        echo json_encode(array("success"=>$rs, "data"=>$rt));
     }
 }
 

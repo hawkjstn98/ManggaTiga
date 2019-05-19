@@ -55,9 +55,9 @@ class Product_model extends CI_Model{
         $this->db->join('brand', 'brand.brandId = barang.brandId');
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
+        $this->db->where('barang.aksesBarang', 1);
         $this->db->order_by("promo.persen","DESC");
         $this->db->limit(6);
-//        $this->db->orderby(4, 'DESC');
         $query = $this->db->get();
 
         $result = $query->result();
@@ -75,6 +75,7 @@ class Product_model extends CI_Model{
         $this->db->join('brand', 'brand.brandId = barang.brandId');
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
+        $this->db->where('barang.aksesBarang', 1);
         $this->db->limit(6);
         $this->db->order_by('barang.barangId', 'DESC');
         $query = $this->db->get();
@@ -95,6 +96,7 @@ class Product_model extends CI_Model{
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
         $this->db->where('category.categoryNama', $category);
+        $this->db->where('barang.aksesBarang', 1);
         $this->db->order_by('barang.barangNama', 'ASC');
         $query = $this->db->get();
 
@@ -114,6 +116,7 @@ class Product_model extends CI_Model{
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
         $this->db->where('category.categoryNama', $category);
+        $this->db->where('barang.aksesBarang', 1);
         $this->db->order_by('brand.brandNama', 'ASC');
         $query = $this->db->get();
 
@@ -133,6 +136,7 @@ class Product_model extends CI_Model{
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
         $this->db->where('barang.barangId', $id);
+        $this->db->where('barang.aksesBarang', 1);
         $query = $this->db->get();
 
         $result = $query->result();
@@ -151,6 +155,7 @@ class Product_model extends CI_Model{
         $this->db->join('brand', 'brand.brandId = barang.brandId');
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
+        $this->db->where('barang.aksesBarang', 1);
         $this->db->like('barang.barangNama',$search,'both');
         $query = $this->db->get();
 
@@ -160,6 +165,26 @@ class Product_model extends CI_Model{
         }
         else{
             return false;
+        }
+    }
+
+    public function deleteProduct($barang, $id){ //ambil dari Transaction_model.php
+        $jumlah = $this->db->select('barangId')->from('barang')->where('barangId', $id)->get()->result();
+        if(count($jumlah)>=1){
+            $this->db->set('aksesBarang', 0);
+            $this->db->where('barangId', $id);
+            $this->db->where('barangNama', $barang);
+            $this->db->where('barang.aksesBarang', 1);
+            $query = $this->db->update('barang');
+            
+            $result = $query;
+
+            if($result){
+                return $query;
+            }
+            else{
+                return false;
+            }
         }
     }
 

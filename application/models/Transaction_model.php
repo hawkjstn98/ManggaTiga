@@ -27,9 +27,9 @@ class Transaction_model extends CI_Model{
             $this->db->where('barangId', $barang);
             $query = $this->db->delete('transaction_detail');
 
-            $result = $query->result();
+            $result = $query;
             if($result){
-                return $query->result();
+                return $query;
             }
             else{
                 return false;
