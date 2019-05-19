@@ -112,9 +112,66 @@
     </div>
   </div>
 
+  <!-- Edit Modal-->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" id="nama-mod">
+            <label for="nama1">Nama Barang</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="nama1" id="nama1" placeholder="Nama Barang" disabled>
+            </div>
+          </div>
+          <div class="form-group" id="promo-mod">
+            <label for="promo1">Promo:</label>
+            <select class="form-control" id="promo1">
+              <?php
+                  foreach ($promo as $row){
+                    if(isset($row->persen)){
+                      echo '<option value="'.$row->promoId.'">'.$row->persen.'%<option>';
+                    }
+                  }
+              ?>
+            </select>
+          </div>
+          <div class="form-group" id="harga-mod">
+            <label for="harga1">Harga</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Rp.</span>
+              </div>
+              <input type="number" class="form-control" name="harga1" id="harga1" placeholder="Harga">
+            </div>
+          </div>
+          <div class="form-group" id="stock-mod">
+            <label for="stock1">Stock : <?php  ?></label>
+            <div class="input-group mb-3">
+              <input type="number" class="form-control" name="stock1" id="stock1" placeholder="Tambah Stock">
+              <div class="input-group-append">
+                <span class="input-group-text">Unit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="#">Save</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <?php echo $js ?>
   <script>
     $(document).ready(function() {
+      var base = <?php echo base_url('') ?>
       var tab = $('#tableBarang').DataTable({
         columnDefs:[
           {
@@ -130,11 +187,39 @@
         processing: true,
       });
 
+      $('select option')
+        .filter(function() {
+            return !this.value || $.trim(this.value).length == 0 || $.trim(this.text).length == 0;
+        })
+      .remove();
+
       //EDIT BUTTON HANDLER
       $("#tableBarang tbody").on("click", ".eb", function () {
         let data = tab.row($(this).parents("tr")).data();
-        alert(data[0]);
-
+        $.ajax({
+          url: base+'Cms/InputToCart',
+          type: 'post',
+              dataType : 'json',
+          data: {
+            "idBarang": id,
+            "harga": harga,
+            "jumlah": jumlah
+          },
+          success : function(res){
+            if(res.success){
+                              alert("Ditambah ke keranjang " + id);
+            }
+            else if(res.data == "SessionNotFound"){
+              alert("Login First");
+              $('#modalLoginForm').modal();
+              $('#email').focus();
+            }
+            else{
+              alert(res.data);
+            }
+          }
+        });
+        $('#editModal').modal();
       });
 
       //DELETE BUTTON HANDLER
@@ -143,7 +228,7 @@
         let base = "<?php echo base_url() ?>";
         //alert("ID: " + data[0]);
         //alert("Barang: " + data[1]);
-        let conf = confirm("Are you sure want to delete this transaction ?");
+        let conf = confirm("Delete this transaction ?");
         if(conf){
             let barang = data[1];
             let id = data[0];

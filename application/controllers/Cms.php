@@ -93,9 +93,55 @@ class Cms extends CI_Controller{
                 $rs = false;
                 $rd = "Ooops somehing went wrong with the data";
             }
-
             echo json_encode(array("success"=>true, "data"=>$model));
         }
+    }
+
+    public function UpdateProduct(){
+        if($this->data['logged']){
+            $name = $this->input->post('ProductName');
+            $brand = $this->input->post('Brand');
+            $category = $this->input->post('Category');
+            $detail = $this->input->post('Detail');
+            $qty = $this->input->post('QuantityPerUnit');
+            $price = $this->input->post('Price');
+            $data = array(
+                'barangNama' => $name,
+                'details' => $detail,
+                'categoryId' => $category,
+                'brandId' => $brand,
+                'hargaJual' => $price,
+                'stock' => $qty,
+                'promoId' => 1
+            );
+            $model = $this->Product_model->newProduct($data);
+
+            $this->load->model('Uploadpicture_model');
+            $config["upload_path"] = "./assets/images/" . $this->getCategoryName($category);
+            $config["allowed_types"] = "png|jpg|jpeg";
+            $config["encrypt_name"] = TRUE;
+            $this->load->library('upload', $config);
+
+            if($this->upload->do_upload('imageUpload')){
+                $data = array('upload_data' => $this->upload->data());
+                //$brandId = $this->input->post('description');
+                $img = $data['upload_data']['file_name'];
+                $imgstr = "/assets/images/" . $this->getCategoryName($category) . "/" . $img;
+                $res = $this->Uploadpicture_model->uploadImage($brand, $imgstr);
+                $rs = true;
+                $rd = $res;
+            }
+            else{
+                $rs = false;
+                $rd = "Ooops somehing went wrong with the data";
+            }
+            echo json_encode(array("success"=>true, "data"=>$model));
+        }
+    }
+
+    public function getEditDetails($barangId){
+        $detail = $this->Product_model->editModalProduct($barangId);
+        
     }
 
     public function getBrandName($brandID){
@@ -129,6 +175,7 @@ class Cms extends CI_Controller{
     public function ListProduct(){
         if($this->data['logged']){
             $this->data['product'] = $this->Product_model->getProducts();
+            $this->data['promo'] = $this->Product_model->getPromo();
             $this->load->view('pages/listproduct.php', $this->data);
         }
     }

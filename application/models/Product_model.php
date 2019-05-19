@@ -24,6 +24,11 @@ class Product_model extends CI_Model{
         return $query->result(); 
     }
 
+    public function getPromo(){
+        $query = $this->db->get('promo');
+        return $query->result(); 
+    }
+
     public function newProduct($param){
         $data = array(
             'barangId' => '',
@@ -38,6 +43,14 @@ class Product_model extends CI_Model{
         );
         $query = $this->db->insert('barang', $data);
         return $query;
+    }
+
+    public function editModalProduct($param){
+        $this->db->select(array('barangNama', 'hargaJual', 'stock', 'aksesBarang'));
+        $this->db->from('barang');
+        $this->db->where('barangId', $param);
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function newBrand($param){
