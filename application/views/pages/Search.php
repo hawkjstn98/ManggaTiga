@@ -59,18 +59,16 @@
     ?>
     <script>
         $(document).ready(function(){
-            var judul = "Menampilkan hasil cari: " + <?php echo $stringSearch; ?>;
+            var judul = "Menampilkan hasil cari: " + '<?php echo $stringSearch; ?>';
             //console.log(judul);
             //alert(judul);
             $("#search").text(judul);
             let har = <?php echo $row->hargaJual ?>;
             $('.spanHarga').html("Rp"+har.toLocaleString('id-ID'));
-            let produk = array();
-            produk = <?php echo $produk; ?>;
-            alert(produk);
+            let produk = [];
+            produk = <?php echo json_encode($produk); ?>;
             for(let i=0; i< <?php echo $countProduk ?>; i++){
                 let idRow = "harga" + i;
-                alert(idRow);
                 $("#"+idRow).html("Rp"+produk[i].hargaJual.toLocaleString('id-ID'))
             }
         });
