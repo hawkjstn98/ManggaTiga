@@ -41,7 +41,7 @@
 						<h4 class="price">Current Price: <span class="spanHarga">  </span></h4>
 						<label>Jumlah : </label>
 						<div class="row" id="barangStock">
-							<input id='txtQty' placeholder="Enter number" value="" min="0" max="<?php echo $barang->stock?>" type="number" class="input col-3" required>
+							<input id='txtQty' placeholder="Enter number" value="" min="1" max="<?php echo $barang->stock?>" type="number" class="input col-3" required>
 						</div>
 						<br>	
 						<div class="action row">
@@ -92,7 +92,7 @@
 						},
 						success : function(res){
 							if(res.success){
-									alert("Ditambah ke keranjang " + id);
+                                alert("Ditambah ke keranjang " + id);
 							}
 							else if(res.data == "SessionNotFound"){
 								alert("Login First");
@@ -100,7 +100,7 @@
 								$('#email').focus();
 							}
 							else{
-								alert("res.data");
+								alert(res.data);
 							}
 						}
 					});
