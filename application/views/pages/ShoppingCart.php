@@ -16,7 +16,7 @@
     <div class="row" style="margin-bottom:40px;">
         <!-- Ini buat konten list item yang uda di card-->
         <div class="col-8" style="margin-top:20px;">
-            <h3>Item in Cart</h3>
+            <h3 style="font-family: Nunito, sans-serif; padding-top:25px;">Item in Cart</h3>
             <hr>
             <div id="fieldCartCard" class="container">
                 

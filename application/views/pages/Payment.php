@@ -16,13 +16,17 @@
         <div class="row" style="margin-bottom:40px;">
             <!-- Ini buat konten list item yang uda di card-->
             <div class="col-8" style="margin-top:20px;">
-                <h3>Check Out</h3>
-                <hr>
-                <div id="fieldCartCard" class="container">
+                <div id="fieldPembeli" class="container">
+                    <h3 style="font-family: Nunito, sans-serif; padding-top:25px;">Check Out</h3>
+                    <h4 style="font-family: Nunito, sans-serif;">Alamat Pengiriman</h4>
+                    <hr>
+                    <h5 id="username" style="font-family: Nunito, sans-serif;"><b>Nama</b></h5>
+                    <h6 id="username" style="font-family: Nunito, sans-serif;">Alamat</h6>
                     
                 </div>
+                <div id="fieldCartCard" class="container">
+                </div>
             </div>
-            <!-- -->
             <!-- ini buat field list harga & sum total -->
             <div class="col-4">
                 <div class="card">
@@ -30,7 +34,8 @@
                     <hr>
                     <div class="row">
                         <div class="col-8"><h5>Total Harga</h5></div>
-                        <div class="col-4"><h5 id="sumItemPrice">Rp...</h5></div></div>
+                        <div class="col-4"><h5 id="sumItemPrice">Rp...</h5></div>
+                    </div>
                     <hr>
                     <button class="btn btn-primary bg-success" onclick="window.location.href='<?php echo base_url('Redirect/payment');?>'" type="button">Beli</button>
                 </div>
