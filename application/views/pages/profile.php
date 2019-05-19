@@ -162,27 +162,34 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
 
 <script>
    <?php echo "var basedp='".base_url()."';"; ?>
-    $.ajax({
-        url: basedp+'ProfileController/renderUserData',
-        type: 'post',
-        dataType: 'json',
-        data: {"username": '<?php echo $this->session->userdata('user')?>'},
-        success: function(res){
-            console.log(res.data);
-            var data = res.data;
-            if(res.success){
-                $('#email').val(data[0].email);
-                $('#username').val(data[0].username);
-                $('#address').val(data[0].alamat);
-                $('#fname').val(data[0].namaDepan);
-                $('#lname').val(data[0].namaBelakang);
-                $('#phone').val(data[0].noHP);
-            }
-            else{
-                alert(res.data);
-            }
-        }
-    });
+
+   renderData();
+
+   function renderData(){
+       $.ajax({
+           url: basedp+'ProfileController/renderUserData',
+           type: 'post',
+           dataType: 'json',
+           data: {"username": '<?php echo $this->session->userdata('user')?>'},
+           success: function(res){
+               console.log(res.data);
+               var data = res.data;
+               if(res.success){
+                   $('#email').val(data[0].email);
+                   $('#username').val(data[0].username);
+                   $('#address').val(data[0].alamat);
+                   $('#fname').val(data[0].namaDepan);
+                   $('#lname').val(data[0].namaBelakang);
+                   $('#phone').val(data[0].noHP);
+               }
+               else{
+                   alert(res.data);
+               }
+           }
+       });
+   }
+
+
 
     $('#btnUpdate').click(function(){
         let fname = $('#fname').val();
@@ -195,10 +202,17 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                 dataType: 'json',
                 data: {"firstName": fname,
                     "lastName": lname,
-                    "address": address
+                    "address": address,
+                    "username": '<?php echo $this->session->userdata('user')?>'
                 },
                 success: function(res){
-                    
+                    if(res.success){
+                        alert("Update Success");
+                        renderData();
+                    }
+                    else{
+                        alert("Update Error");
+                    }
                 }
             })
         }

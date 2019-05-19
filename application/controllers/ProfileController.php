@@ -41,7 +41,19 @@ class ProfileController extends CI_Controller
         $fname = $this->input->post('firstName');
         $lname = $this->input->post('lastName');
         $address = $this->input->post('address');
-
-
+        $user = $this->input->post('username');
+        $pfdata = $this->UserData_model->updateUser($fname, $lname, $address,$user);
+        if($pfdata){
+            $success = true;
+            $data = $pfdata;
+        }
+        else{
+            $success = false;
+            $data = "Update Data Failed";
+        }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$data
+        ));
     }
 }

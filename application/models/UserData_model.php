@@ -54,8 +54,6 @@ class UserData_model extends CI_Model{
         if($result){
             return $query->result();
         }
-
-
     }
 
     public function tambahKeranjang($id, $harga, $jlh, $name){
@@ -92,7 +90,20 @@ class UserData_model extends CI_Model{
         return $result;
     }
 
-    public function updateUser(){
-        
+    public function updateUser($fname, $lname, $address, $user){
+        if($fname&&$lname&&$address&&$user){
+            $data = array(
+                'namaDepan' => $fname,
+                'namaBelakang' => $lname,
+                'alamat'=>$address
+            );
+
+            $this->db->where('username', $user);
+            $this->db->update('user', $data);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
