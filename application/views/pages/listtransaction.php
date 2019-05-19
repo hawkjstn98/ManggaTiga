@@ -44,6 +44,7 @@
                 <th>Alamat</th>
                 <th>Jumlah Barang</th>
                 <th>Total</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -60,6 +61,7 @@
                         echo "<td>".$row->alamat."</td>";
                         echo "<td>".$row->jumlah." Unit</td>";
                         echo "<td>".$a->format($row->jumlah*$row->barangHarga)."</td>";
+                        echo "<td>".$row->statusName."</td>";
                         echo "<td> <button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
                         echo "</tr>";
                       }

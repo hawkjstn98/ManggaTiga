@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 18, 2019 at 04:29 PM
+-- Generation Time: May 19, 2019 at 09:59 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.20
 
@@ -312,15 +312,16 @@ INSERT INTO `tipe_user` (`tipeId`, `tipeNama`) VALUES
 CREATE TABLE `transaction` (
   `transactionId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`transactionId`, `userId`, `waktu`) VALUES
-(1, 1, '2019-04-23 23:00:00');
+INSERT INTO `transaction` (`transactionId`, `userId`, `waktu`, `status`) VALUES
+(1, 1, '2019-05-19 09:31:53', 0);
 
 -- --------------------------------------------------------
 
@@ -342,6 +343,25 @@ CREATE TABLE `transaction_detail` (
 INSERT INTO `transaction_detail` (`transactionId`, `barangId`, `barangHarga`, `jumlah`) VALUES
 (1, 1, 50000, 1),
 (1, 2, 1000000, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_status`
+--
+
+CREATE TABLE `transaction_status` (
+  `statusId` int(11) NOT NULL,
+  `statusName` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction_status`
+--
+
+INSERT INTO `transaction_status` (`statusId`, `statusName`) VALUES
+(0, 'On Process'),
+(1, 'Sent');
 
 -- --------------------------------------------------------
 
@@ -430,7 +450,8 @@ ALTER TABLE `tipe_user`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`transactionId`),
-  ADD KEY `userId` (`userId`);
+  ADD KEY `userId` (`userId`),
+  ADD KEY `status` (`status`);
 
 --
 -- Indexes for table `transaction_detail`
@@ -438,6 +459,13 @@ ALTER TABLE `transaction`
 ALTER TABLE `transaction_detail`
   ADD PRIMARY KEY (`transactionId`,`barangId`),
   ADD KEY `barangId` (`barangId`);
+
+--
+-- Indexes for table `transaction_status`
+--
+ALTER TABLE `transaction_status`
+  ADD PRIMARY KEY (`statusId`),
+  ADD UNIQUE KEY `statusName` (`statusName`);
 
 --
 -- Indexes for table `user`
@@ -501,6 +529,12 @@ ALTER TABLE `transaction`
   MODIFY `transactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `transaction_status`
+--
+ALTER TABLE `transaction_status`
+  MODIFY `statusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
@@ -528,7 +562,8 @@ ALTER TABLE `gambar`
 -- Constraints for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`),
+  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`status`) REFERENCES `transaction_status` (`statusId`);
 
 --
 -- Constraints for table `transaction_detail`

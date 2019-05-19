@@ -5,11 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Transaction_model extends CI_Model{
 
     public function getTransactions(){
-        $this->db->select(array('transaction_detail.barangId', 'transaction.transactionId', 'user.namaDepan', 'user.namaBelakang', 'barang.barangNama', 'transaction_detail.barangHarga', 'transaction_detail.jumlah', 'user.alamat'));
+        $this->db->select(array('transaction_detail.barangId', 'transaction.transactionId', 'user.namaDepan', 'user.namaBelakang', 'barang.barangNama', 'transaction_detail.barangHarga', 'transaction_detail.jumlah', 'user.alamat', 'transaction_status.statusName'));
         $this->db->from('transaction');
         $this->db->join('user', 'user.userId = transaction.userId');
         $this->db->join('transaction_detail', 'transaction_detail.transactionId = transaction.transactionId');
         $this->db->join('barang', 'barang.barangId = transaction_detail.barangId');
+        $this->db->join('transaction_status', 'transaction.status = transaction_status.statusId');
         $query = $this->db->get();
         $result = $query->result();
         if($result){
