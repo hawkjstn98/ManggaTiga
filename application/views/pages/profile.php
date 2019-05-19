@@ -42,7 +42,7 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 5%">
-                        <div class="card">
+                        <div class="card" id="cardHeader">
                             <div class="header">
                                 <h4 class="title">Edit Profile</h4>
                             </div>
@@ -102,6 +102,8 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                                     </div>
 
                                     <button type="submit" class="btn btn-info btn-fill pull-right" id="btnUpdate">Update Profile</button>
+                                    <div class="clearfix"></div>
+                                    <br>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -167,6 +169,7 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                    $('#fname').val(data[0].namaDepan);
                    $('#lname').val(data[0].namaBelakang);
                    $('#phone').val(data[0].noHP);
+                   $('#saldo').val(data[0].saldo);
                }
                else{
                    alert(res.data);
@@ -218,7 +221,8 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
         let fname = $('#fname').val();
         let lname = $('#lname').val();
         let address = $('#address').val();
-        if(fname && lname && address){
+        let balance = $('#saldo').val();
+        if(fname && lname && address && balance > 0){
             $.ajax({
                 url: basedp+'ProfileController/updateDataUser',
                 type: 'post',
@@ -226,6 +230,7 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                 data: {"firstName": fname,
                     "lastName": lname,
                     "address": address,
+                    "saldo": balance,
                     "username": '<?php echo $this->session->userdata('user')?>'
                 },
                 success: function(res){
@@ -239,7 +244,11 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                 }
             })
         }
+        else{
+            alert("There's empty column or balance less than 0");
+        }
     });
+
 </script>
 
 </html>

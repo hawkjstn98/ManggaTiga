@@ -42,7 +42,8 @@ class ProfileController extends CI_Controller
         $lname = $this->input->post('lastName');
         $address = $this->input->post('address');
         $user = $this->input->post('username');
-        $pfdata = $this->UserData_model->updateUser($fname, $lname, $address,$user);
+        $balance = $this->input->post('saldo');
+        $pfdata = $this->UserData_model->updateUser($fname, $lname, $address,$user, $balance);
         if($pfdata){
             $success = true;
             $data = $pfdata;
