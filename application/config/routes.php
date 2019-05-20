@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
-$route['404_override'] = '';
+$route['404_override'] = 'Home/index';
 $route['translate_uri_dashes'] = FALSE;
 $route['Home'] = 'Home/index';
 $route["Redirect"] = 'RedirectController';
@@ -61,13 +61,13 @@ $route['Redirect/shoppingchart'] = 'RedirectController/toShoppingChart';
 $route['Redirect/register'] = 'RedirectController/toRegister';
 $route['Redirect/home'] = 'RedirectController/toHome';
 $route['Redirect/payment'] = 'RedirectController/toPayment';
-$route['cms/Admin'] = 'Cms';
+$route['cms/Admin'] = 'Cms/ListTransaction';
 $route['cms/Admin/product'] = 'Cms/ShowProduct';
 $route['cms/Admin/banner'] = 'Cms/BannerConfig';
 $route['cms/Admin/newProduct'] = 'Cms/NewProduct';
 $route['cms/Admin/newBrand'] = 'Cms/NewBrand';
 $route['cms/Admin/listProduct'] = 'Cms/ListProduct';
-$route['cms/Admin/listTransaction'] = 'Cms/ListTransaction';
+//$route['cms/Admin/listTransaction'] = 'Cms/ListTransaction';
 $route['cms/Admin/DeleteTransaction'] = 'Cms/DeleteTransaction';
 $route['cms/Admin/newProduct/insert_action'] = 'Cms/InsertProduct';
 $route['cms/Admin/newBrand/insert_action'] = 'Cms/InsertBrand';
