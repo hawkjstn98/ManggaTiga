@@ -38,7 +38,7 @@
                         '<div class="card" style="width: 20rem; margin-left:50px;">'+
                         '<div class="card-body">' +
                         '<a href="'+red+data[i].barangId+'">'+
-                        '<img class="card-img-top '+ (data[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
+                        '<img class="card-img-top '+ (data[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="'+basds+data[i].gambar+'">'+
                         '<div class="card-body">'+
                         '<p class="card-text" style="font-size:14px;" align="center" id="cardNamaBarang">'+data[i].barangNama+'</p>'+
                         '</div>'+
