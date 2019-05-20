@@ -65,7 +65,26 @@
             dataType: 'json',
             success: function(res){
                 if(res.success){
-                    data = res.data;
+                    let tempdata = res.data;
+                    // data = data.filter( function(item, index, inputArray ){
+                    //    return inputArray.indexOf(item) == index;
+                    // });
+                    // $.each(tempdata, function(i, cb){
+                    //     if($.inArray(cb, data)===-1){
+                    //         data.push(cb);
+                    //     }
+                    // })
+                    $.each(tempdata, function(i, e){
+                        // remove duplicate entry
+                        var match = $.grep(data, function(item){
+                            return item.namaBarang === e.namaBarang && item.id === e.id;
+                        });
+                        if(match.length ===0){
+                            data.push(e);
+                        }
+                    });
+                    //data = jQuery.unique(tempdata);
+                    console.log(data);
                     renderItem(data);
                 }
                 else{
@@ -148,13 +167,13 @@
                         data = [];
                         renderCart();
                         renderData();
+                        window.location.reload();
                     }
                     else{
                         alert(res.data);
                     }
                 }
             })
-            alert("tai");
         }
         else {
             alert("Saldo Anda Tidak Cukup");
