@@ -10,6 +10,7 @@ class Product_model extends CI_Model{
         $this->db->join('brand', 'brand.brandId = barang.brandId');
         $this->db->join('category', 'category.categoryId = barang.categoryId');
         $this->db->join('promo', 'promo.promoId = barang.promoId');
+        $this->db->where('barang.aksesBarang', 1);
         $query = $this->db->get();
         return $query->result();
     }
