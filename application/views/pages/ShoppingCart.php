@@ -59,7 +59,6 @@
             success: function(res){
                 if(res.success){
                     data = res.data;
-                    console.log(data);
                     renderItem(data);
 
                 }
