@@ -4,7 +4,7 @@
 <!-- Sidebar - Brand -->
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url("cms/Admin"); ?>">
   <div class="sidebar-brand-icon rotate-n-15">
-    <img style="filter: drop-shadow(0px 0px 10px rgba(0,0,0,.5))" src="<?php echo base_url('assets/logo/Ourlogo.png') ?>">
+    <img style="filter: drop-shadow(0px 0px 10px rgba(0,0,0,.5))" src="<?php echo base_url('assets/logo/OurLogo.png') ?>">
   </div>
   <div class="sidebar-brand-text mx-3">Mangga Tiga</div>
 </a>

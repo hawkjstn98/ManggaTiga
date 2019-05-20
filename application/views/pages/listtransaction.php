@@ -116,7 +116,6 @@
       $("#tableTransaksi tbody").on("click", ".db", function () {
         let data = tab.row($(this).parents("tr")).data();
         let base = "<?php echo base_url() ?>";
-        alert(data[0]);
         let conf = confirm("Are you sure want to delete this transaction ?");
         if(conf){
             let barang = data[0];
