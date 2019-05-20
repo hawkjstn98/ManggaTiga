@@ -112,7 +112,7 @@ class ProfileController extends CI_Controller
         }
         else{
             $success = false;
-            $data = "Data Couldn't be rendered";
+            $data = "Transaction is Empty";
         }
         echo json_encode(array(
             "success"=>$success,

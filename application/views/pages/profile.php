@@ -175,7 +175,6 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
            dataType: 'json',
            data: {"username": '<?php echo $this->session->userdata('user')?>'},
            success: function(res){
-               console.log(res.data);
                var data = res.data;
                if(res.success){
                    $('#email').val(data[0].email);
