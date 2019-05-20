@@ -35,12 +35,12 @@
                                 // $hJualDis = $row->hargaJual*(100-$row->persen)/100;
                                 // $harga = ($row->stock <= 0 ? ('<p class="card-text" id="cardHarga" style="color:red;">Out of Stock</p>') : ($row->persen > 0 ? ('<p class="card-text" id="cardHarga"> <del><a style="color:red;"> Rp. '. $hJual.toLocaleString('id-ID') .'</a></del></p> <p class="card-text" id="cardHarga"> Rp. '.$hJualDis.toLocaleString('id-ID')+'</p>') : ('<p class="card-text" id="cardHarga"> Rp. '.$hJual.toLocaleString('id-ID').'</p>')));
                                 echo 
-                                '<div class="card" style="width: 18rem; margin-left:50px;">'.
+                                '<div class="card" style="width: 20rem; margin-left:50px;">'.
                                     '<div class="card-body">'.
                                         '<a href="'.$red.$row->barangId.'">'.
                                             '<img class="card-img-top '. ($row->stock <= 0 ? ('overlay') : '') .'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'.
                                             '<div class="card-body">'.
-                                                '<h5 class="card-title" align="center" id="cardNamaBarang">'.$row->barangNama.'</h5>'.
+                                                '<p class="card-text" style="font-size:14px;" align="center" id="cardNamaBarang">'.$row->barangNama.'</p>'.
                                             '</div>'.
                                         '</a>'.
                                     '</div>' .
