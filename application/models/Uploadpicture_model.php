@@ -12,12 +12,20 @@ class Uploadpicture_model extends CI_Model{
     }
 
     public function uploadImage($brandId, $imgpath){
-        $data = array(
-                'gambarPath'=>$imgpath,
-                'barangId'=>$brandId
-            );
-        $result = $this->db->insert('gambar', $data);
+        // if($action === "insert"){ //ga kepake
+        //     $data = array(
+        //         'gambarPath'=>$imgpath,
+        //         'barangId'=>$brandId
+        //     );
+        //     $result = $this->db->insert('barang', $data);
+        //     return $result;
+        // }
+
+        $this->db->set('gambar', $imgpath);
+        $this->db->where('barangId', $brandId);
+        $result = $this->db->update('barang');
         return $result;
+        
     }
 }
 ?>

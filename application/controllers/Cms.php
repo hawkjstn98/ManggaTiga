@@ -70,7 +70,8 @@ class Cms extends CI_Controller{
                 'brandId' => $brand,
                 'hargaJual' => $price,
                 'stock' => $qty,
-                'promoId' => 1
+                'promoId' => 1,
+                'gambar' => ''
             );
             $model = $this->Product_model->newProduct($data);
 
@@ -82,10 +83,14 @@ class Cms extends CI_Controller{
 
             if($this->upload->do_upload('imageUpload')){
                 $data = array('upload_data' => $this->upload->data());
-                //$brandId = $this->input->post('description');
+                $res = $this->Product_model->getBarangId($name);
+                //print_r($res->result());
+                $res2 = $res->row();
+                $barangId = $res2->barangId;
+                //print_r($barangId);
                 $img = $data['upload_data']['file_name'];
                 $imgstr = "/assets/images/" . $this->getCategoryName($category) . "/" . $img;
-                $res = $this->Uploadpicture_model->uploadImage($brand, $imgstr);
+                $res = $this->Uploadpicture_model->uploadImage($barangId, $imgstr);
                 $rs = true;
                 $rd = $res;
             }
@@ -111,29 +116,64 @@ class Cms extends CI_Controller{
                 'promoId' => $promo,
                 'aksesBarang' => $akses
             );
-            $model = $this->Product_model->updateProduct($data);
+            $model = $this->Product_model->updateProduct($data);          
+        }
+    }
 
-            // $this->load->model('Uploadpicture_model');
-            // $config["upload_path"] = "./assets/images/" . $this->getCategoryName($category);
-            // $config["allowed_types"] = "png|jpg|jpeg";
-            // $config["encrypt_name"] = TRUE;
-            // $this->load->library('upload', $config);
+    public function UpdateProductPicture(){
+        if($this->data['logged']){
+            $barangId = $this->input->post('barangId');
+            $category = $this->input->post('category');
+    
+            //print_r($barangId);
+            //print_r($category);
 
-            // if($this->upload->do_upload('imageUpload')){
-            //     $data = array('upload_data' => $this->upload->data());
-            //     //$brandId = $this->input->post('description');
-            //     $img = $data['upload_data']['file_name'];
-            //     $imgstr = "/assets/images/" . $this->getCategoryName($category) . "/" . $img;
-            //     $res = $this->Uploadpicture_model->uploadImage($brand, $imgstr);
-            //     $rs = true;
-            //     $rd = $res;
+            // if(isset($barangId)){
+            //     print_r($barangId);
             // }
             // else{
-            //     $rs = false;
-            //     $rd = "Ooops somehing went wrong with the data";
+            //     print_r("Barang ID ga dpt");
             // }
-            // echo json_encode(array("success"=>true, "data"=>$model));
+            // if(isset($category)){
+            //     print_r($category);
+            // }
+            // else{
+            //     print_r("Category ga dpt");
+            // }
+    
+            // print_r($barangId);
+            // print_r($category);
+    
+            //$test = "./assets/images/" . $this->getCategoryName($category);
+            //print_r($test);
+
+            $this->load->model('Uploadpicture_model');
+            $config["upload_path"] = "./assets/images/" . $this->getCategoryName($category);
+            $config["allowed_types"] = "png|jpg|jpeg";
+            $config["encrypt_name"] = TRUE;
+            $this->load->library('upload', $config);
+            //$this->upload->initialize($config);
+            //print_r($_POST);
+            //print_r(!$this->upload->do_upload('imageUpload') ? "FALSE" : "TRUE");
+            //print_r("KIMAK ONTA");
+
+            if($this->upload->do_upload('imageUpload')){
+                $data = array('upload_data' => $this->upload->data());
+                $img = $data['upload_data']['file_name'];
+                $imgstr = "/assets/images/" . $this->getCategoryName($category) . "/" . $img;
+                //print_r($imgstr);
+                $res = $this->Uploadpicture_model->uploadImage($barangId, $imgstr);
+                $rs = true;
+                $rd = $res;
+            }
+            else{
+                //print_r("masuknya ke else");
+                $rs = false;
+                $rd = $this->upload->display_errors();
+            }
+            echo json_encode(array("success"=>true, "data"=>$rd));
         }
+        
     }
 
     public function getEditDetails(){

@@ -60,7 +60,7 @@
                     echo "<td>".$row->persen."%</td>";
                     echo "<td>".$a->format($row->hargaJual)."</td>";
                     echo "<td>".$row->stock." Unit</td>";
-                    echo "<td> <button class='btn btn-warning text-white eb'><i class='fas fa-edit'></i></button><button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
+                    echo "<td> <button class='btn btn-secondary text-white ep'><i class='fas fa-image'></i></button> <button class='btn btn-warning text-white eb'><i class='fas fa-edit'></i></button> <button class='btn btn-danger db'><i class='fas fa-times-circle'></i></button> </td>";
                     echo "</tr>";
                   }
                 }
@@ -108,6 +108,49 @@
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Picture Modal -->
+  <div class="modal fade" id="editPicture" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form id="submit" method="post" enctype="multipart/form-data">
+            
+            <div class="form-group" id="nama-mod">
+              <label for="nama1">Nama Barang</label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" name="nama2" id="nama2" placeholder="Nama Barang" disabled>
+                <input type="text" class="form-control" name="category2" id="category2" disabled hidden>
+                <input type="text" class="form-control" name="barangid2" id="barangid2" disabled hidden>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Picture">Picture</label>
+              <div class="custom-file" style="width: 100%;">
+                  <input type="file" class="custom-file-input" name="imageUpload" id="inputImageBanner" onchange="readURL(this)" accept=".png,.jpg,.jpeg" required >
+                  <label class="custom-file-label" for="inputGroupFile04">Choose file (max. 2MB)</label>
+              </div>
+            </div>
+            <div class="pic">
+                <label class="row kata-select" style="margin-left: 2%"><p>Preview : <br></p></label>
+                <img style="margin-left: 5%;width: 50%; height: 50%;" id="imagePrev" src="https://via.placeholder.com/100" alt="imagePreview" >
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <button class="btn btn-primary" type="submit" id="savePic" href="#" >Save</button>
+            </div>
+          </form>
+        </div>
+        
       </div>
     </div>
   </div>
@@ -176,7 +219,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="#">Save</a>
+          <a class="btn btn-primary" href="#" id="updateProduct">Save</a>
         </div>
       </div>
     </div>
@@ -195,7 +238,7 @@
           },
           {
             targets: 7,
-            width: 60,
+            width: 120,
           }
         ],
         processing: true,
@@ -233,6 +276,96 @@
 
       //Variable to be used after AJAX recieve data from opening modal (101)
       let barangId, promoId, stock, aksesBarang, hargaJual;
+      let category;
+      //EDIT PICTURE HANDLER
+      $("#tableBarang tbody").on("click", ".ep", function(){
+        //console.log("Edit Picture Button Pressed");
+        let data = tab.row($(this).parents("tr")).data();
+
+        let gambar = data[9];
+        let id = data[0];
+        category = data[3];
+
+        $("#editPicture").modal(
+          $.ajax(
+            {
+              url: base+'cms/getEditDetails',
+              type: 'post',
+              dataType : 'json',
+              data: {
+                "idBarang": id
+              },
+              success : function(res){
+                $('#nama2').val(res[0].barangNama); 
+                $('#category2').val(res[0].categoryId); 
+                $('#barangid2').val(res[0].barangId); 
+                barangId = id;
+                category = res[0].categoryId;
+              },
+              error: function(){
+                alert("Error");
+                console.log("error");
+              }
+            }
+          )
+        )
+      });
+
+      //SAVE PICTURE BUTTON HANDLER
+      $('#savePic').click(function(e){
+        e.preventDefault();
+        //alert("fuck this la");
+        //var form = $('#submit')[0];
+
+        // let image = $("#inputImageBanner").change(function(){
+
+        // });
+        //  alert(image);
+
+        var formData = new FormData();
+        formData.append('barangId', barangId);
+        formData.append('category', category);
+        // formData.append('imageUpload', image);
+        formData.append('imageUpload', $('input[type=file]')[0].files[0]);
+
+        $.ajax({
+          url: base+'cms/UpdateProductPicture',
+          type: "POST",
+          data: formData,
+          cache: false,
+          contentType: false,
+          processData: false,
+          dataType: 'json',
+          success: function(data){
+            //alert("Upload Image Successful.");
+            location.reload();
+          },
+          error: function(){
+            alert("error anjeng");
+          }
+        });
+      })
+      // $('.modal-footer').on("click", '#savePic', function(){
+      //   let brgId = barangId;
+      //   let ctgry = category;
+
+      //   //alert(brgId);
+      //   //alert(ctgry);
+
+      //   $.ajax({
+      //     url:base+'cms/UpdateProductPicture',
+      //     type:"post",
+      //     dataType: 'json',
+      //     data: {
+      //       "brgId": brgId,
+      //       "ctgry": ctgry
+      //     }, //this is formData
+      //     success: function(data){
+      //       //alert("Upload Image Successful.");
+      //       //location.reload();
+      //     }
+      //   });
+      // });
 
       //EDIT BUTTON HANDLER
       $("#tableBarang tbody").on("click", ".eb", function () {
@@ -281,56 +414,6 @@
                 $('#harga1').val(res[0].hargaJual);
                 document.getElementById("akses-" + aksesVal).selected="selected";
                 document.getElementById("promo-" + promoVal).selected="selected";
-
-                // $('.modal-footer').on("click", ".btn-primary",function(){
-                //   console.log("Button save pressed");
-                //   let promo = document.getElementById("promo1");
-                //   let promoId = promo.options[promo.selectedIndex].value; //use this
-
-                //   let akses = document.getElementById("akses1");
-                //   let aksesId = akses.options[akses.selectedIndex].value; //use this
-        
-                //   //ID use from above
-
-                //   let stockVal = document.getElementById("stock1").value; //use this
-                //   let priceVal = document.getElementById("harga1").value; //use this
-
-                //   console.log("Promo selected: " + promoId);
-                //   console.log("Akses selected: " + aksesId);
-                //   console.log("Stock: " + stockVal);
-                //   console.log("Price: " + priceVal);
-
-                //   $.ajax({
-                //     url: base+'cms/UpdateProduct',
-                //     type: 'POST',
-                //     dataType: 'json',
-                //     data:{
-                //       "barangId": id,
-                //       "promoId": promoId,
-                //       "hargaJual": priceVal,
-                //       "stock": stockVal,
-                //       "akses": aksesId
-                //     },
-                //     success: function(){
-                //       console.log("update success");
-                //       location.reload();
-                //     }
-                //   })
-                // });
-
-
-                //not usefull atm
-                // if(res.success){
-                //   alert("Ditambah ke keranjang " + id);
-                // }
-                // else if(res.data == "SessionNotFound"){
-                //   alert("Login First");
-                //   $('#modalLoginForm').modal();
-                //   $('#email').focus();
-                // }
-                // else{
-                //   alert(res.data);
-                // }
               },
               error: function(){
                 console.log("error");
@@ -339,69 +422,10 @@
           )
         )
 
-        function modal(res){
-          console.log("Stock:" + res[0].stock);
-          console.log("Harga Jual:" + res[0].hargaJual);
-          console.log("Nama Barang:" + res[0].barangNama);
-          console.log("Akses Barang:" + res[0].aksesBarang);
-          console.log("Promo ID:" + res[0].promoId);
-
-          //masukkin value ke tag input
-          $('#nama1').val(res[0].barangNama);
-          $('#stock1').val(res[0].stock);
-          $('#harga1').val(res[0].hargaJual);
-
-          let aksesVal = res[0].aksesBarang;
-          let promoVal = res[0].promoId;
-      
-          document.getElementById("akses-" + aksesVal).selected="selected";
-          document.getElementById("promo-" + promoVal).selected="selected";
-
-
-          $('.modal-footer').on("click", ".btn-primary",function(){
-            console.log("Button save pressed");
-            let promo = document.getElementById("promo1");
-            let promoId = promo.options[promo.selectedIndex].value; //use this
-
-            let akses = document.getElementById("akses1");
-            let aksesId = akses.options[akses.selectedIndex].value; //use this
-
-            //ID use from above
-
-            let stockVal = document.getElementById("stock1").value; //use this
-            let priceVal = document.getElementById("harga1").value; //use this
-
-            console.log("Promo selected: " + promoId);
-            console.log("Akses selected: " + aksesId);
-            console.log("Stock: " + stockVal);
-            console.log("Price: " + priceVal);
-            console.log("Id: " + id);
-
-            $.ajax({
-              url: base+'cms/UpdateProduct',
-              type: 'POST',
-              dataType: 'json',
-              data:{
-                "barangId": id,
-                "promoId": promoId,
-                "hargaJual": priceVal,
-                "stock": stockVal,
-                "akses": aksesId
-              },
-              success: function(){
-                console.log("update success");
-                location.reload();
-              },
-              error: function(){
-                console.log('failed update');
-              }
-            })
-          });
-        }
       });
 
       //SAVE BUTTON HANDLER
-      $('.modal-footer').on("click", ".btn-primary",
+      $('.modal-footer').on("click", "#updateProduct",
         function(){
           console.log("Barang ID:" + barangId);
           console.log("Stock:" + stock);
@@ -472,6 +496,23 @@
         }
       });
     });
+    function readURL(input){
+    //alert(input.files[0].size);
+    if(input.files[0].size<2200000){
+
+        if(input.files && input.files[0]){
+            var read = new FileReader();
+
+            read.onload = function(f){
+                $('#imagePrev').attr('src', f.target.result);
+            };
+            read.readAsDataURL(input.files[0]);
+        }
+    }
+    else{
+        alert("Picture size exceeding 2MB !, Please upload again.");
+    }
+}
   </script>
 </body>
 
