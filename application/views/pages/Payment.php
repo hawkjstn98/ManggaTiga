@@ -66,11 +66,15 @@
             success: function(res){
                 if(res.success){
                     data = res.data;
-                    console.log(data);
                     renderItem(data);
                 }
                 else{
-                    alert(res.data);
+                    if(res.data==null){
+                        alert("No Cart");
+                    }
+                    else{
+                        alert(res.data);
+                    }
                 }
             }
         });
@@ -84,16 +88,16 @@
             data: {"username": '<?php echo $this->session->userdata('user')?>'},
             success: function(res){
                 console.log(res.data);
-                var data = res.data;
+                let udata = res.data;
                 if(res.success){
-                    $('#email').html(data[0].email);
-                    $('#username').html(data[0].username);
-                    $('#address').html(data[0].alamat);
+                    $('#email').html(udata[0].email);
+                    $('#username').html(udata[0].username);
+                    $('#address').html(udata[0].alamat);
                     // $('#fname').val(data[0].namaDepan);
-                    $('#nama').html(data[0].namaDepan+" "+data[0].namaBelakang);
-                    $('#phone').html(data[0].noHP);
-                    $('#saldo').html("Rp. " +parseInt(data[0].saldo).toLocaleString('id-ID'));
-                    balance = data[0].saldo;
+                    $('#nama').html(udata[0].namaDepan+" "+udata[0].namaBelakang);
+                    $('#phone').html(udata[0].noHP);
+                    $('#saldo').html("Rp. " +parseInt(udata[0].saldo).toLocaleString('id-ID'));
+                    balance = parseInt(udata[0].saldo);
                 }
                 else{
                     alert(res.data);
@@ -103,7 +107,6 @@
     }
     function renderItem(data){
         $("#fieldCartCard").html('');
-        let total = 0;
         for(let i = 0; i < data.length; i++) {
             $("#fieldCartCard").append(
                 "<div class='card'>" +
@@ -133,7 +136,6 @@
 
     $("#btnBuy").click(function () {
         <?php echo "var basesc='".base_url()."';"; ?>
-        alert(balance);
         if(balance>total){
             $.ajax({
                 url: basesc+'UserData/confirmCart',
@@ -142,7 +144,6 @@
                 data: {"jsonCart": JSON.stringify(data), "total": total},
                 success: function(res){
                     if(res.success){
-                        alert(res.data);
                         total = 0;
                         data = [];
                         renderCart();
@@ -153,6 +154,7 @@
                     }
                 }
             })
+            alert("tai");
         }
         else {
             alert("Saldo Anda Tidak Cukup");

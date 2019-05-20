@@ -116,6 +116,10 @@ class UserData extends CI_Controller{
                 $data = "Payment Success";
             }
         }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$data
+        ));
 
     }
 
