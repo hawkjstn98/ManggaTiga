@@ -105,7 +105,8 @@
     function deleteItem(nama){
         for(let i = 0 ; data.length; i++){
             if(data[i].namaBarang==nama){
-                data.pop(data,i);
+               // data.pop(data,i);
+                data.splice(i,1);
                 renderItem(data);
                 //abis render ulang mustinya di request lagi biar shopping cartnya ke update
                 updateCart(data);
