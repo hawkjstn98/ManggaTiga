@@ -72,7 +72,7 @@
             <div class="form-group">
                 <label for="QuantityPerUnit">Quantity Per Unit</label>
                 <div class="input-group mb-3">
-                  <input type="number" class="form-control" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="Quantity Per Unit">
+                  <input type="number" class="form-control" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="Quantity Per Unit"  min="0">
                   <div class="input-group-append">
                     <span class="input-group-text">Unit</span>
                   </div>
@@ -84,7 +84,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon2">Rp.</span>
                   </div>
-                  <input type="number" class="form-control" name="Price" id="Price" placeholder="Price">
+                  <input type="number" class="form-control" name="Price" id="Price" placeholder="Price" min="0">
                 </div>
             </div>
             <div class="form-group">
