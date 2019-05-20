@@ -146,8 +146,11 @@
             let from = $('#fromField').val();
             let to = $('#toField').val();
 
-            if(from&&to) {
+            if((from&&to)&&(from<=to)) {
                 renderProductRange(from, to);
+            }
+            else if(from>to){
+                alert("Harga dari tidak bisa lebih besar dari Harga Hingga");
             }
             else {
                 reRenderProduct();
