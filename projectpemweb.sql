@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 19, 2019 at 04:31 PM
+-- Generation Time: May 20, 2019 at 03:19 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.20
 
@@ -500,7 +500,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `transaction_status`
 --
 ALTER TABLE `transaction_status`
-  MODIFY `statusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `statusId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
