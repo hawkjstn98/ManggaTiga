@@ -64,7 +64,12 @@
 
                 }
                 else{
-                    alert(res.data);
+                    if(res.data==null){
+                        alert("No Cart");
+                    }
+                    else{
+                        alert(res.data);
+                    }
                 }
             }
         });
