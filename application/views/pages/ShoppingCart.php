@@ -81,7 +81,7 @@
             $("#fieldCartCard").append(
                 "<div class='card'>" +
                 "<div class='row'>" +
-                "<div class='col-2'><img src='" + pathItemImage + "' width='70' height='70'></div>" +
+                "<div class='col-2'><img src='" + basesc+data[i].path+ "' width='70' height='70'></div>" +
                 "<div class='col-6'>" +
                 "<h5>" + data[i].namaBarang + "</h5>" +
                 "<hr>" +

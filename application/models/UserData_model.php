@@ -57,7 +57,7 @@ class UserData_model extends CI_Model{
         }
     }
 
-    public function tambahKeranjang($name, $harga, $jlh, $user, $id){
+    public function tambahKeranjang($name, $harga, $jlh, $user, $id, $path){
         $this->db->select(array('shoppingCart'));
         $this->db->from('user');
         $this->db->where('username', $user);
@@ -74,7 +74,8 @@ class UserData_model extends CI_Model{
                 "namaBarang"=>$name,
                 "harga"=>$harga,
                 "jumlah"=>$jlh,
-                "id"=>$id
+                "id"=>$id,
+                "path"=>$path
             ));
             array_push($cart, $temp);
             $hasil = json_encode($cart);
@@ -85,7 +86,8 @@ class UserData_model extends CI_Model{
                     "namaBarang"=>$name,
                     "harga"=>$harga,
                     "jumlah"=>$jlh,
-                    "id"=>$id
+                    "id"=>$id,
+                    "path"=>$path
                 ))
             );
         }
@@ -159,6 +161,9 @@ class UserData_model extends CI_Model{
 
     public function updateCart($data){
         if($data){
+            if($data == '[]'){
+                $data = 'Not Available Yet';
+            }
             $this->db->set('shoppingCart', $data);
             $this->db->where('username', $this->session->userdata('user'));
             $this->db->update('user');
@@ -170,7 +175,7 @@ class UserData_model extends CI_Model{
     }
 
     public function confirmTransaction($cart, $total){
-        $cart = array_unique($cart);
+//        $cart = array_unique($cart);
         $id = $this->getUserId();
         $this->load->helper('date');
         $this->balanceReduce($total);

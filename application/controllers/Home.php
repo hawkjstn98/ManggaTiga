@@ -121,8 +121,9 @@ class Home extends CI_Controller{
             $hargaBarang = $this->input->post('harga');
             $jumlahBarang = $this->input->post('jumlah');
             $user = $this->session->userdata('user');
+            $path = $this->input->post('imagePath');
             $id = $this->input->post("id");
-            $adata = $this->UserData_model->tambahKeranjang($name, $hargaBarang, $jumlahBarang, $user, $id);
+            $adata = $this->UserData_model->tambahKeranjang($name, $hargaBarang, $jumlahBarang, $user, $id, $path);
             if($adata){
                 $success = true;
                 $data = $adata;

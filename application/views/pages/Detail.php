@@ -20,7 +20,7 @@
 			<?php foreach($produk as $barang): ?>
 				<div class="preview col-md-6">
 					<div class="preview-pic tab-content">
-					  <div class="tab-pane active" id="pic-1"><img src="mwbgod.jpg" id="placeholderImage"/></div>
+					  <div class="tab-pane active" id="pic-1"><img src="<?php echo base_url().$barang->gambar;?>" id="placeholderImage"/></div>
 					</div>
 				</div>
 				<div class="details col-md-6">
@@ -71,6 +71,7 @@
 					let harga = '<?php echo $produk[0]->hargaJual ?>';
 					let jumlah = $('#txtQty').val();
 					let id = '<?php echo $produk[0]->barangId ?>';
+					let path = '<?php echo $produk[0]->gambar;?>';
                     let qty = $('#buttonAdd').val();
 
                     if(qty!=null || qty){
@@ -83,7 +84,8 @@
                                 "name": name,
                                 "harga": harpersen,
                                 "jumlah": jumlah,
-                                "id": id
+                                "id": id,
+                                "imagePath": path
                             },
                             success : function(res){
                                 if(res.success){
