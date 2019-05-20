@@ -102,4 +102,21 @@ class UserData extends CI_Controller{
         ));
     }
 
+    public function confirmCart(){
+        $this->load->model('UserData_model');
+        $cart = $this->input->post('jsonCart');
+        $total = $this->input->post('total');
+        $item = json_decode($cart);
+        $confirmTransaction = $this->UserData_model->confirmTransaction($item,$total);
+//        print_r($item[0]->id);
+        if($confirmTransaction){
+            $result = $this->UserData_model->emptyCart();
+            if($result){
+                $success = true;
+                $data = "Payment Success";
+            }
+        }
+
+    }
+
 }

@@ -39,7 +39,7 @@
                         <div class="col-7"><h5 id="sumItemPrice">Rp...</h5></div>
                     </div>
                     <hr>
-                    <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('Redirect/payment');?>'" type="button">Beli</button>
+                    <button class="btn btn-primary" type="button" id="btnBuy">Beli</button>
                 </div>
             </div>
         </div>
@@ -49,7 +49,9 @@
     ?>
 </body>
 <script>
-
+    var data = [];
+    var total = 0;
+    var balance = 0;
     renderCart();
     renderData();
 
@@ -91,6 +93,7 @@
                     $('#nama').html(data[0].namaDepan+" "+data[0].namaBelakang);
                     $('#phone').html(data[0].noHP);
                     $('#saldo').html("Rp. " +parseInt(data[0].saldo).toLocaleString('id-ID'));
+                    balance = data[0].saldo;
                 }
                 else{
                     alert(res.data);
@@ -127,4 +130,33 @@
         $('#sumItemPrice').html("Rp. "+total.toLocaleString('id-ID'));
     }
     $(".editQty").inputSpinner();
+
+    $("#btnBuy").click(function () {
+        <?php echo "var basesc='".base_url()."';"; ?>
+        alert(balance);
+        if(balance>total){
+            $.ajax({
+                url: basesc+'UserData/confirmCart',
+                dataType: 'json',
+                type: 'post',
+                data: {"jsonCart": JSON.stringify(data), "total": total},
+                success: function(res){
+                    if(res.success){
+                        alert(res.data);
+                        total = 0;
+                        data = [];
+                        renderCart();
+                        renderData();
+                    }
+                    else{
+                        alert(res.data);
+                    }
+                }
+            })
+        }
+        else {
+            alert("Saldo Anda Tidak Cukup");
+        }
+
+    })
 </script>
