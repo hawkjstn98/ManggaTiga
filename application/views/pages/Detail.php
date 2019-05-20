@@ -67,8 +67,8 @@
 		let persen = <?php echo $barang->persen ?>;
 		$(document).ready(function(){
 			if(persen > 0){
-				let harpersen = har*(100-persen);
-				$('.spanHarga').html('<del><a style="color:red;">Rp '+harpersen.toLocaleString('id-ID')+'</a></del> '+"Rp "+har.toLocaleString('id-ID'));
+				let harpersen = har*(100-persen)/100;
+				$('.spanHarga').html('<del><a style="color:red;">Rp '+har.toLocaleString('id-ID')+'</a></del> '+"Rp "+harpersen.toLocaleString('id-ID'));
 			}
 			else{
 				$('.spanHarga').html("Rp "+har.toLocaleString('id-ID'));
@@ -80,6 +80,7 @@
 					let name = '<?php echo $produk[0]->barangNama ?>';
 					let harga = '<?php echo $produk[0]->hargaJual ?>';
 					let jumlah = $('#txtQty').val();
+					let id = '<?php echo $produk[0]->barangId ?>';
 					
 					$.ajax({
 						url: basds+'Home/InputToCart',
@@ -88,7 +89,8 @@
 						data: {
 							"name": name,
 							"harga": harga,
-							"jumlah": jumlah
+							"jumlah": jumlah,
+                            "id": id
 						},
 						success : function(res){
 							if(res.success){

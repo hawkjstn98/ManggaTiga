@@ -84,4 +84,22 @@ class UserData extends CI_Controller{
         ));
     }
 
+    public function updateShoppingCart(){
+        $this->load->model('UserData_model');
+        $jsonData = $this->input->post("jsonData");
+        $updateData = $this->UserData_model->updateCart($jsonData);
+        if($updateData){
+            $success = true;
+            $data = "Updated Successfully";
+        }
+        else{
+            $success = false;
+            $data = "Update Data Failed";
+        }
+        echo json_encode(array(
+            "success"=>$success,
+            "data"=>$data
+        ));
+    }
+
 }

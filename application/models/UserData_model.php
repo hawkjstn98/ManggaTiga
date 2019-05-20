@@ -57,7 +57,7 @@ class UserData_model extends CI_Model{
         }
     }
 
-    public function tambahKeranjang($name, $harga, $jlh, $user){
+    public function tambahKeranjang($name, $harga, $jlh, $user, $id){
         $this->db->select(array('shoppingCart'));
         $this->db->from('user');
         $this->db->where('username', $user);
@@ -73,7 +73,8 @@ class UserData_model extends CI_Model{
             $temp = (array(
                 "namaBarang"=>$name,
                 "harga"=>$harga,
-                "jumlah"=>$jlh
+                "jumlah"=>$jlh,
+                "id"=>$id
             ));
             array_push($cart, $temp);
             $hasil = json_encode($cart);
@@ -83,7 +84,8 @@ class UserData_model extends CI_Model{
                 array(array(
                     "namaBarang"=>$name,
                     "harga"=>$harga,
-                    "jumlah"=>$jlh
+                    "jumlah"=>$jlh,
+                    "id"=>$id
                 ))
             );
         }
@@ -153,5 +155,19 @@ class UserData_model extends CI_Model{
         else{
             return false;
         }
+    }
+
+    public function updateCart($data){
+        if($data){
+            $this->db->set('shoppingCart', $data);
+            $this->db->where('username', $this->session->userdata('user'));
+            $this->db->update('user');
+            return true;
+        }
+        else{
+            return false;
+        }
+
+
     }
 }
