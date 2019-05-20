@@ -28,7 +28,6 @@
         data: {},
         success : function(res){
             if(res.success){
-                console.log(res.data);
                 let data = res.data;
                 a =  $('#cardgridrecom');
                 for(let i = 0; i < res.data.length; i++){
