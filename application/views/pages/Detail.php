@@ -20,19 +20,8 @@
 			<?php foreach($produk as $barang): ?>
 				<div class="preview col-md-6">
 					<div class="preview-pic tab-content">
-					  <div class="tab-pane active" id="pic-1"><img src="mwbgod.jpg" /></div>
-					  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-					  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-					  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-					  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+					  <div class="tab-pane active" id="pic-1"><img src="mwbgod.jpg" id="placeholderImage"/></div>
 					</div>
-					<ul class="preview-thumbnail nav nav-tabs">
-					  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-					  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-					  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-					  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-					  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-					</ul>			
 				</div>
 				<div class="details col-md-6">
 					<h3 class="product-title"><?php echo $barang->barangNama?></h3>
@@ -65,9 +54,10 @@
 		let har = <?php echo $barang->hargaJual ?>;
 		let stock = <?php echo $barang->stock ?>;
 		let persen = <?php echo $barang->persen ?>;
+        var harpersen = har;
 		$(document).ready(function(){
 			if(persen > 0){
-				let harpersen = har*(100-persen)/100;
+                harpersen = har*(100-persen)/100;
 				$('.spanHarga').html('<del><a style="color:red;">Rp '+har.toLocaleString('id-ID')+'</a></del> '+"Rp "+harpersen.toLocaleString('id-ID'));
 			}
 			else{
@@ -81,31 +71,35 @@
 					let harga = '<?php echo $produk[0]->hargaJual ?>';
 					let jumlah = $('#txtQty').val();
 					let id = '<?php echo $produk[0]->barangId ?>';
-					
-					$.ajax({
-						url: basds+'Home/InputToCart',
-						type: 'post',
-								dataType : 'json',
-						data: {
-							"name": name,
-							"harga": harga,
-							"jumlah": jumlah,
-              "id": id
-						},
-						success : function(res){
-							if(res.success){
-                alert("Ditambah ke keranjang " + name);
-							}
-							else if(res.data == "SessionNotFound"){
-								alert("Login First");
-								$('#modalLoginForm').modal();
-								$('#email').focus();
-							}
-							else{
-								alert(res.data);
-							}
-						}
-					});
+                    let qty = $('#buttonAdd').val();
+
+                    if(qty!=null || qty){
+                        harpersen = har*(100-persen)/100;
+                        $.ajax({
+                            url: basds+'Home/InputToCart',
+                            type: 'post',
+                            dataType : 'json',
+                            data: {
+                                "name": name,
+                                "harga": harpersen,
+                                "jumlah": jumlah,
+                                "id": id
+                            },
+                            success : function(res){
+                                if(res.success){
+                                    alert("Ditambah ke keranjang " + name);
+                                }
+                                else if(res.data == "SessionNotFound"){
+                                    alert("Login First");
+                                    $('#modalLoginForm').modal();
+                                    $('#email').focus();
+                                }
+                                else{
+                                    alert(res.data);
+                                }
+                            }
+                        });
+                    }
 			})
 				
 		});
