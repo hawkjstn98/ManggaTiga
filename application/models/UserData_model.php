@@ -170,6 +170,7 @@ class UserData_model extends CI_Model{
     }
 
     public function confirmTransaction($cart, $total){
+        $cart = array_unique($cart);
         $id = $this->getUserId();
         $this->load->helper('date');
         $this->balanceReduce($total);
