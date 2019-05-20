@@ -89,7 +89,7 @@
                             '<div class="card" style="width: 18rem; margin-left:50px;">'+
                             '<div class="card-body">' +
                             '<a href="'+red+productData[i].barangId+'">'+
-                            '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
+                            '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="'+basds+productData[i].gambar+'">'+
                             '<div class="card-body">'+
                             '<h5 class="card-title" align="center" id="cardNamaBarang">'+productData[i].barangNama+'</h5>'+
                             '</div>'+
@@ -143,8 +143,8 @@
         });
 
         $('#btnFilterHarga').click(function(){
-            let from = $('#fromField').val();
-            let to = $('#toField').val();
+            let from = parseInt($('#fromField').val());
+            let to = parseInt($('#toField').val());
 
             if((from&&to)&&(from<=to)) {
                 renderProductRange(from, to);
@@ -175,7 +175,7 @@
                         '<div class="card" style="width: 18rem; margin-left:50px;">'+
                         '<div class="card-body">' +
                         '<a href="'+red+productData[i].barangId+'">'+
-                        '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
+                        '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="'+basds+productData[i].gambar+'">'+
                         '<div class="card-body">'+
                         '<h5 class="card-title" align="center" id="cardNamaBarang">'+productData[i].barangNama+'</h5>'+
                         '</div>'+
@@ -200,7 +200,7 @@
                     '<div class="card" style="width: 18rem; margin-left:50px;">'+
                     '<div class="card-body">' +
                     '<a href="'+red+'">'+
-                    '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'+
+                    '<img class="card-img-top '+ (productData[i].stock <= 0 ? ('overlay') : '') +'" alt="Card image cap" src="'+basds+productData[i].gambar+'">'+
                     '<div class="card-body">'+
                     '<h5 class="card-title" align="center" id="cardNamaBarang">'+productData[i].barangNama+'</h5>'+
                     '</div>'+
