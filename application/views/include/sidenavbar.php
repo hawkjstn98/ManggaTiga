@@ -10,13 +10,25 @@
 </a>
 
 <!-- Divider -->
-<hr class="sidebar-divider my-0">
+<hr class="sidebar-divider">
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item">
-  <a class="nav-link" href="<?php echo base_url("cms/Admin/"); ?>">
+<!-- <li class="nav-item">
+  <a class="nav-link" href="<?php //echo base_url("cms/Admin/"); ?>">
     <i class="fas fa-fw fa-tachometer-alt"></i>
     <span>Dashboard</span></a>
+</li> -->
+
+<!-- Heading -->
+<div class="sidebar-heading">
+  Financial Report
+</div>
+
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item">
+  <a class="nav-link" href="<?php echo base_url('cms/Admin/') ?>">
+    <i class="fas fa-fw fa-file-alt"></i>
+    <span>Transactions</span></a>
 </li>
 
 <!-- Divider -->
@@ -42,21 +54,6 @@
       <a class="collapse-item" href="<?php echo base_url('cms/ListProduct');?>">Product List</a>
     </div>
   </div>
-</li>
-
-<!-- Divider -->
-<hr class="sidebar-divider">
-
-<!-- Heading -->
-<div class="sidebar-heading">
-  Financial Report
-</div>
-
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link" href="<?php echo base_url('cms/Admin/listTransaction') ?>">
-    <i class="fas fa-fw fa-file-alt"></i>
-    <span>Transactions</span></a>
 </li>
 
 <!-- Divider -->

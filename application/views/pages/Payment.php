@@ -39,7 +39,7 @@
                         <div class="col-7"><h5 id="sumItemPrice">Rp...</h5></div>
                     </div>
                     <hr>
-                    <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('Redirect/payment');?>'" type="button">Beli</button>
+                    <button class="btn btn-primary" type="button" id="btnBuy">Beli</button>
                 </div>
             </div>
         </div>
@@ -49,7 +49,9 @@
     ?>
 </body>
 <script>
-
+    var data = [];
+    var total = 0;
+    var balance = 0;
     renderCart();
     renderData();
 
@@ -63,12 +65,35 @@
             dataType: 'json',
             success: function(res){
                 if(res.success){
-                    data = res.data;
+                    let tempdata = res.data;
+                    // data = data.filter( function(item, index, inputArray ){
+                    //    return inputArray.indexOf(item) == index;
+                    // });
+                    // $.each(tempdata, function(i, cb){
+                    //     if($.inArray(cb, data)===-1){
+                    //         data.push(cb);
+                    //     }
+                    // })
+                    $.each(tempdata, function(i, e){
+                        // remove duplicate entry
+                        var match = $.grep(data, function(item){
+                            return item.namaBarang === e.namaBarang && item.id === e.id;
+                        });
+                        if(match.length ===0){
+                            data.push(e);
+                        }
+                    });
+                    //data = jQuery.unique(tempdata);
                     console.log(data);
                     renderItem(data);
                 }
                 else{
-                    alert(res.data);
+                    if(res.data==null){
+                        alert("No Cart");
+                    }
+                    else{
+                        alert(res.data);
+                    }
                 }
             }
         });
@@ -82,15 +107,16 @@
             data: {"username": '<?php echo $this->session->userdata('user')?>'},
             success: function(res){
                 console.log(res.data);
-                var data = res.data;
+                let udata = res.data;
                 if(res.success){
-                    $('#email').html(data[0].email);
-                    $('#username').html(data[0].username);
-                    $('#address').html(data[0].alamat);
+                    $('#email').html(udata[0].email);
+                    $('#username').html(udata[0].username);
+                    $('#address').html(udata[0].alamat);
                     // $('#fname').val(data[0].namaDepan);
-                    $('#nama').html(data[0].namaDepan+" "+data[0].namaBelakang);
-                    $('#phone').html(data[0].noHP);
-                    $('#saldo').html("Rp. " +parseInt(data[0].saldo).toLocaleString('id-ID'));
+                    $('#nama').html(udata[0].namaDepan+" "+udata[0].namaBelakang);
+                    $('#phone').html(udata[0].noHP);
+                    $('#saldo').html("Rp. " +parseInt(udata[0].saldo).toLocaleString('id-ID'));
+                    balance = parseInt(udata[0].saldo);
                 }
                 else{
                     alert(res.data);
@@ -100,7 +126,6 @@
     }
     function renderItem(data){
         $("#fieldCartCard").html('');
-        let total = 0;
         for(let i = 0; i < data.length; i++) {
             $("#fieldCartCard").append(
                 "<div class='card'>" +
@@ -127,4 +152,32 @@
         $('#sumItemPrice').html("Rp. "+total.toLocaleString('id-ID'));
     }
     $(".editQty").inputSpinner();
+
+    $("#btnBuy").click(function () {
+        <?php echo "var basesc='".base_url()."';"; ?>
+        if(balance>total){
+            $.ajax({
+                url: basesc+'UserData/confirmCart',
+                dataType: 'json',
+                type: 'post',
+                data: {"jsonCart": JSON.stringify(data), "total": total},
+                success: function(res){
+                    if(res.success){
+                        total = 0;
+                        data = [];
+                        renderCart();
+                        renderData();
+                        window.location.reload();
+                    }
+                    else{
+                        alert(res.data);
+                    }
+                }
+            })
+        }
+        else {
+            alert("Saldo Anda Tidak Cukup");
+        }
+
+    })
 </script>

@@ -28,7 +28,8 @@ class Cms extends CI_Controller{
     public function index(){
         // if($this->session->userdata('user')=='ADMINISTRATORMWB'){
         if($this->data['logged']){
-            $this->load->view('pages/cms.php', $this->data);
+            // $this->data['transaction'] = $this->Transaction_model->getTransactions();
+            // $this->load->view('pages/listtransaction.php', $this->data);
         }
         // }
         // else{

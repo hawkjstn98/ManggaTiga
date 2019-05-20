@@ -72,7 +72,7 @@
             <div class="form-group">
                 <label for="QuantityPerUnit">Quantity Per Unit</label>
                 <div class="input-group mb-3">
-                  <input type="number" class="form-control" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="Quantity Per Unit">
+                  <input type="number" class="form-control" name="QuantityPerUnit" id="QuantityPerUnit" placeholder="Quantity Per Unit"  min="0">
                   <div class="input-group-append">
                     <span class="input-group-text">Unit</span>
                   </div>
@@ -84,7 +84,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon2">Rp.</span>
                   </div>
-                  <input type="number" class="form-control" name="Price" id="Price" placeholder="Price">
+                  <input type="number" class="form-control" name="Price" id="Price" placeholder="Price" min="0">
                 </div>
             </div>
             <div class="form-group">
@@ -122,25 +122,6 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <?php echo $js ?>
   <?php echo $blankbegone ?>

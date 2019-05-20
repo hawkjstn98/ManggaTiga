@@ -4,27 +4,19 @@
             <div class="col-1"></div>
             <div class="col-4">
                 <h3 class="tulisanfooter">manggatiga</h3>
-                <ul class="tulisanfooter">
-                    <li>Mario</li>
-                    <li>Baik</li>
-                    <li>Hebat</li>
-                    <li>Suci</li>
-                </ul>
             </div>
             <div class="col-4">
                 <h4 class="tulisanfooter">Social Media</h4>
                 <ul class="tulisanfooter">
-                    <li>PH</li>
-                    <li>HH</li>
-                    <li>Np</li>
+                    <li>ig : manggatiga</li>
                 </ul>
             </div>
             <div class="col-3">
                 <h4 class="tulisanfooter">Call Center</h4>
                 <ul class="tulisanfooter">
-                    <li>(123) 12345</li>
-                    <li>(321) 54321</li>
-                    <li>(111) 33333</li>
+                    <li>+6285695793955</li>
+                    <li>+6287871622778</li>
+                    <li>+6285789361335</li>
                 </ul>
             </div>
         </div>

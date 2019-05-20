@@ -90,11 +90,11 @@
 							"name": name,
 							"harga": harga,
 							"jumlah": jumlah,
-                            "id": id
+              "id": id
 						},
 						success : function(res){
 							if(res.success){
-                                alert("Ditambah ke keranjang " + name);
+                alert("Ditambah ke keranjang " + name);
 							}
 							else if(res.data == "SessionNotFound"){
 								alert("Login First");

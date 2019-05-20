@@ -116,7 +116,7 @@ class UserData_model extends CI_Model{
     }
 
     public function renderTransaction($usn){
-        $id = $this->getUserId($usn);
+        $id = $this->getUserId();
         $this->db->select(array('transaction.waktu','transaction.transactionId','barang.barangNama','transaction_detail.barangHarga', 'transaction_detail.jumlah'));
         $this->db->from('transaction');
         $this->db->join('user', 'user.userId = transaction.userId');
@@ -134,10 +134,10 @@ class UserData_model extends CI_Model{
         }
     }
 
-    public function getUserId($username){
+    public function getUserId(){
         $this->db->select('userId');
         $this->db->from('user');
-        $this->db->where('username', $username);
+        $this->db->where('username', $this->session->userdata('user'));
         $query = $this->db->get();
         $res = $query->row();
         return $res->userId;
@@ -167,7 +167,60 @@ class UserData_model extends CI_Model{
         else{
             return false;
         }
-
-
     }
+
+    public function confirmTransaction($cart, $total){
+        $cart = array_unique($cart);
+        $id = $this->getUserId();
+        $this->load->helper('date');
+        $this->balanceReduce($total);
+        $datestring = '%Y-%m-%d %h:%m:%s';
+        $time = time();
+//        $ts = now('	Asia/Jakarta');
+        $ts = mdate($datestring, $time);
+        $data = array(
+          "userId"=>$id,
+            "waktu"=>$ts,
+            "status"=>0
+        );
+        $this->db->insert('transaction', $data);
+        $tid = $this->getTransactionId($ts);
+        for($i = 0 ; $i < sizeof($cart); $i++){
+            $dataCart = array(
+                "transactionId"=>$tid,
+                "barangId"=>$cart[$i]->id,
+                "barangHarga"=>$cart[$i]->harga,
+                "jumlah"=>$cart[$i]->jumlah
+            );
+            $this->db->insert('transaction_detail', $dataCart);
+            $this->amountReduce($cart[$i]->jumlah, $cart[$i]->id);
+        }
+        return true;
+    }
+
+    public function getTransactionId($time){
+        $this->db->select('transactionId');
+        $this->db->from('transaction');
+        $this->db->where('waktu',$time);
+        $query = $this->db->get();
+        $res = $query->row();
+        return $res->transactionId;
+    }
+    public function balanceReduce($total){
+        $this->db->set('saldo', 'saldo - '.$total, false);
+        $this->db->where('username', $this->session->userdata('user'));
+        $this->db->update('user');
+    }
+    public function amountReduce($amount, $id){
+        $this->db->set('stock', 'stock - '.$amount, false);
+        $this->db->where('barangId', $id);
+        $this->db->update('barang');
+    }
+    public function emptyCart(){
+        $this->db->set('shoppingCart', 'Not Yet Available');
+        $this->db->where('username', $this->session->userdata('user'));
+        $this->db->update('user');
+        return true;
+    }
+
 }
