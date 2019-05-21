@@ -322,7 +322,7 @@
             location.reload();
           },
           error: function(){
-            alert("error anjeng");
+            alert("Update Failed");
           }
         });
       })
