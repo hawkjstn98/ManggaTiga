@@ -29,7 +29,7 @@
         success : function(res){
             if(res.success){
                 let data = res.data;
-                console.log(data);
+                //console.log(data);
                 a =  $('#cardgridrecom');
                 for(let i = 0; i < res.data.length; i++){
                     // a.append('<div class="card" style="width: 18rem; margin-left:50px;">');
@@ -46,11 +46,22 @@
                     let hJual = data[i].hargaJual * 1;
                     let hJualDis = data[i].hargaJual*(100-data[i].persen)/100;
                     let harga = (data[i].stock <= 0 ? ('<p class="card-text" id="cardHarga" style="color:red;">Out of Stock</p>') : (data[i].persen > 0 ? ('<p class="card-text" id="cardHarga"> <del><a style="color:red;"> Rp. '+ hJual.toLocaleString('id-ID') +'</a></del></p> <p class="card-text" id="cardHarga"> Rp. '+hJualDis.toLocaleString('id-ID')+'</p>') : ('<p class="card-text" id="cardHarga"> Rp. '+hJual.toLocaleString('id-ID')+'</p>')));
+                    let stock = '';
+                    let gam = '';
+                    if(data[i].stock <= 0){
+                        stock = ' overlay';
+                    }
+                    if(data[i].gambar == null){
+                        gam = basds + "assets/logo/OurLogo.png";
+                    }
+                    else{
+                        gam = basds + data[i].gambar;
+                    }
                     a.append(
                         '<div class="card" style="width: 20rem; margin-left:50px;">'+
                             '<div class="card-body">' +
                                 '<a href="'+red+data[i].barangId+'">'+
-                                    '<img class="card-img-top" style="padding-left:5px; padding-right:5px;"'+ (data[i].stock <= 0 ? ('overlay') : '') +' alt="Card image cap" src="'+basds+data[i].gambar+'">'+
+                                    '<img class="card-img-top'+ stock +'" style="padding-left:5px; padding-right:5px;" src="'+ gam +'">'+
                                     '<div class="card-body row">'+
                                         '<p class="card-text" style="font-size:14px;" align="center" id="cardNamaBarang">'+data[i].barangNama+'</p>'+
                                     '</div>'+
