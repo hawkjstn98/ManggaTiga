@@ -138,7 +138,7 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
                         </li>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="<?php echo base_url(''); ?>">Mangga Tiga</a>, PT. Cerdas Sekali
                 </p>
             </div>
         </footer>
@@ -199,7 +199,7 @@ if($this->session->has_userdata('user')){echo $staticnavbarLoggedin; } else { ec
            dataType: 'json',
            data: {"username": '<?php echo $this->session->userdata('user')?>'},
            success: function(res){
-               console.log(res);
+               //console.log(res);
                var data = res.data;
                if(res.success){
                   let det = $('#detail');

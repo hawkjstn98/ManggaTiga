@@ -26,10 +26,10 @@
             <hr>
                 <div class="container">
                     <div class="input-group">
-                        <input id="fromField" type="number" class="form-control" placeholder="Dari">
+                        <input id="fromField" type="number" class="form-control" placeholder="Dari" min="0">
                     </div>
                     <div class="input-group" style="margin-top:5px;">
-                        <input id="toField" type="number" class="form-control" placeholder="Hingga">
+                        <input id="toField" type="number" class="form-control" placeholder="Hingga" min="0">
                     </div>
                     <div class="row" style="margin-top:5px;">
                         <div class="col-5">
@@ -146,10 +146,10 @@
             let from = parseInt($('#fromField').val());
             let to = parseInt($('#toField').val());
 
-            if((from&&to)&&(from<=to)) {
+            if((from&&to)&&(from<=to)&&(from>=0)&&(to>=0)) {
                 renderProductRange(from, to);
             }
-            else if(from>to){
+            else if(from>to || from<0 || to<0){
                 alert("Harga dari tidak bisa lebih besar dari Harga Hingga");
             }
             else {

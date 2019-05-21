@@ -85,7 +85,7 @@
                         }
                     });
                     //data = jQuery.unique(tempdata);
-                    console.log(data);
+                    //console.log(data);
                     renderItem(data);
                 }
                 else{
@@ -106,7 +106,7 @@
             dataType: 'json',
             data: {"username": '<?php echo $this->session->userdata('user')?>'},
             success: function(res){
-                console.log(res.data);
+                //console.log(res.data);
                 let udata = res.data;
                 if(res.success){
                     $('#email').html(udata[0].email);

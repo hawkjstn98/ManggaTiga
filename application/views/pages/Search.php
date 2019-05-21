@@ -38,7 +38,7 @@
                                 '<div class="card" style="width: 20rem; margin-left:50px;">'.
                                     '<div class="card-body">'.
                                         '<a href="'.$red.$row->barangId.'">'.
-                                            '<img class="card-img-top '. ($row->stock <= 0 ? ('overlay') : '') .'" alt="Card image cap" src="http://localhost/assets/logo/Ourlogo.png">'.
+                                            '<img class="card-img-top '. ($row->stock <= 0 ? ('overlay') : '') .'" alt="Card image cap" src="'.base_url('assets/logo/OurLogo.png').'">'.
                                             '<div class="card-body">'.
                                                 '<p class="card-text" style="font-size:14px;" align="center" id="cardNamaBarang">'.$row->barangNama.'</p>'.
                                             '</div>'.

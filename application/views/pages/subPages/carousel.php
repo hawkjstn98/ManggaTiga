@@ -30,5 +30,5 @@
         }
         carouselSelector.append("<div class='carousel-item "+activestring+"'>"+"<img class='d-block w-100' src='"+data[i].path+"' width='600' height='400'>"+"</div>");
     }
-    console.log(data.length)
+    //console.log(data.length)
 </script>
